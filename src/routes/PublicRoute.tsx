@@ -2,11 +2,11 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "@store/auth";
 
-interface AnonymousRouteProps {
+interface PublicRouteProps {
   children: React.ReactNode;
 }
 
-const AnonymousRoute: React.FC<AnonymousRouteProps> = ({ children }) => {
+const PublicRoute: React.FC<PublicRouteProps> = ({ children }) => {
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
 
   if (isLoggedIn) {
@@ -16,4 +16,4 @@ const AnonymousRoute: React.FC<AnonymousRouteProps> = ({ children }) => {
   return <>{children}</>;
 };
 
-export default AnonymousRoute;
+export default PublicRoute;
