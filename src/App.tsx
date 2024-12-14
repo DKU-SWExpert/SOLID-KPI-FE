@@ -1,11 +1,7 @@
+import Layout from "@components/Layout";
+
 function App() {
-  return (
-    <>
-      <div>
-        <h1>SOLID KPI Frontend</h1>
-      </div>
-    </>
-  );
+  return <Layout>재밌눈 프론트~</Layout>;
 }
 
 export default App;
