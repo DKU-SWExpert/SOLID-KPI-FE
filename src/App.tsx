@@ -1,7 +1,22 @@
-import Layout from "@components/Layout";
+import { Routes, Route } from "react-router-dom";
+import Home from "@pages/Home";
+import PublicRoute from "@routes/PublicRoute";
 
 function App() {
-  return <Layout>재밌눈 프론트~</Layout>;
+  return (
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <PublicRoute>
+              <Home />
+            </PublicRoute>
+          }
+        />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
