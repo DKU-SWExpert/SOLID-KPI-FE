@@ -22,6 +22,14 @@ export const navigationConfig: Record<string, NavItem[]> = {
   ],
   아이템: [
     {
+      name: "인턴십",
+      icon: cilPuzzle,
+      items: [
+        { name: "신청", href: "#" },
+        { name: "결과 입력", href: "#" },
+      ],
+    },
+    {
       name: "장학금",
       icon: cilPuzzle,
       items: [
