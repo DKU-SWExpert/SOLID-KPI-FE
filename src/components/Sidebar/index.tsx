@@ -13,8 +13,13 @@ import { CIcon } from "@coreui/icons-react";
 import { NavItem } from "@/types/sidebar";
 import { navigationConfig } from "@/config/navigation";
 import SidebarItem from "@components/SidebarItem";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
+  let navigate = useNavigate();
+  const onClickSidebarBrand = () => {
+    navigate("/");
+  };
   const renderNavItems = (items: NavItem[]) => {
     return items.map((item, index) => {
       if (item.items) {
@@ -47,12 +52,17 @@ const Sidebar: React.FC = () => {
     <CSidebar className="border-end" style={{ height: "100vh" }}>
       <CSidebarHeader
         className="border-bottom"
-        style={{ height: "64px", backgroundColor: "#2091D0" }}
+        style={{
+          height: "64px",
+          backgroundColor: "#2091D0",
+        }}
       >
         <CSidebarBrand
           style={{
             color: "#fff",
+            cursor: "pointer",
           }}
+          onClick={onClickSidebarBrand}
         >
           Solid KPI
         </CSidebarBrand>
