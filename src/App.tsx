@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
 import PublicRoute from "@routes/PublicRoute";
+import NotFound from "@pages/404";
 
 function App() {
   return (
@@ -11,6 +12,14 @@ function App() {
           element={
             <PublicRoute>
               <Home />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <PublicRoute>
+              <NotFound />
             </PublicRoute>
           }
         />
