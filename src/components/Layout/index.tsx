@@ -1,22 +1,22 @@
-import { ReactNode } from "react";
 import "@coreui/coreui/dist/css/coreui.min.css";
+import { CContainer } from "@coreui/react";
 import Header from "@components/Header";
 import Sidebar from "@components/Sidebar";
-import { CContainer } from "@coreui/react";
+import MiniHeader from "@components/MiniHeader";
+import { Outlet } from "react-router-dom";
 
-type LayoutProps = {
-  children: ReactNode;
-};
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = () => {
   return (
     <div className="c-app">
       <div className="c-wrapper d-flex">
         <Sidebar />
         <div className="c-body flex-grow-1">
           <Header />
+          <MiniHeader />
           <main className="c-main">
-            <CContainer fluid>{children}</CContainer>
+            <CContainer fluid>
+              <Outlet />
+            </CContainer>
           </main>
         </div>
       </div>
