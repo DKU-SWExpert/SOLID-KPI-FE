@@ -16,7 +16,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
       items: [
         { name: "SW Expert", href: "#" },
         { name: "SW 서포터즈", href: "#" },
-        { name: "SKU StartTrack", href: "#" },
+        { name: "SKU StarTrack", href: "#" },
         { name: "SW 인재", href: "#" },
         { name: "SW 유망주", href: "#" },
         { name: "SW 융합", href: "#" },
