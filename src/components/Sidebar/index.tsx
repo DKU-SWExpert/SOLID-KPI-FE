@@ -6,16 +6,18 @@ import {
   CSidebarNav,
   CNavTitle,
   CNavItem,
-  CNavGroup,
   CSidebarToggler,
 } from "@coreui/react";
-import { CIcon } from "@coreui/icons-react";
 import { NavItem } from "@/types/sidebar";
 import { navigationConfig } from "@/config/navigation";
 import SidebarItem from "@components/SidebarItem";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/store/auth";
+import CIcon from "@coreui/icons-react";
+import { cilPencil } from "@coreui/icons";
 
-const Sidebar: React.FC = () => {
+const Sidebar = () => {
+  const { role } = useAuthStore();
   let navigate = useNavigate();
   const onClickSidebarBrand = () => {
     navigate("/");
@@ -24,29 +26,27 @@ const Sidebar: React.FC = () => {
     return items.map((item, index) => {
       if (item.items) {
         return (
-          <CNavGroup
-            key={index}
-            toggler={
-              <>
-                <CIcon customClassName="nav-icon" icon={item.icon} />{" "}
-                {item.name}
-              </>
-            }
-          >
+          <React.Fragment key={index}>
+            <CNavTitle>{item.name}</CNavTitle>
             {item.items.map((subItem, subIndex) => (
               <CNavItem key={subIndex} href={subItem.href}>
                 <span className="nav-icon">
-                  <span className="nav-icon-bullet"></span>
+                  <span className="nav-icon">
+                    <CIcon icon={cilPencil} />
+                  </span>
                 </span>{" "}
                 {subItem.name}
               </CNavItem>
             ))}
-          </CNavGroup>
+          </React.Fragment>
         );
       }
       return <SidebarItem key={index} {...item} />;
     });
   };
+
+  // 아래 코드는 추후 백엔드까지 구현되면 삭제 후 role만 사용.
+  const sidebarRole = role && navigationConfig[role] ? role : "STUDENT";
 
   return (
     <CSidebar className="border-end" style={{ height: "100vh" }}>
@@ -68,12 +68,7 @@ const Sidebar: React.FC = () => {
         </CSidebarBrand>
       </CSidebarHeader>
       <CSidebarNav style={{ backgroundColor: "#f8f9fa" }}>
-        {Object.entries(navigationConfig).map(([title, items]) => (
-          <React.Fragment key={title}>
-            <CNavTitle>{title}</CNavTitle>
-            {renderNavItems(items)}
-          </React.Fragment>
-        ))}
+        {renderNavItems(navigationConfig[sidebarRole])}
       </CSidebarNav>
       <CSidebarHeader className="border-top">
         <CSidebarToggler />
