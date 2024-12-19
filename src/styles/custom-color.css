@@ -1,0 +1,15 @@
+.bg-dawn-light {
+    background-color: #29303d;
+}
+
+.bg-dawn {
+    background-color: #212631;
+}
+
+.border-gray {
+    border-color: #323a49;
+}
+
+.gray-placeholder::placeholder {
+    color: #a6a8ad;
+}
