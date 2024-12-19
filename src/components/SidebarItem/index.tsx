@@ -1,4 +1,3 @@
-import React from "react";
 import { CNavItem } from "@coreui/react";
 import { CIcon } from "@coreui/icons-react";
 
@@ -8,7 +7,7 @@ interface NavItemProps {
   href?: string;
 }
 
-const SidebarItem: React.FC<NavItemProps> = ({ name, icon, href }) => (
+const SidebarItem = ({ name, icon, href }: NavItemProps) => (
   <CNavItem href={href}>
     {icon && <CIcon customClassName="nav-icon" icon={icon} />} {name}
   </CNavItem>
