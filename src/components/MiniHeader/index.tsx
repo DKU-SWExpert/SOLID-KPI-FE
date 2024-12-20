@@ -1,6 +1,7 @@
 import { CHeader } from "@coreui/react";
 
 const MiniHeader = () => {
+  // const [_, item, list] = extractPath;
   return (
     <CHeader
       className="border-bottom"
