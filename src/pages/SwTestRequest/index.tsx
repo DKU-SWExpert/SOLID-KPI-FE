@@ -1,4 +1,4 @@
-import {CCard, CCardBody, CCardHeader, CFormSelect} from "@coreui/react";
+import {CCard, CCardBody, CCardHeader, CFormInput, CFormSelect} from "@coreui/react";
 
 const SwTestRequest = () => {
     return (
@@ -16,6 +16,17 @@ const SwTestRequest = () => {
                         <option value="pccp">PCCP</option>
                         <option value="pcce">PCCE</option>
                     </CFormSelect>
+                </CCardBody>
+            </CCard>
+
+            <CCard textBgColor="info" className="mt-4 mb-4 ms-2" style={{maxWidth: "100rem"}}>
+                <CCardHeader className="text-white">시험 일자</CCardHeader>
+                <CCardBody className="bg-dawn">
+                    <CFormInput
+                        type="date"
+                        className="bg-dawn text-white border-gray"
+                        style={{maxWidth: "15rem"}}
+                    />
                 </CCardBody>
             </CCard>
         </>
