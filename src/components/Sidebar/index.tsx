@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/auth";
 import CIcon from "@coreui/icons-react";
 import { cilPencil } from "@coreui/icons";
+import { STUDENT } from "@/constants/role";
 
 const Sidebar = () => {
   const { role } = useAuthStore();
@@ -46,7 +47,7 @@ const Sidebar = () => {
   };
 
   // 아래 코드는 추후 백엔드까지 구현되면 삭제 후 role만 사용.
-  const sidebarRole = role && navigationConfig[role] ? role : "STUDENT";
+  const sidebarRole = role && navigationConfig[role] ? role : STUDENT;
 
   return (
     <CSidebar className="border-end" style={{ height: "100vh" }}>
