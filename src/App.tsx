@@ -2,10 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import PublicRoute from "@routes/PublicRoute";
 import NotFound from "@pages/404";
 import Layout from "@components/Layout";
-import { useAuthStore } from "@/store/auth";
 
 function App() {
-  const { role } = useAuthStore();
+  // const { role } = useAuthStore();
 
   // if (role === "NOT_LOGGED_IN") {
   //   return <Login />;
