@@ -33,6 +33,10 @@ const Login: React.FC = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault()
+        if (!username || !password) {
+            alert("Username 과 Password 를 입력해 주세요");
+            return;
+        }
         navigate("/");
     }
 
