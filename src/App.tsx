@@ -3,6 +3,7 @@ import PublicRoute from "@routes/PublicRoute";
 import NotFound from "@pages/404";
 import Layout from "@components/Layout";
 import Login from "@pages/Login";
+import SwTestRequest from "@pages/SwTestRequest";
 
 function App() {
   // const { role } = useAuthStore();
@@ -37,6 +38,14 @@ function App() {
             </PublicRoute>
           }
         />
+          <Route
+            path="/sw-test-request"
+            element={
+              <PublicRoute>
+                <SwTestRequest />
+              </PublicRoute>
+            }
+          />
       </Route>
     </Routes>
   );
