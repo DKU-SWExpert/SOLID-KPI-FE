@@ -14,7 +14,9 @@ interface AuthState {
 const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
-      isLoggedIn: false,
+      // TODO: 현재 개발의 편의를 위해 true로 설정
+      // 나중에 false로 변경해야 함
+      isLoggedIn: true,
       name: "",
       role: "NOT_LOGGED_IN",
       login: () => set({ isLoggedIn: true }),
