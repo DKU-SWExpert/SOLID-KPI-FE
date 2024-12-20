@@ -18,10 +18,10 @@ const useAuthStore = create<AuthState>()(
       // 나중에 false로 변경해야 함
       isLoggedIn: true,
       name: "",
-      role: "NOT_LOGGED_IN",
+      role: "NOT_A_MEMBER",
       login: () => set({ isLoggedIn: true }),
-      logout: () => set({ isLoggedIn: false, name: "", role: "NOT_LOGGED_IN" }),
-      reset: () => set({ isLoggedIn: false, name: "", role: "NOT_LOGGED_IN" }),
+      logout: () => set({ isLoggedIn: false, name: "", role: "NOT_A_MEMBER" }),
+      reset: () => set({ isLoggedIn: false, name: "", role: "NOT_A_MEMBER" }),
     }),
     {
       name: "auth-storage",

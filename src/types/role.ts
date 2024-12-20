@@ -3,4 +3,4 @@ export type Role =
   | "PROFESSOR"
   | "ADMIN"
   | "SUPER_ADMIN"
-  | "NOT_LOGGED_IN";
+  | "NOT_A_MEMBER";
