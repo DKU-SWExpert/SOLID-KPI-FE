@@ -5,7 +5,8 @@ import Layout from "@components/Layout";
 import Login from "@pages/Login";
 import SwTestInputResult from "@pages/SwTestInputResult";
 import Home from "@pages/Home";
-
+import StudentRoutes from "@routes/StudentRoutes";
+import ProtectedRoute from "@routes/ProtectedRoute";
 function App() {
   return (
     <Routes>
@@ -42,6 +43,14 @@ function App() {
           }
         />
         <Route path="/" element={<Home />} />
+        <Route
+          path="/student/*"
+          element={
+            <ProtectedRoute>
+              <StudentRoutes />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

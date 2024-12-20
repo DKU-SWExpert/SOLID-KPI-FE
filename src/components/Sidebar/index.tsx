@@ -1,11 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   CSidebar,
   CSidebarHeader,
   CSidebarBrand,
   CSidebarNav,
   CNavTitle,
-  CNavItem,
   CSidebarToggler,
 } from "@coreui/react";
 import { NavItem } from "@/types/sidebar";
@@ -20,9 +20,11 @@ import { STUDENT } from "@/constants/role";
 const Sidebar = () => {
   const { role } = useAuthStore();
   let navigate = useNavigate();
+
   const onClickSidebarBrand = () => {
     navigate("/");
   };
+
   const renderNavItems = (items: NavItem[]) => {
     return items.map((item, index) => {
       if (item.items) {
@@ -30,14 +32,17 @@ const Sidebar = () => {
           <React.Fragment key={index}>
             <CNavTitle>{item.name}</CNavTitle>
             {item.items.map((subItem, subIndex) => (
-              <CNavItem key={subIndex} href={subItem.href}>
+              <Link
+                key={subIndex}
+                to={subItem.path || "#"}
+                className="nav-link"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <span className="nav-icon">
-                  <span className="nav-icon">
-                    <CIcon icon={cilPencil} />
-                  </span>
-                </span>{" "}
+                  <CIcon icon={cilPencil} />
+                </span>
                 {subItem.name}
-              </CNavItem>
+              </Link>
             ))}
           </React.Fragment>
         );
