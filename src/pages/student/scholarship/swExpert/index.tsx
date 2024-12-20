@@ -3,6 +3,7 @@ import { CCard, CCardHeader } from "@coreui/react";
 const SwExpert = () => {
     return (
         <div className="container px-4">
+            {/* title */}
             <div className="d-flex align-items-center mt-4 mb-4">
                 <CCard
                     textBgColor="primary"
@@ -14,27 +15,35 @@ const SwExpert = () => {
                     </CCardHeader>
                 </CCard>
             </div>
+            {/* 기간 */}
             <div className="row">
 
             </div>
+            {/* 수행평가서 */}
             <div className="row">
 
             </div>
+            {/* 신청서 (기본정보) */}
             <div className="row">
 
             </div>
+            {/* 신청서 */}
             <div className="row">
 
             </div>
+            {/* 지도교수 추천서 */}
             <div className="row">
 
             </div>
+            {/* 재학증명서 */}
             <div className="row">
 
             </div>
+            {/* TOPCIT 성적 증명서 */}
             <div className="row">
 
             </div>
+            {/* 담당 교수 */}
             <div className="row">
 
             </div>
