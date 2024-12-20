@@ -39,7 +39,7 @@ function App() {
           }
         />
           <Route
-            path="/sw-test-request"
+            path="/sw-test/request"
             element={
               <PublicRoute>
                 <SwTestRequest />
