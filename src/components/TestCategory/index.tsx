@@ -1,8 +1,7 @@
-import React from "react";
 import { CFormSelect } from "@coreui/react";
 import CommonCard from "@components/CommonCard";
 
-const TestCategory: React.FC = () => {
+const TestCategory = () => {
     return (
         <CommonCard header="시험 구분" textBgColor="info" style={{ maxWidth: "100rem" }}>
             <CFormSelect className="bg-dawn text-white border-gray" style={{ maxWidth: "15rem" }}>
