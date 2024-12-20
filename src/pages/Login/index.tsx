@@ -59,7 +59,7 @@ const Login: React.FC = () => {
                                                 autoComplete="username"
                                                 value={username}
                                                 onChange={handleUsername}
-                                                className="bg-dawn border-gray gray-placeholder"
+                                                className="bg-dawn text-white border-gray gray-placeholder"
                                             />
                                         </CInputGroup>
                                         <CInputGroup className="mb-4">

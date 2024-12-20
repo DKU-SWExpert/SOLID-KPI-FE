@@ -6,6 +6,10 @@
     background-color: #212631;
 }
 
+.bg-dawn:focus {
+    background-color: #212631;
+}
+
 .border-gray {
     border-color: #323a49;
 }
