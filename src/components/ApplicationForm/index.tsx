@@ -4,7 +4,7 @@ import CommonCard from "@components/CommonCard";
 const ApplicationForm = () => {
     return (
         <CommonCard header="신청서 (기본정보)" textBgColor="info" style={{maxWidth: "100rem"}}>
-            <CRow>
+            <CRow className="text-white">
                 <CCol xs="12" md="6" lg="4">
                     <CFormLabel>학번</CFormLabel>
                     <CFormInput
