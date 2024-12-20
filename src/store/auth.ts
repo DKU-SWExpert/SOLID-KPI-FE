@@ -1,7 +1,7 @@
 import { Role } from "@/types/role";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { NOT_A_MEMBER } from "@/constants/role";
+import { NOT_A_MEMBER, STUDENT } from "@/constants/role";
 
 interface AuthState {
   name: string;
@@ -15,7 +15,7 @@ interface AuthState {
 const initialState = {
   isLoggedIn: true, // TODO: 개발 편의를 위해 true로 설정, 나중에 false로 변경
   name: "",
-  role: NOT_A_MEMBER as Role,
+  role: STUDENT as Role,
 };
 
 const useAuthStore = create<AuthState>()(
