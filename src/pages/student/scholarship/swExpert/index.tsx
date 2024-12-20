@@ -1,39 +1,61 @@
 import {CCard, CCardBody, CCardHeader, CFormSelect} from "@coreui/react";
 
+interface TitleCardProps {
+    title: string;
+}
+
+const TitleCard = ({title}: TitleCardProps) => {
+    return (
+        <div className="d-flex align-items-center mt-4 mb-4">
+            <CCard
+                textBgColor="primary"
+                className="w-100 d-flex align-items-center justify-content-center"
+                style={{maxWidth: "15rem", height: "4.5rem"}}
+            >
+                <CCardHeader className="text-white text-center fw-semibold fs-5">
+                    {title}
+                </CCardHeader>
+            </CCard>
+        </div>
+    );
+};
+
+const PeriodSelectCard = ({title}: TitleCardProps) => {
+    return (
+        <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{ borderRadius: "0.75rem" }}>
+            <CCardHeader className="text-white">{title}</CCardHeader>
+            <CCardBody className="bg-dawn" style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}>
+                <CFormSelect
+                    className="bg-dawn text-white border-gray col-md-4"
+                    style={{maxWidth: "15rem"}}
+                >
+                    <option>선택해주세요...</option>
+                    <option>2025년 1학기</option>
+                    <option>2025년 2학기</option>
+                    <option>2026년 1학기</option>
+                    <option>2026년 2학기</option>
+                    <option>2027년 1학기</option>
+                    <option>2027년 2학기</option>
+                    <option>2028년 1학기</option>
+                    <option>2028년 2학기</option>
+                    <option>2029년 1학기</option>
+                    <option>2029년 2학기</option>
+                </CFormSelect>
+            </CCardBody>
+        </CCard>
+    );
+};
+
+// Main Component
 const SwExpert = () => {
     return (
         <div className="container px-4">
-            {/* title */}
-            <div className="d-flex align-items-center mt-4 mb-4">
-                <CCard
-                    textBgColor="primary"
-                    className="w-100 d-flex align-items-center justify-content-center"
-                    style={{maxWidth: "15rem", height: "4.5rem"}}
-                >
-                    <CCardHeader className="text-white text-center fw-semibold fs-5">
-                        SW Expert 신청
-                    </CCardHeader>
-                </CCard>
-            </div>
+            {/* Title */}
+            <TitleCard title="SW Expert 신청"/>
+
             {/* 기간 */}
-            <CCard textBgColor="info" className="mt-4 mb-4">
-                <CCardHeader className="text-white">기간</CCardHeader>
-                <CCardBody className="bg-dawn">
-                    <CFormSelect className="bg-dawn text-white border-gray col-md-4" style={{maxWidth: "15rem"}}>
-                        <option>선택해주세요...</option>
-                        <option>2025년 1학기</option>
-                        <option>2025년 2학기</option>
-                        <option>2026년 1학기</option>
-                        <option>2026년 2학기</option>
-                        <option>2027년 1학기</option>
-                        <option>2027년 2학기</option>
-                        <option>2028년 1학기</option>
-                        <option>2028년 2학기</option>
-                        <option>2029년 1학기</option>
-                        <option>2029년 2학기</option>
-                    </CFormSelect>
-                </CCardBody>
-            </CCard>
+            <PeriodSelectCard title="기간"/>
+
             {/* 수행평가서 */}
             <div className="row">
 
