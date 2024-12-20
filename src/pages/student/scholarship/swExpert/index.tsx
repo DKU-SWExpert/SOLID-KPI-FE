@@ -1,4 +1,4 @@
-import { CCard, CCardHeader } from "@coreui/react";
+import {CCard, CCardBody, CCardHeader, CFormSelect} from "@coreui/react";
 
 const SwExpert = () => {
     return (
@@ -16,9 +16,24 @@ const SwExpert = () => {
                 </CCard>
             </div>
             {/* 기간 */}
-            <div className="row">
-
-            </div>
+            <CCard textBgColor="info" className="mt-4 mb-4">
+                <CCardHeader className="text-white">기간</CCardHeader>
+                <CCardBody className="bg-dawn">
+                    <CFormSelect className="bg-dawn text-white border-gray col-md-4" style={{maxWidth: "15rem"}}>
+                        <option>선택해주세요...</option>
+                        <option>2025년 1학기</option>
+                        <option>2025년 2학기</option>
+                        <option>2026년 1학기</option>
+                        <option>2026년 2학기</option>
+                        <option>2027년 1학기</option>
+                        <option>2027년 2학기</option>
+                        <option>2028년 1학기</option>
+                        <option>2028년 2학기</option>
+                        <option>2029년 1학기</option>
+                        <option>2029년 2학기</option>
+                    </CFormSelect>
+                </CCardBody>
+            </CCard>
             {/* 수행평가서 */}
             <div className="row">
 
@@ -48,7 +63,7 @@ const SwExpert = () => {
 
             </div>
         </div>
-        );
+    );
 };
 
 export default SwExpert;
