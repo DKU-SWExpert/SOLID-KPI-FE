@@ -4,12 +4,21 @@ import NotFound from "@pages/404";
 import Layout from "@components/Layout";
 import Login from "@pages/Login";
 import Home from "@pages/Home";
-
+import StudentRoutes from "@routes/StudentRoutes";
+import ProtectedRoute from "@routes/ProtectedRoute";
 function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
+        <Route
+          path="/student/*"
+          element={
+            <ProtectedRoute>
+              <StudentRoutes />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route
