@@ -1,6 +1,6 @@
 export interface NavItem {
   name: string;
   icon?: any;
-  href?: string;
+  path?: string;
   items?: NavItem[];
 }

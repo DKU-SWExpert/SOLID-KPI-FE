@@ -10,14 +10,19 @@ const Layout = () => {
     <div className="c-app">
       <div className="c-wrapper d-flex">
         <Sidebar />
-        <div className="c-body flex-grow-1">
+        <div className="c-body flex-grow-1 ">
           <Header />
           <MiniHeader />
-          <main className="c-main">
-            <CContainer fluid>
-              <Outlet />
-            </CContainer>
-          </main>
+          <CContainer
+            fluid
+            className="flex-grow-1"
+            style={{
+              overflowY: "auto",
+              height: "calc(100vh - 112px)", // Header(64px) + MiniHeader(48px) 높이를 뺀 값
+            }}
+          >
+            <Outlet />
+          </CContainer>
         </div>
       </div>
     </div>

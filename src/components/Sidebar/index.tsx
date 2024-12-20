@@ -1,11 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   CSidebar,
   CSidebarHeader,
   CSidebarBrand,
   CSidebarNav,
   CNavTitle,
-  CNavItem,
   CSidebarToggler,
 } from "@coreui/react";
 import { NavItem } from "@/types/sidebar";
@@ -15,13 +15,16 @@ import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/auth";
 import CIcon from "@coreui/icons-react";
 import { cilPencil } from "@coreui/icons";
+import { STUDENT } from "@/constants/role";
 
 const Sidebar = () => {
   const { role } = useAuthStore();
   let navigate = useNavigate();
+
   const onClickSidebarBrand = () => {
     navigate("/");
   };
+
   const renderNavItems = (items: NavItem[]) => {
     return items.map((item, index) => {
       if (item.items) {
@@ -29,14 +32,17 @@ const Sidebar = () => {
           <React.Fragment key={index}>
             <CNavTitle>{item.name}</CNavTitle>
             {item.items.map((subItem, subIndex) => (
-              <CNavItem key={subIndex} href={subItem.href}>
+              <Link
+                key={subIndex}
+                to={subItem.path || "#"}
+                className="nav-link"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <span className="nav-icon">
-                  <span className="nav-icon">
-                    <CIcon icon={cilPencil} />
-                  </span>
-                </span>{" "}
+                  <CIcon icon={cilPencil} />
+                </span>
                 {subItem.name}
-              </CNavItem>
+              </Link>
             ))}
           </React.Fragment>
         );
@@ -46,7 +52,7 @@ const Sidebar = () => {
   };
 
   // 아래 코드는 추후 백엔드까지 구현되면 삭제 후 role만 사용.
-  const sidebarRole = role && navigationConfig[role] ? role : "STUDENT";
+  const sidebarRole = role && navigationConfig[role] ? role : STUDENT;
 
   return (
     <CSidebar className="border-end" style={{ height: "100vh" }}>
