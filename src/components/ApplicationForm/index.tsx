@@ -1,10 +1,9 @@
-import React from "react";
-import { CRow, CCol, CFormInput, CFormLabel } from "@coreui/react";
+import {CRow, CCol, CFormInput, CFormLabel} from "@coreui/react";
 import CommonCard from "@components/CommonCard";
 
-const ApplicationForm: React.FC = () => {
+const ApplicationForm = () => {
     return (
-        <CommonCard header="신청서 (기본정보)" textBgColor="info" style={{ maxWidth: "100rem" }}>
+        <CommonCard header="신청서 (기본정보)" textBgColor="info" style={{maxWidth: "100rem"}}>
             <CRow>
                 <CCol xs="12" md="6" lg="4">
                     <CFormLabel>학번</CFormLabel>
@@ -16,10 +15,10 @@ const ApplicationForm: React.FC = () => {
                     />
 
                     <CFormLabel>생년월일</CFormLabel>
-                    <CFormInput type="date" className="mb-4 bg-dawn text-white border-gray" />
+                    <CFormInput type="date" className="mb-4 bg-dawn text-white border-gray"/>
 
                     <CFormLabel>이메일</CFormLabel>
-                    <CFormInput type="text" className="bg-dawn text-white border-gray" />
+                    <CFormInput type="text" className="bg-dawn text-white border-gray"/>
                 </CCol>
 
                 <CCol xs="12" md="6" lg="4">
@@ -32,7 +31,7 @@ const ApplicationForm: React.FC = () => {
                     />
 
                     <CFormLabel>학년</CFormLabel>
-                    <CFormInput type="text" className="mb-4 bg-dawn text-white border-gray gray-placeholder" />
+                    <CFormInput type="text" className="mb-4 bg-dawn text-white border-gray gray-placeholder"/>
                 </CCol>
 
                 <CCol xs="12" md="12" lg="4">
@@ -45,10 +44,10 @@ const ApplicationForm: React.FC = () => {
                     />
 
                     <CFormLabel>휴대폰</CFormLabel>
-                    <CFormInput type="text" className="mb-4 bg-dawn text-white border-gray gray-placeholder" />
+                    <CFormInput type="text" className="mb-4 bg-dawn text-white border-gray gray-placeholder"/>
 
                     <CFormLabel>TOPCIT ID</CFormLabel>
-                    <CFormInput type="text" className="mb-4 bg-dawn text-white border-gray gray-placeholder" />
+                    <CFormInput type="text" className="mb-4 bg-dawn text-white border-gray gray-placeholder"/>
                 </CCol>
             </CRow>
         </CommonCard>
