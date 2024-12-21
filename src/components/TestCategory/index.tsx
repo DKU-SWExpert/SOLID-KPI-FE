@@ -11,7 +11,7 @@ const TestCategory: React.FC<TestCategoryProps> = ({ value, onChange }) => {
     const tests: Record<string, string> = {
         topcit: "TOPCIT",
         pccp: "PCCP",
-        pce: "PCCE",
+        pcce: "PCCE",
     };
 
     return (
