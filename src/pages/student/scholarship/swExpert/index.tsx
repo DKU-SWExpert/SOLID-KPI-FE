@@ -1,4 +1,4 @@
-import {CCard, CCardBody, CCardHeader, CFormInput, CFormSelect} from "@coreui/react";
+import {CCard, CCardBody, CCardHeader, CCol, CFormInput, CFormLabel, CFormSelect, CRow} from "@coreui/react";
 import React from "react";
 
 interface TitleCardProps {
@@ -69,9 +69,51 @@ const SwExpert = () => {
             </CCard>
 
             {/* 신청서 (기본정보) */}
-            <div className="row">
-
-            </div>
+            {/*TODO: 값을 어떻게 넘겨줄지 */}
+            <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
+                <CCardHeader className="text-white">신청서 (기본정보)</CCardHeader>
+                <CCardBody className="bg-dawn"
+                           style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
+                    <CRow>
+                        <CCol xs="12" md="6" lg="4">
+                            <div className="text-white">
+                                <CFormLabel>
+                                    학번
+                                </CFormLabel>
+                                <CFormInput
+                                    type="text"
+                                    className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                                    placeholder="20123456"
+                                />
+                            </div>
+                        </CCol>
+                        <CCol xs="12" md="6" lg="4">
+                            <div className="text-white">
+                                <CFormLabel>
+                                    이름
+                                </CFormLabel>
+                                <CFormInput
+                                    type="text"
+                                    className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                                    placeholder="홍길동"
+                                />
+                            </div>
+                        </CCol>
+                        <CCol xs="12" md="6" lg="4">
+                            <div className="text-white">
+                                <CFormLabel>
+                                    학과
+                                </CFormLabel>
+                                <CFormInput
+                                    type="text"
+                                    className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                                    placeholder="소프트웨어"
+                                />
+                            </div>
+                        </CCol>
+                    </CRow>
+                </CCardBody>
+            </CCard>
             {/* 신청서 */}
             <div className="row">
 
