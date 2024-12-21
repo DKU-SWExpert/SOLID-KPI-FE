@@ -1,4 +1,14 @@
-import {CCard, CCardBody, CCardHeader, CCol, CFormInput, CFormLabel, CFormSelect, CRow} from "@coreui/react";
+import {
+    CCard,
+    CCardBody,
+    CCardHeader,
+    CCol,
+    CFormInput,
+    CFormLabel,
+    CFormSelect,
+    CInputGroup, CInputGroupText,
+    CRow
+} from "@coreui/react";
 import React from "react";
 
 interface TitleCardProps {
@@ -58,13 +68,15 @@ const SwExpert = () => {
             <PeriodSelectCard title="기간"/>
 
             {/* 수행평가서 */}
+            {/*TODO: 배경색 */}
             <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
                 <CCardHeader className="text-white">수행평가서</CCardHeader>
                 <CCardBody className="bg-dawn"
                            style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
-                    <div className="mb-3">
-                        <CFormInput type="file" id="formFile"/>
-                    </div>
+                    <CInputGroup className="bg-dawn mb-3">
+                        <CFormInput type="file" id="inputGroupFile02"/>
+                        <CInputGroupText as="label" htmlFor="inputGroupFile02">Upload</CInputGroupText>
+                    </CInputGroup>
                 </CCardBody>
             </CCard>
 
