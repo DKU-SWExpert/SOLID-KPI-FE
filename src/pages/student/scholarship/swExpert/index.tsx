@@ -58,6 +58,21 @@ const PeriodSelectCard = ({title}: TitleCardProps) => {
     );
 };
 
+const UploadFileForm = ({title}: TitleCardProps) => {
+    return(
+        <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
+                <CCardHeader className="text-white">{title}</CCardHeader>
+                <CCardBody className="bg-dawn"
+                           style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
+                    <CInputGroup className="bg-dawn mb-3">
+                        <CFormInput type="file" id="inputGroupFile02"/>
+                        <CInputGroupText as="label" htmlFor="inputGroupFile02">Upload</CInputGroupText>
+                    </CInputGroup>
+                </CCardBody>
+            </CCard>
+    )
+}
+
 // Main Component
 const SwExpert = () => {
     return (
@@ -69,16 +84,7 @@ const SwExpert = () => {
 
             {/* 수행평가서 */}
             {/*TODO: 배경색 */}
-            <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
-                <CCardHeader className="text-white">수행평가서</CCardHeader>
-                <CCardBody className="bg-dawn"
-                           style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
-                    <CInputGroup className="bg-dawn mb-3">
-                        <CFormInput type="file" id="inputGroupFile02"/>
-                        <CInputGroupText as="label" htmlFor="inputGroupFile02">Upload</CInputGroupText>
-                    </CInputGroup>
-                </CCardBody>
-            </CCard>
+            <UploadFileForm title="수행평가서"/>
 
             {/* 신청서 (기본정보) */}
             {/*TODO: 값을 어떻게 넘겨줄지 */}
