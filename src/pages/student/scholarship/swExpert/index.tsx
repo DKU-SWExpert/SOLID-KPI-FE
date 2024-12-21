@@ -1,4 +1,5 @@
-import {CCard, CCardBody, CCardHeader, CFormSelect} from "@coreui/react";
+import {CCard, CCardBody, CCardHeader, CFormInput, CFormSelect} from "@coreui/react";
+import React from "react";
 
 interface TitleCardProps {
     title: string;
@@ -22,9 +23,10 @@ const TitleCard = ({title}: TitleCardProps) => {
 
 const PeriodSelectCard = ({title}: TitleCardProps) => {
     return (
-        <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{ borderRadius: "0.75rem" }}>
+        <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
             <CCardHeader className="text-white">{title}</CCardHeader>
-            <CCardBody className="bg-dawn" style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}>
+            <CCardBody className="bg-dawn"
+                       style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
                 <CFormSelect
                     className="bg-dawn text-white border-gray col-md-4"
                     style={{maxWidth: "15rem"}}
@@ -52,14 +54,20 @@ const SwExpert = () => {
         <div className="container px-4">
             {/* Title */}
             <TitleCard title="SW Expert 신청"/>
-
             {/* 기간 */}
             <PeriodSelectCard title="기간"/>
 
             {/* 수행평가서 */}
-            <div className="row">
+            <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
+                <CCardHeader className="text-white">수행평가서</CCardHeader>
+                <CCardBody className="bg-dawn"
+                           style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
+                    <div className="mb-3">
+                        <CFormInput type="file" id="formFile"/>
+                    </div>
+                </CCardBody>
+            </CCard>
 
-            </div>
             {/* 신청서 (기본정보) */}
             <div className="row">
 
