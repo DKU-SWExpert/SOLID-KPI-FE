@@ -68,7 +68,7 @@ const UploadFileForm = ({title}: TitleCardProps) => {
             <CCardBody className="bg-dawn"
                        style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
                 <CInputGroup className="bg-dawn mb-3">
-                    <CFormInput type="file" id="inputGroupFile02"/>
+                    <CFormInput className="bg-dawn" type="file" id="inputGroupFile02"/>
                     <CInputGroupText as="label" htmlFor="inputGroupFile02">Upload</CInputGroupText>
                 </CInputGroup>
             </CCardBody>
@@ -148,9 +148,17 @@ const SwExpert = () => {
             <UploadFileForm title="TOPCIT 성적 증명서"/>
 
             {/* 담당 교수 */}
-            <div className="row">
-
-            </div>
+            <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
+                <CCardHeader className="text-white">담당 교수</CCardHeader>
+                <CCardBody className="bg-dawn"
+                           style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
+                    <CFormInput
+                        type="text"
+                        className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                        placeholder="검색어를 입력하세요"
+                    />
+                </CCardBody>
+            </CCard>
         </div>
     );
 };
