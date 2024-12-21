@@ -58,18 +58,21 @@ const PeriodSelectCard = ({title}: TitleCardProps) => {
     );
 };
 
+
 const UploadFileForm = ({title}: TitleCardProps) => {
-    return(
+    {/*TODO: 배경색 */
+    }
+    return (
         <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
-                <CCardHeader className="text-white">{title}</CCardHeader>
-                <CCardBody className="bg-dawn"
-                           style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
-                    <CInputGroup className="bg-dawn mb-3">
-                        <CFormInput type="file" id="inputGroupFile02"/>
-                        <CInputGroupText as="label" htmlFor="inputGroupFile02">Upload</CInputGroupText>
-                    </CInputGroup>
-                </CCardBody>
-            </CCard>
+            <CCardHeader className="text-white">{title}</CCardHeader>
+            <CCardBody className="bg-dawn"
+                       style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
+                <CInputGroup className="bg-dawn mb-3">
+                    <CFormInput type="file" id="inputGroupFile02"/>
+                    <CInputGroupText as="label" htmlFor="inputGroupFile02">Upload</CInputGroupText>
+                </CInputGroup>
+            </CCardBody>
+        </CCard>
     )
 }
 
@@ -83,7 +86,6 @@ const SwExpert = () => {
             <PeriodSelectCard title="기간"/>
 
             {/* 수행평가서 */}
-            {/*TODO: 배경색 */}
             <UploadFileForm title="수행평가서"/>
 
             {/* 신청서 (기본정보) */}
@@ -132,22 +134,19 @@ const SwExpert = () => {
                     </CRow>
                 </CCardBody>
             </CCard>
+
             {/* 신청서 */}
-            <div className="row">
+            <UploadFileForm title="신청서"/>
 
-            </div>
             {/* 지도교수 추천서 */}
-            <div className="row">
+            <UploadFileForm title="지도교수 추천서"/>
 
-            </div>
             {/* 재학증명서 */}
-            <div className="row">
+            <UploadFileForm title="재학증명서"/>
 
-            </div>
             {/* TOPCIT 성적 증명서 */}
-            <div className="row">
+            <UploadFileForm title="TOPCIT 성적 증명서"/>
 
-            </div>
             {/* 담당 교수 */}
             <div className="row">
 
