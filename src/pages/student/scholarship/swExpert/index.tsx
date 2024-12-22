@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import {
     CButton,
     CCard,
@@ -7,10 +8,10 @@ import {
     CFormInput,
     CFormLabel,
     CFormSelect,
-    CInputGroup, CInputGroupText,
-    CRow
+    CInputGroup,
+    CInputGroupText,
+    CRow,
 } from "@coreui/react";
-import React, {useState} from "react";
 
 interface TitleCardProps {
     title: string;
@@ -32,7 +33,13 @@ const TitleCard = ({title}: TitleCardProps) => {
     );
 };
 
-const PeriodSelectCard = ({title, onPeriodSelect}: { title: string; onPeriodSelect?: (period: string) => void }) => {
+const PeriodSelectCard = ({
+                              title,
+                              onPeriodSelect,
+                          }: {
+    title: string;
+    onPeriodSelect: (period: string) => void;
+}) => {
     const periods = [
         "2025년 1학기",
         "2025년 2학기",
@@ -51,9 +58,7 @@ const PeriodSelectCard = ({title, onPeriodSelect}: { title: string; onPeriodSele
     const handlePeriodChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedValue = e.target.value;
         setSelectedPeriod(selectedValue);
-        if (onPeriodSelect) {
-            onPeriodSelect(selectedValue);
-        }
+        onPeriodSelect(selectedValue);
     };
 
     return (
@@ -88,54 +93,62 @@ const PeriodSelectCard = ({title, onPeriodSelect}: { title: string; onPeriodSele
     );
 };
 
-
-const UploadFileForm = ({title}: TitleCardProps) => {
-    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-
+const UploadFileForm = ({
+                            title,
+                            onFileUpload,
+                        }: {
+    title: string;
+    onFileUpload: (file: File | null) => void;
+}) => {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files ? event.target.files[0] : null;
-        setUploadedFile(file);
-    };
-
-    const handleSubmit = () => {
-        if (uploadedFile) {
-            console.log("Uploading file:", uploadedFile);
-            // API 요청
-        } else {
-            console.log("No file selected.");
-        }
+        onFileUpload(file);
     };
 
     return (
-        <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
+        <CCard
+            textBgColor="info"
+            className="d-flex mt-4 mb-4"
+            style={{borderRadius: "0.75rem"}}
+        >
             <CCardHeader className="text-white">{title}</CCardHeader>
-            <CCardBody className="bg-dawn"
-                       style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
-                <CInputGroup className="bg-dawn mb-3"> {/*TODO: 파일선택 버튼 배경색 안바뀜 */}
-                    <CFormInput className="bg-dawn text-white border-gray gray-placeholder" type="file"
-                                onChange={handleFileChange} id="inputGroupFile02"/>
-                    <CInputGroupText className="bg-dawn text-white border-gray gray-placeholder" as="label"
-                                     onClick={handleSubmit}
-                                     htmlFor="inputGroupFile02">Upload</CInputGroupText>
+            <CCardBody
+                className="bg-dawn"
+                style={{
+                    borderBottomLeftRadius: "0.75rem",
+                    borderBottomRightRadius: "0.75rem",
+                }}
+            >
+                <CInputGroup className="bg-dawn mb-3">
+                    <CFormInput
+                        className="bg-dawn text-white border-gray gray-placeholder"
+                        type="file"
+                        onChange={handleFileChange}
+                        id="inputGroupFile02"
+                    />
+                    <CInputGroupText
+                        className="bg-dawn text-white border-gray gray-placeholder"
+                        as="label"
+                        htmlFor="inputGroupFile02"
+                    >
+                        Upload
+                    </CInputGroupText>
                 </CInputGroup>
             </CCardBody>
         </CCard>
-    )
-}
+    );
+};
 
-const BasicInfoForm = () => {
-    const [formValues, setFormValues] = useState({
-        studentId: "",
-        name: "",
-        department: "",
-    });
-
+const BasicInfoForm = ({
+                           formData,
+                           onFormChange,
+                       }: {
+    formData: { studentId: string; name: string; department: string };
+    onFormChange: (field: string, value: string) => void;
+}) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
-        setFormValues((prevValues) => ({
-            ...prevValues,
-            [name]: value,
-        }));
+        onFormChange(name, value);
     };
 
     return (
@@ -161,7 +174,7 @@ const BasicInfoForm = () => {
                                 className="mb-4 bg-dawn text-white border-gray gray-placeholder"
                                 placeholder="20123456"
                                 name="studentId"
-                                value={formValues.studentId}
+                                value={formData.studentId}
                                 onChange={handleChange}
                             />
                         </div>
@@ -174,7 +187,7 @@ const BasicInfoForm = () => {
                                 className="mb-4 bg-dawn text-white border-gray gray-placeholder"
                                 placeholder="홍길동"
                                 name="name"
-                                value={formValues.name}
+                                value={formData.name}
                                 onChange={handleChange}
                             />
                         </div>
@@ -187,7 +200,7 @@ const BasicInfoForm = () => {
                                 className="mb-4 bg-dawn text-white border-gray gray-placeholder"
                                 placeholder="소프트웨어"
                                 name="department"
-                                value={formValues.department}
+                                value={formData.department}
                                 onChange={handleChange}
                             />
                         </div>
@@ -198,11 +211,19 @@ const BasicInfoForm = () => {
     );
 };
 
-const ProfessorSearch = ({title}: TitleCardProps) => {
+const ProfessorSearch = ({
+                             title,
+                             onSearch,
+                         }: {
+    title: string;
+    onSearch: (professor: string) => void;
+}) => {
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchQuery(e.target.value);
+        const value = e.target.value;
+        setSearchQuery(value);
+        onSearch(value);
     };
 
     return (
@@ -232,54 +253,116 @@ const ProfessorSearch = ({title}: TitleCardProps) => {
     );
 };
 
-const SubmitForm = () => {
-    const handleSubmit = () => {
-        console.log();
+const SwExpert = () => {
+    const [formData, setFormData] = useState({
+        studentId: "",
+        name: "",
+        department: "",
+        professor: "",
+        selectedPeriod: "",
+        uploadedFiles: {
+            performanceFile: null,
+            applicationFile: null,
+            recommendationFile: null,
+            enrollmentProof: null,
+            topcitScore: null,
+        },
+    });
+
+    const handleFormChange = (field: string, value: string | File | null) => {
+        if (field in formData.uploadedFiles) {
+            setFormData((prev) => ({
+                ...prev,
+                uploadedFiles: {
+                    ...prev.uploadedFiles,
+                    [field]: value,
+                },
+            }));
+        } else {
+            setFormData((prev) => ({
+                ...prev,
+                [field]: value,
+            }));
+        }
+    };
+
+    const handleSave = () => {
+        const errors: string[] = [];
+
+        if (!formData.studentId) errors.push("학번을 입력해주세요.");
+        if (!formData.name) errors.push("이름을 입력해주세요.");
+        if (!formData.department) errors.push("학과를 입력해주세요.");
+        if (!formData.professor) errors.push("담당 교수를 입력해주세요.");
+        if (!formData.selectedPeriod) errors.push("기간을 선택해주세요.");
+        if (!formData.uploadedFiles.performanceFile)
+            errors.push("수행평가서를 업로드해주세요.");
+        if (!formData.uploadedFiles.applicationFile)
+            errors.push("신청서를 업로드해주세요.");
+        if (!formData.uploadedFiles.recommendationFile)
+            errors.push("지도교수 추천서를 업로드해주세요.");
+        if (!formData.uploadedFiles.enrollmentProof)
+            errors.push("재학증명서를 업로드해주세요.");
+        if (!formData.uploadedFiles.topcitScore)
+            errors.push("TOPCIT 성적 증명서를 업로드해주세요.");
+
+        if (errors.length > 0) {
+            alert(`저장할 수 없습니다:\n${errors.join("\n")}`);
+            return;
+        }
+
+        console.log("Saved Data:", formData);
+        // 서버로 데이터 전송 또는 저장 로직 추가
     };
 
     return (
-        <div className="mt-4 mb-5">
-            <CButton color="primary" className="w-100" onClick={handleSubmit}>
-                저 장
-            </CButton>
-        </div>
-    )
-}
-
-
-// Main Component
-const SwExpert = () => {
-    return (
         <div className="container px-4">
-            {/* Title */}
             <TitleCard title="SW Expert 신청"/>
 
-            {/* 기간 */}
-            <PeriodSelectCard title="기간"/>
+            <PeriodSelectCard
+                title="기간"
+                onPeriodSelect={(value) => handleFormChange("selectedPeriod", value)}
+            />
 
-            {/* 수행평가서 */}
-            <UploadFileForm title="수행평가서"/>
+            <UploadFileForm
+                title="수행평가서"
+                onFileUpload={(file) => handleFormChange("performanceFile", file)}
+            />
 
-            {/* 신청서 (기본정보) */}
-            <BasicInfoForm/>
+            <UploadFileForm
+                title="신청서"
+                onFileUpload={(file) => handleFormChange("applicationFile", file)}
+            />
 
-            {/* 신청서 */}
-            <UploadFileForm title="신청서"/>
+            <UploadFileForm
+                title="지도교수 추천서"
+                onFileUpload={(file) => handleFormChange("recommendationFile", file)}
+            />
 
-            {/* 지도교수 추천서 */}
-            <UploadFileForm title="지도교수 추천서"/>
+            <UploadFileForm
+                title="재학증명서"
+                onFileUpload={(file) => handleFormChange("enrollmentProof", file)}
+            />
 
-            {/* 재학증명서 */}
-            <UploadFileForm title="재학증명서"/>
+            <UploadFileForm
+                title="TOPCIT 성적 증명서"
+                onFileUpload={(file) => handleFormChange("topcitScore", file)}
+            />
 
-            {/* TOPCIT 성적 증명서 */}
-            <UploadFileForm title="TOPCIT 성적 증명서"/>
+            <BasicInfoForm
+                formData={formData}
+                onFormChange={(field, value) => handleFormChange(field, value)}
+            />
 
-            {/* 담당 교수 */}
-            <ProfessorSearch title="담당 교수"/>
+            <ProfessorSearch
+                title="담당 교수"
+                onSearch={(value) => handleFormChange("professor", value)}
+            />
 
-            {/* 저장 */}
-            <SubmitForm/>
+            <div className="mt-4 mb-5">
+                <CButton color="primary" className="w-100" onClick={handleSave}>
+                    저 장
+                </CButton>
+            </div>
         </div>
     );
 };
