@@ -93,12 +93,121 @@ const UploadFileForm = ({title}: TitleCardProps) => {
     )
 }
 
+const BasicInfoForm = () => {
+    const [formValues, setFormValues] = useState({
+        studentId: "",
+        name: "",
+        department: "",
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = e.target;
+        setFormValues((prevValues) => ({
+            ...prevValues,
+            [name]: value,
+        }));
+    };
+
+    return (
+        <CCard
+            textBgColor="info"
+            className="d-flex mt-4 mb-4"
+            style={{borderRadius: "0.75rem"}}
+        >
+            <CCardHeader className="text-white">신청서 (기본정보)</CCardHeader>
+            <CCardBody
+                className="bg-dawn"
+                style={{
+                    borderBottomLeftRadius: "0.75rem",
+                    borderBottomRightRadius: "0.75rem",
+                }}
+            >
+                <CRow>
+                    <CCol xs="12" md="6" lg="4">
+                        <div className="text-white">
+                            <CFormLabel>학번</CFormLabel>
+                            <CFormInput
+                                type="text"
+                                className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                                placeholder="20123456"
+                                name="studentId"
+                                value={formValues.studentId}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </CCol>
+                    <CCol xs="12" md="6" lg="4">
+                        <div className="text-white">
+                            <CFormLabel>이름</CFormLabel>
+                            <CFormInput
+                                type="text"
+                                className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                                placeholder="홍길동"
+                                name="name"
+                                value={formValues.name}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </CCol>
+                    <CCol xs="12" md="6" lg="4">
+                        <div className="text-white">
+                            <CFormLabel>학과</CFormLabel>
+                            <CFormInput
+                                type="text"
+                                className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                                placeholder="소프트웨어"
+                                name="department"
+                                value={formValues.department}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </CCol>
+                </CRow>
+            </CCardBody>
+        </CCard>
+    );
+};
+
+const ProfessorSearch = ({title}: TitleCardProps) => {
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(e.target.value);
+    };
+
+    return (
+        <CCard
+            textBgColor="info"
+            className="d-flex mt-4 mb-4"
+            style={{borderRadius: "0.75rem"}}
+        >
+            <CCardHeader className="text-white">{title}</CCardHeader>
+            <CCardBody
+                className="bg-dawn"
+                style={{
+                    borderBottomLeftRadius: "0.75rem",
+                    borderBottomRightRadius: "0.75rem",
+                }}
+            >
+                <CFormInput
+                    type="text"
+                    className="mb-3 bg-dawn text-white border-gray gray-placeholder"
+                    placeholder="검색어를 입력하세요"
+                    value={searchQuery}
+                    onChange={handleInputChange}
+                />
+            </CCardBody>
+        </CCard>
+    );
+};
+
 // Main Component
 const SwExpert = () => {
     return (
         <div className="container px-4">
             {/* Title */}
             <TitleCard title="SW Expert 신청"/>
+
             {/* 기간 */}
             <PeriodSelectCard title="기간"/>
 
@@ -106,51 +215,7 @@ const SwExpert = () => {
             <UploadFileForm title="수행평가서"/>
 
             {/* 신청서 (기본정보) */}
-            {/*TODO: 값을 어떻게 넘겨줄지 */}
-            <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
-                <CCardHeader className="text-white">신청서 (기본정보)</CCardHeader>
-                <CCardBody className="bg-dawn"
-                           style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
-                    <CRow>
-                        <CCol xs="12" md="6" lg="4">
-                            <div className="text-white">
-                                <CFormLabel>
-                                    학번
-                                </CFormLabel>
-                                <CFormInput
-                                    type="text"
-                                    className="mb-4 bg-dawn text-white border-gray gray-placeholder"
-                                    placeholder="20123456"
-                                />
-                            </div>
-                        </CCol>
-                        <CCol xs="12" md="6" lg="4">
-                            <div className="text-white">
-                                <CFormLabel>
-                                    이름
-                                </CFormLabel>
-                                <CFormInput
-                                    type="text"
-                                    className="mb-4 bg-dawn text-white border-gray gray-placeholder"
-                                    placeholder="홍길동"
-                                />
-                            </div>
-                        </CCol>
-                        <CCol xs="12" md="6" lg="4">
-                            <div className="text-white">
-                                <CFormLabel>
-                                    학과
-                                </CFormLabel>
-                                <CFormInput
-                                    type="text"
-                                    className="mb-4 bg-dawn text-white border-gray gray-placeholder"
-                                    placeholder="소프트웨어"
-                                />
-                            </div>
-                        </CCol>
-                    </CRow>
-                </CCardBody>
-            </CCard>
+            <BasicInfoForm/>
 
             {/* 신청서 */}
             <UploadFileForm title="신청서"/>
@@ -165,17 +230,7 @@ const SwExpert = () => {
             <UploadFileForm title="TOPCIT 성적 증명서"/>
 
             {/* 담당 교수 */}
-            <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
-                <CCardHeader className="text-white">담당 교수</CCardHeader>
-                <CCardBody className="bg-dawn"
-                           style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
-                    <CFormInput
-                        type="text"
-                        className="mb-3 bg-dawn text-white border-gray gray-placeholder"
-                        placeholder="검색어를 입력하세요"
-                    />
-                </CCardBody>
-            </CCard>
+            <ProfessorSearch title="담당 교수"/>
         </div>
     );
 };
