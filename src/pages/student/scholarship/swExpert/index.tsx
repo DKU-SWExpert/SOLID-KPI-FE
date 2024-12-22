@@ -31,27 +31,56 @@ const TitleCard = ({title}: TitleCardProps) => {
     );
 };
 
-const PeriodSelectCard = ({title}: TitleCardProps) => {
+const PeriodSelectCard = ({ title, onPeriodSelect }: { title: string; onPeriodSelect?: (period: string) => void }) => {
+    const periods = [
+        "2025년 1학기",
+        "2025년 2학기",
+        "2026년 1학기",
+        "2026년 2학기",
+        "2027년 1학기",
+        "2027년 2학기",
+        "2028년 1학기",
+        "2028년 2학기",
+        "2029년 1학기",
+        "2029년 2학기",
+    ];
+
+    const [selectedPeriod, setSelectedPeriod] = useState("");
+
+    const handlePeriodChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedValue = e.target.value;
+        setSelectedPeriod(selectedValue);
+        if (onPeriodSelect) {
+            onPeriodSelect(selectedValue);
+        }
+    };
+
     return (
-        <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
+        <CCard
+            textBgColor="info"
+            className="d-flex mt-4 mb-4"
+            style={{ borderRadius: "0.75rem" }}
+        >
             <CCardHeader className="text-white">{title}</CCardHeader>
-            <CCardBody className="bg-dawn"
-                       style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
+            <CCardBody
+                className="bg-dawn"
+                style={{
+                    borderBottomLeftRadius: "0.75rem",
+                    borderBottomRightRadius: "0.75rem",
+                }}
+            >
                 <CFormSelect
                     className="bg-dawn text-white border-gray col-md-4"
-                    style={{maxWidth: "15rem"}}
+                    style={{ maxWidth: "15rem" }}
+                    value={selectedPeriod}
+                    onChange={handlePeriodChange}
                 >
-                    <option>선택해주세요...</option>
-                    <option>2025년 1학기</option>
-                    <option>2025년 2학기</option>
-                    <option>2026년 1학기</option>
-                    <option>2026년 2학기</option>
-                    <option>2027년 1학기</option>
-                    <option>2027년 2학기</option>
-                    <option>2028년 1학기</option>
-                    <option>2028년 2학기</option>
-                    <option>2029년 1학기</option>
-                    <option>2029년 2학기</option>
+                    <option value="">선택해주세요...</option>
+                    {periods.map((period, index) => (
+                        <option key={index} value={period}>
+                            {period}
+                        </option>
+                    ))}
                 </CFormSelect>
             </CCardBody>
         </CCard>
@@ -191,7 +220,8 @@ const ProfessorSearch = ({title}: TitleCardProps) => {
             >
                 <CFormInput
                     type="text"
-                    className="mb-3 bg-dawn text-white border-gray gray-placeholder"
+                    className="mb-2 bg-dawn text-white border-gray gray-placeholder"
+                    style={{ maxWidth: "15rem" }}
                     placeholder="검색어를 입력하세요"
                     value={searchQuery}
                     onChange={handleInputChange}
