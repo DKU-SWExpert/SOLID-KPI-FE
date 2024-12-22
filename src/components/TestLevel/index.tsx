@@ -2,12 +2,12 @@ import {CFormSelect} from "@coreui/react";
 import CommonCard from "@components/CommonCard";
 import React from "react";
 
-interface TestDateProps {
+interface TestLevelProps {
     value: string;
     onChange: (value: string) => void;
 }
 
-const TestLevel: React.FC<TestDateProps> = ({value, onChange}) => {
+const TestLevel: React.FC<TestLevelProps> = ({value, onChange}) => {
     const category: Record<string, string> = {
         level1: "Level 1",
         level2: "Level 2",
