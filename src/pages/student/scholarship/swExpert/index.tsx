@@ -1,4 +1,5 @@
 import {
+    CButton,
     CCard,
     CCardBody,
     CCardHeader,
@@ -31,7 +32,7 @@ const TitleCard = ({title}: TitleCardProps) => {
     );
 };
 
-const PeriodSelectCard = ({ title, onPeriodSelect }: { title: string; onPeriodSelect?: (period: string) => void }) => {
+const PeriodSelectCard = ({title, onPeriodSelect}: { title: string; onPeriodSelect?: (period: string) => void }) => {
     const periods = [
         "2025년 1학기",
         "2025년 2학기",
@@ -59,7 +60,7 @@ const PeriodSelectCard = ({ title, onPeriodSelect }: { title: string; onPeriodSe
         <CCard
             textBgColor="info"
             className="d-flex mt-4 mb-4"
-            style={{ borderRadius: "0.75rem" }}
+            style={{borderRadius: "0.75rem"}}
         >
             <CCardHeader className="text-white">{title}</CCardHeader>
             <CCardBody
@@ -71,7 +72,7 @@ const PeriodSelectCard = ({ title, onPeriodSelect }: { title: string; onPeriodSe
             >
                 <CFormSelect
                     className="bg-dawn text-white border-gray col-md-4"
-                    style={{ maxWidth: "15rem" }}
+                    style={{maxWidth: "15rem"}}
                     value={selectedPeriod}
                     onChange={handlePeriodChange}
                 >
@@ -221,7 +222,7 @@ const ProfessorSearch = ({title}: TitleCardProps) => {
                 <CFormInput
                     type="text"
                     className="mb-2 bg-dawn text-white border-gray gray-placeholder"
-                    style={{ maxWidth: "15rem" }}
+                    style={{maxWidth: "15rem"}}
                     placeholder="검색어를 입력하세요"
                     value={searchQuery}
                     onChange={handleInputChange}
@@ -230,6 +231,21 @@ const ProfessorSearch = ({title}: TitleCardProps) => {
         </CCard>
     );
 };
+
+const SubmitForm = () => {
+    const handleSubmit = () => {
+        console.log();
+    };
+
+    return (
+        <div className="mt-4 mb-5">
+            <CButton color="primary" className="w-100" onClick={handleSubmit}>
+                저 장
+            </CButton>
+        </div>
+    )
+}
+
 
 // Main Component
 const SwExpert = () => {
@@ -261,6 +277,9 @@ const SwExpert = () => {
 
             {/* 담당 교수 */}
             <ProfessorSearch title="담당 교수"/>
+
+            {/* 저장 */}
+            <SubmitForm/>
         </div>
     );
 };
