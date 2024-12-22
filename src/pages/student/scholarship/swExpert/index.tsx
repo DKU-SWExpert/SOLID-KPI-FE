@@ -9,7 +9,7 @@ import {
     CInputGroup, CInputGroupText,
     CRow
 } from "@coreui/react";
-import React from "react";
+import React, {useState} from "react";
 
 interface TitleCardProps {
     title: string;
@@ -60,16 +60,33 @@ const PeriodSelectCard = ({title}: TitleCardProps) => {
 
 
 const UploadFileForm = ({title}: TitleCardProps) => {
-    {/*TODO: 배경색 */
-    }
+    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files ? event.target.files[0] : null;
+        setUploadedFile(file);
+    };
+
+    const handleSubmit = () => {
+        if (uploadedFile) {
+            console.log("Uploading file:", uploadedFile);
+            // API 요청
+        } else {
+            console.log("No file selected.");
+        }
+    };
+
     return (
         <CCard textBgColor="info" className="d-flex mt-4 mb-4" style={{borderRadius: "0.75rem"}}>
             <CCardHeader className="text-white">{title}</CCardHeader>
             <CCardBody className="bg-dawn"
                        style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
-                <CInputGroup className="bg-dawn mb-3">
-                    <CFormInput className="bg-dawn" type="file" id="inputGroupFile02"/>
-                    <CInputGroupText as="label" htmlFor="inputGroupFile02">Upload</CInputGroupText>
+                <CInputGroup className="bg-dawn mb-3"> {/*TODO: 파일선택 버튼 배경색 안바뀜 */}
+                    <CFormInput className="bg-dawn text-white border-gray gray-placeholder" type="file"
+                                onChange={handleFileChange} id="inputGroupFile02"/>
+                    <CInputGroupText className="bg-dawn text-white border-gray gray-placeholder" as="label"
+                                     onClick={handleSubmit}
+                                     htmlFor="inputGroupFile02">Upload</CInputGroupText>
                 </CInputGroup>
             </CCardBody>
         </CCard>
@@ -154,7 +171,7 @@ const SwExpert = () => {
                            style={{borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem"}}>
                     <CFormInput
                         type="text"
-                        className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                        className="mb-3 bg-dawn text-white border-gray gray-placeholder"
                         placeholder="검색어를 입력하세요"
                     />
                 </CCardBody>
