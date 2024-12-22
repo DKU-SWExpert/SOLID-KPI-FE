@@ -11,6 +11,7 @@ import {
   CButton,
   CPlaceholder,
 } from "@coreui/react";
+import { useUserStore } from "@store/user";
 
 const Application = () => {
   const internTypes = {
@@ -39,6 +40,8 @@ const Application = () => {
     resume: null as File | null,
   });
 
+  const { name, studentNumber, major } = useUserStore((state) => state);
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     setFormData((prev) => ({
@@ -57,7 +60,29 @@ const Application = () => {
     }));
   };
 
+  const validateForm = () => {
+    const { internType, startDate, endDate, company, professor, resume } =
+      formData;
+    if (
+      internType === "" ||
+      startDate === "" ||
+      endDate === "" ||
+      company === "" ||
+      professor === "" ||
+      resume === null
+    ) {
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = () => {
+    if (!validateForm()) {
+      alert("필수 항목을 입력해주세요.");
+      return;
+    }
+    // 학생 이름, 학번, 학과는 백엔드에서 저장하고 있으므로 formData에 추가하지 않음
+
     console.log(formData);
   };
 
@@ -73,6 +98,7 @@ const Application = () => {
         <CCardHeader className="text-white">구분</CCardHeader>
         <CCardBody className="bg-dawn">
           <CFormSelect
+            name="internType"
             className="bg-dawn text-white border-gray"
             style={{ maxWidth: "15rem" }}
             value={formData.internType}
@@ -103,6 +129,7 @@ const Application = () => {
               시작 일자
             </CInputGroupText>
             <CFormInput
+              name="startDate"
               type="date"
               className="bg-dawn text-white border-gray"
               style={{ maxWidth: "15rem" }}
@@ -118,6 +145,7 @@ const Application = () => {
               종료 일자
             </CInputGroupText>
             <CFormInput
+              name="endDate"
               type="date"
               className="bg-dawn text-white border-gray"
               style={{ maxWidth: "15rem" }}
@@ -136,6 +164,7 @@ const Application = () => {
         <CCardHeader className="text-white">구분</CCardHeader>
         <CCardBody className="bg-dawn">
           <CFormSelect
+            name="company"
             className="bg-dawn text-white border-gray"
             style={{ maxWidth: "15rem" }}
             value={formData.company}
@@ -171,7 +200,7 @@ const Application = () => {
                   borderColor: "transparent",
                 }}
               >
-                20123456
+                {studentNumber}
               </CPlaceholder>
             </div>
             <div className="me-4" style={{ flex: 1 }}>
@@ -186,7 +215,7 @@ const Application = () => {
                   borderColor: "transparent",
                 }}
               >
-                홍길동
+                {name}
               </CPlaceholder>
             </div>
             <div className="me-4" style={{ flex: 1 }}>
@@ -201,7 +230,7 @@ const Application = () => {
                   borderColor: "transparent",
                 }}
               >
-                소프트웨어
+                {major}
               </CPlaceholder>
             </div>
           </div>
@@ -216,6 +245,7 @@ const Application = () => {
         <CCardHeader className="text-white">담당 교수</CCardHeader>
         <CCardBody className="bg-dawn">
           <CFormInput
+            name="professor"
             type="text"
             className="mb-4 bg-dawn text-white border-gray gray-placeholder"
             placeholder="검색어를 입력하세요."
