@@ -13,10 +13,10 @@ const SwTestRequest = () => {
         date: "",
         level: "",
         score: "",
-        file: ""
+        file: null as File | null
     });
 
-    const handleUpdate = (field: string, value: string) => {
+    const handleUpdate = (field: string, value: string | File | null) => {
         setFormData((prevData) => ({
             ...prevData,
             [field]: value,
@@ -44,6 +44,7 @@ const SwTestRequest = () => {
             alert("성적 증명서를 첨부해 주세요.");
             return;
         }
+        console.log(formData);
     };
 
     return (
