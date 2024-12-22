@@ -5,6 +5,7 @@ import TestDate from "@components/TestDate";
 import SaveButton from "@components/SaveButton";
 import TestLevel from "@components/TestLevel";
 import TestScore from "@components/TestScore";
+import TestScoreCertification from "@components/TestScoreCertification";
 
 const SwTestRequest = () => {
     const [formData, setFormData] = useState({
@@ -64,6 +65,10 @@ const SwTestRequest = () => {
             <TestScore
                 value={formData.score}
                 onChange={(value) => handleUpdate("score", value)}
+            />
+            <TestScoreCertification
+                value={formData.file}
+                onChange={(value) => handleUpdate("file", value)}
             />
             <SaveButton onClick={handleSave}/>
         </>
