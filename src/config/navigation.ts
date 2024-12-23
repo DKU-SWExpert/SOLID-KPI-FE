@@ -14,9 +14,9 @@ export const navigationConfig: Record<string, NavItem[]> = {
     {
       name: "장학금",
       items: [
-        { name: "SW Expert", path: "#" },
-        { name: "SW 서포터즈", path: "#" },
-        { name: "DKU StarTrack", path: "#" },
+        { name: "SW Expert", path: "/student/scholarship/swExpert" },
+        { name: "SW 서포터즈", path: "/student/scholarship/supporters" },
+        { name: "SKU StarTrack", path: "#" },
         { name: "SW 인재", path: "#" },
         { name: "SW 유망주", path: "#" },
         { name: "SW 융합", path: "#" },
@@ -25,8 +25,8 @@ export const navigationConfig: Record<string, NavItem[]> = {
     {
       name: "SW 역량테스트",
       items: [
-        { name: "신청", path: "#" },
-        { name: "결과 입력", path: "#" },
+        { name: "신청", path: "/student/sw-test/application" },
+        { name: "결과 입력", path: "/student/sw-test/enter-result" },
       ],
     },
   ],

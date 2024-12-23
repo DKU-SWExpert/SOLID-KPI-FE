@@ -7,7 +7,7 @@ import TestLevel from "@components/TestLevel";
 import TestScore from "@components/TestScore";
 import TestScoreCertification from "@components/TestScoreCertification";
 
-const SwTestRequest = () => {
+const SwTestEnterResult = () => {
     const [formData, setFormData] = useState({
         category: "",
         date: "",
@@ -76,4 +76,4 @@ const SwTestRequest = () => {
     );
 };
 
-export default SwTestRequest;
+export default SwTestEnterResult;
