@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Application from "@/pages/Student/Internship/Application";
 import EnterResult from "@/pages/Student/Internship/EnterResult";
-import SwTestEnterResult from "src/pages/Student/SwTest/SwTestEnterResult";
-import SwTestApplication from "src/pages/Student/SwTest/SwTestApplication";
-import SwExpert from "@pages/Student/scholarship/swExpert";
+import SwTestEnterResult from "@/pages/Student/SwTest/SwTestEnterResult";
+import SwTestApplication from "@/pages/Student/SwTest/SwTestApplication";
+import SwExpert from "@/pages/Student/scholarship/swExpert";
 
 const StudentRoutes = () => {
   return (
