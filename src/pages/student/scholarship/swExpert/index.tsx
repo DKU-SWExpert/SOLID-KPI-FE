@@ -253,6 +253,14 @@ const ProfessorSearch = ({
     );
 };
 
+const fileFields = [
+    {key: "performanceFile", title: "수행평가서"},
+    {key: "applicationFile", title: "신청서"},
+    {key: "recommendationFile", title: "지도교수 추천서"},
+    {key: "enrollmentProof", title: "재학증명서"},
+    {key: "topcitScore", title: "TOPCIT 성적 증명서"},
+];
+
 const SwExpert = () => {
     const [formData, setFormData] = useState({
         studentId: "",
@@ -291,26 +299,17 @@ const SwExpert = () => {
             alert("기간을 선택해주세요.");
             return;
         }
-        if (!formData.uploadedFiles.performanceFile) {
-            alert("수행평가서를 업로드해주세요.");
-            return;
+
+        {
+            fileFields.map(({key, title}) => (
+                <UploadFileForm
+                    key={key}
+                    title={title}
+                    onFileUpload={(file) => handleFormChange(key, file)}
+                />
+            ))
         }
-        if (!formData.uploadedFiles.applicationFile) {
-            alert("신청서를 업로드해주세요.");
-            return;
-        }
-        if (!formData.uploadedFiles.recommendationFile){
-            alert("지도교수 추천서를 업로드해주세요.");
-            return;
-        }
-        if (!formData.uploadedFiles.enrollmentProof) {
-            alert("재학증명서를 업로드해주세요.");
-            return;
-        }
-        if (!formData.uploadedFiles.topcitScore) {
-            alert("TOPCIT 성적 증명서를 업로드해주세요.");
-            return;
-        }
+
         if (!formData.studentId || !formData.name || !formData.department) {
             alert("모든 기본정보를 입력해주세요.");
             return;

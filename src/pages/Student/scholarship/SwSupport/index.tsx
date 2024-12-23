@@ -254,10 +254,10 @@ const ProfessorSearch = ({
 };
 
 const fileFields = [
-    { key: "performanceFile", title: "수행평가서" },
-    { key: "applicationFile", title: "신청서" },
-    { key: "enrollmentProof", title: "재학증명서" },
-    { key: "topcitScore", title: "TOPCIT 성적 증명서" },
+    {key: "performanceFile", title: "수행평가서"},
+    {key: "applicationFile", title: "신청서"},
+    {key: "enrollmentProof", title: "재학증명서"},
+    {key: "topcitScore", title: "TOPCIT 성적 증명서"},
 ];
 
 const SwSupport = () => {
@@ -335,7 +335,7 @@ const SwSupport = () => {
                 onPeriodSelect={(value) => handleFormChange("selectedPeriod", value)}
             />
 
-            {fileFields.map(({ key, title }) => (
+            {fileFields.map(({key, title}) => (
                 <UploadFileForm
                     key={key}
                     title={title}
