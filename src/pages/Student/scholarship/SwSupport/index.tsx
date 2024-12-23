@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {
     CButton,
     CCard,
@@ -42,13 +42,13 @@ const SwSupport = () => {
     ];
 
     const fileFields = [
-        { key: "performanceFile", title: "수행평가서" },
-        { key: "applicationFile", title: "신청서" },
-        { key: "enrollmentProof", title: "재학증명서" },
-        { key: "topcitScore", title: "TOPCIT 성적 증명서" },
+        {key: "performanceFile", title: "수행평가서"},
+        {key: "applicationFile", title: "신청서"},
+        {key: "enrollmentProof", title: "재학증명서"},
+        {key: "topcitScore", title: "TOPCIT 성적 증명서"},
     ];
 
-    const handleFormChange = (field, value) => {
+    const handleFormChange = (field: string, value: string | File | null) => {
         if (field in formData.uploadedFiles) {
             setFormData((prev) => ({
                 ...prev,
@@ -105,7 +105,7 @@ const SwSupport = () => {
                 <CCard
                     textBgColor="primary"
                     className="w-100 d-flex align-items-center justify-content-center"
-                    style={{ maxWidth: "15rem", height: "4.5rem" }}
+                    style={{maxWidth: "15rem", height: "4.5rem"}}
                 >
                     <CCardHeader className="text-white text-center fw-semibold fs-5">
                         SW 서포터즈 신청
@@ -116,7 +116,7 @@ const SwSupport = () => {
             <CCard
                 textBgColor="info"
                 className="d-flex mt-4 mb-4"
-                style={{ borderRadius: "0.75rem" }}
+                style={{borderRadius: "0.75rem"}}
             >
                 <CCardHeader className="text-white">기간</CCardHeader>
                 <CCardBody
@@ -128,7 +128,7 @@ const SwSupport = () => {
                 >
                     <CFormSelect
                         className="bg-dawn text-white border-gray col-md-4"
-                        style={{ maxWidth: "15rem" }}
+                        style={{maxWidth: "15rem"}}
                         value={formData.selectedPeriod}
                         onChange={(e) =>
                             handleFormChange("selectedPeriod", e.target.value)
@@ -144,12 +144,12 @@ const SwSupport = () => {
                 </CCardBody>
             </CCard>
 
-            {fileFields.map(({ key, title }) => (
+            {fileFields.map(({key, title}) => (
                 <CCard
                     key={key}
                     textBgColor="info"
                     className="d-flex mt-4 mb-4"
-                    style={{ borderRadius: "0.75rem" }}
+                    style={{borderRadius: "0.75rem"}}
                 >
                     <CCardHeader className="text-white">{title}</CCardHeader>
                     <CCardBody
@@ -183,7 +183,7 @@ const SwSupport = () => {
             <CCard
                 textBgColor="info"
                 className="d-flex mt-4 mb-4"
-                style={{ borderRadius: "0.75rem" }}
+                style={{borderRadius: "0.75rem"}}
             >
                 <CCardHeader className="text-white">신청서 (기본정보)</CCardHeader>
                 <CCardBody
@@ -246,7 +246,7 @@ const SwSupport = () => {
             <CCard
                 textBgColor="info"
                 className="d-flex mt-4 mb-4"
-                style={{ borderRadius: "0.75rem" }}
+                style={{borderRadius: "0.75rem"}}
             >
                 <CCardHeader className="text-white">담당 교수</CCardHeader>
                 <CCardBody
@@ -259,7 +259,7 @@ const SwSupport = () => {
                     <CFormInput
                         type="text"
                         className="mb-2 bg-dawn text-white border-gray gray-placeholder"
-                        style={{ maxWidth: "15rem" }}
+                        style={{maxWidth: "15rem"}}
                         placeholder="검색어를 입력하세요"
                         value={formData.professor}
                         onChange={(e) =>
