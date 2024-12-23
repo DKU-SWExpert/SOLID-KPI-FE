@@ -287,26 +287,36 @@ const SwExpert = () => {
     };
 
     const handleSave = () => {
-        const errors: string[] = [];
-
-        if (!formData.studentId) errors.push("학번을 입력해주세요.");
-        if (!formData.name) errors.push("이름을 입력해주세요.");
-        if (!formData.department) errors.push("학과를 입력해주세요.");
-        if (!formData.professor) errors.push("담당 교수를 입력해주세요.");
-        if (!formData.selectedPeriod) errors.push("기간을 선택해주세요.");
-        if (!formData.uploadedFiles.performanceFile)
-            errors.push("수행평가서를 업로드해주세요.");
-        if (!formData.uploadedFiles.applicationFile)
-            errors.push("신청서를 업로드해주세요.");
-        if (!formData.uploadedFiles.recommendationFile)
-            errors.push("지도교수 추천서를 업로드해주세요.");
-        if (!formData.uploadedFiles.enrollmentProof)
-            errors.push("재학증명서를 업로드해주세요.");
-        if (!formData.uploadedFiles.topcitScore)
-            errors.push("TOPCIT 성적 증명서를 업로드해주세요.");
-
-        if (errors.length > 0) {
-            alert(`저장할 수 없습니다:\n${errors.join("\n")}`);
+        if (!formData.selectedPeriod) {
+            alert("기간을 선택해주세요.");
+            return;
+        }
+        if (!formData.uploadedFiles.performanceFile) {
+            alert("수행평가서를 업로드해주세요.");
+            return;
+        }
+        if (!formData.uploadedFiles.applicationFile) {
+            alert("신청서를 업로드해주세요.");
+            return;
+        }
+        if (!formData.uploadedFiles.recommendationFile){
+            alert("지도교수 추천서를 업로드해주세요.");
+            return;
+        }
+        if (!formData.uploadedFiles.enrollmentProof) {
+            alert("재학증명서를 업로드해주세요.");
+            return;
+        }
+        if (!formData.uploadedFiles.topcitScore) {
+            alert("TOPCIT 성적 증명서를 업로드해주세요.");
+            return;
+        }
+        if (!formData.studentId || !formData.name || !formData.department) {
+            alert("모든 기본정보를 입력해주세요.");
+            return;
+        }
+        if (!formData.professor) {
+            alert("담당 교수를 입력해주세요.");
             return;
         }
 
