@@ -299,17 +299,26 @@ const SwExpert = () => {
             alert("기간을 선택해주세요.");
             return;
         }
-
-        {
-            fileFields.map(({key, title}) => (
-                <UploadFileForm
-                    key={key}
-                    title={title}
-                    onFileUpload={(file) => handleFormChange(key, file)}
-                />
-            ))
+        if (!formData.uploadedFiles.performanceFile) {
+            alert("수행평가서를 업로드해주세요.");
+            return;
         }
-
+        if (!formData.uploadedFiles.applicationFile) {
+            alert("신청서를 업로드해주세요.");
+            return;
+        }
+        if (!formData.uploadedFiles.recommendationFile) {
+            alert("지도교수 추천서를 업로드해주세요.");
+            return;
+        }
+        if (!formData.uploadedFiles.enrollmentProof) {
+            alert("재학증명서를 업로드해주세요.");
+            return;
+        }
+        if (!formData.uploadedFiles.topcitScore) {
+            alert("TOPCIT 성적 증명서를 업로드해주세요.");
+            return;
+        }
         if (!formData.studentId || !formData.name || !formData.department) {
             alert("모든 기본정보를 입력해주세요.");
             return;
@@ -332,30 +341,15 @@ const SwExpert = () => {
                 onPeriodSelect={(value) => handleFormChange("selectedPeriod", value)}
             />
 
-            <UploadFileForm
-                title="수행평가서"
-                onFileUpload={(file) => handleFormChange("performanceFile", file)}
-            />
-
-            <UploadFileForm
-                title="신청서"
-                onFileUpload={(file) => handleFormChange("applicationFile", file)}
-            />
-
-            <UploadFileForm
-                title="지도교수 추천서"
-                onFileUpload={(file) => handleFormChange("recommendationFile", file)}
-            />
-
-            <UploadFileForm
-                title="재학증명서"
-                onFileUpload={(file) => handleFormChange("enrollmentProof", file)}
-            />
-
-            <UploadFileForm
-                title="TOPCIT 성적 증명서"
-                onFileUpload={(file) => handleFormChange("topcitScore", file)}
-            />
+            {
+                fileFields.map(({key, title}) => (
+                    <UploadFileForm
+                        key={key}
+                        title={title}
+                        onFileUpload={(file) => handleFormChange(key, file)}
+                    />
+                ))
+            }
 
             <BasicInfoForm
                 formData={formData}
