@@ -5,7 +5,7 @@ import TestDate from "@components/TestDate";
 import ApplicationForm from "@components/ApplicationForm";
 import SaveButton from "@components/SaveButton";
 
-const SwTestRequest = () => {
+const SwTestApplication = () => {
     const [formData, setFormData] = useState({
         category: "",
         date: "",
@@ -93,4 +93,4 @@ const SwTestRequest = () => {
     );
 };
 
-export default SwTestRequest;
+export default SwTestApplication;
