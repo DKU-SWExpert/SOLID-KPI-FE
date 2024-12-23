@@ -42,8 +42,6 @@ const EnterResult = () => {
   const validateForm = () => {
     const { result, plan } = formData;
     if (plan === "" || result === null) {
-      console.log("plan", plan);
-      console.log("result", result);
       return false;
     }
     return true;
