@@ -16,6 +16,7 @@ import { useAuthStore } from "@/store/auth";
 import CIcon from "@coreui/icons-react";
 import { cilPencil } from "@coreui/icons";
 import { STUDENT } from "@/constants/role";
+import "@styles/custom-color.css";
 
 const Sidebar = () => {
   const { role } = useAuthStore();
@@ -30,7 +31,7 @@ const Sidebar = () => {
       if (item.items) {
         return (
           <React.Fragment key={index}>
-            <CNavTitle>{item.name}</CNavTitle>
+            <CNavTitle className="text-white">{item.name}</CNavTitle>
             {item.items.map((subItem, subIndex) => (
               <Link
                 key={subIndex}
@@ -39,7 +40,7 @@ const Sidebar = () => {
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <span className="nav-icon">
-                  <CIcon icon={cilPencil} />
+                  <CIcon className="text-white" icon={cilPencil} />
                 </span>
                 {subItem.name}
               </Link>
@@ -57,10 +58,9 @@ const Sidebar = () => {
   return (
     <CSidebar className="border-end" style={{ height: "100vh" }}>
       <CSidebarHeader
-        className="border-bottom"
+        className="border-bottom bg-dawn-light"
         style={{
-          height: "64px",
-          backgroundColor: "#2091D0",
+          height: "64px"
         }}
       >
         <CSidebarBrand
@@ -70,14 +70,14 @@ const Sidebar = () => {
           }}
           onClick={onClickSidebarBrand}
         >
-          Solid KPI
+          SOLID KPI
         </CSidebarBrand>
       </CSidebarHeader>
-      <CSidebarNav style={{ backgroundColor: "#f8f9fa" }}>
+      <CSidebarNav className="bg-dawn-light text-white">
         {renderNavItems(navigationConfig[sidebarRole])}
       </CSidebarNav>
       <CSidebarHeader className="border-top">
-        <CSidebarToggler />
+        <CSidebarToggler/>
       </CSidebarHeader>
     </CSidebar>
   );
