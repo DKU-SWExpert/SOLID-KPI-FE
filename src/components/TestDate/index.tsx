@@ -12,7 +12,7 @@ const TestDate: React.FC<TestDateProps> = ({ value, onChange }) => {
         <CommonCard header="시험 일자" textBgColor="info" style={{ maxWidth: "100rem" }}>
             <CFormInput
                 type="date"
-                className="bg-dawn text-white border-gray"
+                className="bg-dawn-light text-white border-gray"
                 style={{ maxWidth: "15rem" }}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}

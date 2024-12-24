@@ -19,7 +19,7 @@ const TestLevel: React.FC<TestLevelProps> = ({value, onChange}) => {
     return (
         <CommonCard header="성적 Level" textBgColor="info" style={{maxWidth: "100rem"}}>
             <CFormSelect
-                className="bg-dawn text-white border-gray"
+                className="bg-dawn-light text-white border-gray"
                 style={{maxWidth: "15rem"}}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}

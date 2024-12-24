@@ -23,7 +23,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ value, onChange }) =>
                     <CFormLabel>학번</CFormLabel>
                     <CFormInput
                         type="text"
-                        className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                        className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
                         placeholder="12345678"
                         value={value.studentId}
                         onChange={(e) => onChange("studentId", e.target.value)}
@@ -33,7 +33,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ value, onChange }) =>
                     <CFormLabel>생년월일</CFormLabel>
                     <CFormInput
                         type="date"
-                        className="mb-4 bg-dawn text-white border-gray"
+                        className="mb-4 bg-dawn-light text-white border-gray"
                         value={value.birthDate}
                         onChange={(e) => onChange("birthDate", e.target.value)}
                     />
@@ -41,7 +41,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ value, onChange }) =>
                     <CFormLabel>이메일</CFormLabel>
                     <CFormInput
                         type="email"
-                        className="bg-dawn text-white border-gray"
+                        className="bg-dawn-light text-white border-gray"
                         value={value.email}
                         onChange={(e) => onChange("email", e.target.value)}
                     />
@@ -51,7 +51,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ value, onChange }) =>
                     <CFormLabel>이름</CFormLabel>
                     <CFormInput
                         type="text"
-                        className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                        className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
                         placeholder="홍길동"
                         value={value.name}
                         onChange={(e) => onChange("name", e.target.value)}
@@ -61,7 +61,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ value, onChange }) =>
                     <CFormLabel>학년</CFormLabel>
                     <CFormInput
                         type="text"
-                        className="mb-4 bg-dawn text-white border-gray"
+                        className="mb-4 bg-dawn-light text-white border-gray"
                         value={value.grade}
                         onChange={(e) => onChange("grade", e.target.value)}
                     />
@@ -71,7 +71,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ value, onChange }) =>
                     <CFormLabel>학과</CFormLabel>
                     <CFormInput
                         type="text"
-                        className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                        className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
                         placeholder="소프트웨어"
                         value={value.department}
                         onChange={(e) => onChange("department", e.target.value)}
@@ -81,7 +81,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ value, onChange }) =>
                     <CFormLabel>휴대폰</CFormLabel>
                     <CFormInput
                         type="text"
-                        className="mb-4 bg-dawn text-white border-gray"
+                        className="mb-4 bg-dawn-light text-white border-gray"
                         value={value.phone}
                         onChange={(e) => onChange("phone", e.target.value)}
                     />
@@ -89,7 +89,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ value, onChange }) =>
                     <CFormLabel>TOPCIT ID</CFormLabel>
                     <CFormInput
                         type="text"
-                        className="mb-4 bg-dawn text-white border-gray"
+                        className="mb-4 bg-dawn-light text-white border-gray"
                         value={value.topcitId}
                         onChange={(e) => onChange("topcitId", e.target.value)}
                     />
