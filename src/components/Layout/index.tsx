@@ -21,7 +21,9 @@ const Layout = () => {
               height: "calc(100vh - 112px)", // Header(64px) + MiniHeader(48px) 높이를 뺀 값
             }}
           >
-            <Outlet />
+            <div className="container px-4">
+              <Outlet />
+            </div>
           </CContainer>
         </div>
       </div>

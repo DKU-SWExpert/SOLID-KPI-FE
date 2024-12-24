@@ -6,13 +6,17 @@ interface TitleProps {
 
 const Title = ({ title }: TitleProps) => {
   return (
-    <CCard
-      textBgColor="primary"
-      className="mt-4 mb-4 ms-2"
-      style={{ maxWidth: "15rem" }}
-    >
-      <CCardHeader className="text-white">{title}</CCardHeader>
-    </CCard>
+    <div className="d-flex align-items-center mt-4 mb-4">
+      <CCard
+        textBgColor="primary"
+        className="w-100 d-flex align-items-center justify-content-center"
+        style={{ maxWidth: "15rem", height: "4.5rem" }}
+      >
+        <CCardHeader className="text-white text-center fw-semibold fs-5">
+          {title}
+        </CCardHeader>
+      </CCard>
+    </div>
   );
 };
 

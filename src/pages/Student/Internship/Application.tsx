@@ -263,7 +263,7 @@ const Application = () => {
       >
         <CCardHeader className="text-white">이력서</CCardHeader>
         <CCardBody className="bg-dawn">
-          <div className="mb-3">
+          <CInputGroup className="bg-dawn mb-3">
             <CFormInput
               type="file"
               id="formFile"
@@ -271,13 +271,20 @@ const Application = () => {
               onChange={handleFileChange}
               name="resume"
             />
-          </div>
+            <CInputGroupText
+              className="bg-dawn text-white border-gray gray-placeholder"
+              as="label"
+              htmlFor="formFile"
+            >
+              Upload
+            </CInputGroupText>
+          </CInputGroup>
         </CCardBody>
       </CCard>
       {/* 저장 */}
       <div className="mt-4 mb-4 ms-2">
         <CButton color="primary" className="w-100" onClick={handleSubmit}>
-          Button
+          저 장
         </CButton>
       </div>
     </>

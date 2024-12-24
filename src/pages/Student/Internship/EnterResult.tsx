@@ -7,6 +7,8 @@ import {
   CFormInput,
   CFormSelect,
   CButton,
+  CInputGroupText,
+  CInputGroup,
 } from "@coreui/react";
 
 const EnterResult = () => {
@@ -66,7 +68,7 @@ const EnterResult = () => {
       >
         <CCardHeader className="text-white">수행평가서</CCardHeader>
         <CCardBody className="bg-dawn">
-          <div className="mb-3">
+          <CInputGroup className="bg-dawn mb-3">
             <CFormInput
               type="file"
               id="formFile"
@@ -74,7 +76,14 @@ const EnterResult = () => {
               onChange={handleFileChange}
               name="result"
             />
-          </div>
+            <CInputGroupText
+              className="bg-dawn text-white border-gray gray-placeholder"
+              as="label"
+              htmlFor="formFile"
+            >
+              Upload
+            </CInputGroupText>
+          </CInputGroup>
         </CCardBody>
       </CCard>
       {/* 업체 또는 랩 */}
@@ -105,7 +114,7 @@ const EnterResult = () => {
       {/* 저장 */}
       <div className="mt-4 mb-4 ms-2">
         <CButton color="primary" className="w-100" onClick={handleSubmit}>
-          Button
+          저 장
         </CButton>
       </div>
     </>
