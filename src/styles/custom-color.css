@@ -1,17 +1,17 @@
 .bg-dawn-light {
-    background-color: #29303d;
+    background-color: #212631;
+}
+
+.bg-dawn-light:focus {
+    background-color: #212631;
 }
 
 .bg-dawn {
-    background-color: #212631;
-}
-
-.bg-dawn:focus {
-    background-color: #212631;
+    background-color: #1d222b;
 }
 
 .border-gray {
-    border-color: #323a49;
+    border-color: #373b45;
 }
 
 .gray-placeholder::placeholder {

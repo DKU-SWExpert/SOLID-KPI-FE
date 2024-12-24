@@ -13,12 +13,12 @@ const AvatarDropdownMenu = () => {
       <CDropdownToggle className="p-0" caret={false} color="transparent">
         <Avatar />
       </CDropdownToggle>
-      <CDropdownMenu>
+      <CDropdownMenu className="bg-dawn-light">
         {avatarMenuItems.map((item, index) => (
           <CDropdownItem
             key={index}
             href={item.href}
-            className={item.className}
+            className={`${item.className} text-white`}
           >
             {item.label}
           </CDropdownItem>

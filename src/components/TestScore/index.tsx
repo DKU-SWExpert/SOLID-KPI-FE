@@ -12,7 +12,7 @@ const TestScore: React.FC<TestScoreProps> = ({value, onChange}) => {
         <CommonCard header="성적 점수" textBgColor="info" style={{maxWidth: "100rem"}}>
             <CFormInput
                 type="text"
-                className="mb-4 bg-dawn text-white border-gray"
+                className="mb-4 bg-dawn-light text-white border-gray"
                 style={{maxWidth: "15rem"}}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}

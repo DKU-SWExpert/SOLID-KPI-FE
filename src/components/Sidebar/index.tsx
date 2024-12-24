@@ -76,8 +76,8 @@ const Sidebar = () => {
       <CSidebarNav className="bg-dawn-light text-white">
         {renderNavItems(navigationConfig[sidebarRole])}
       </CSidebarNav>
-      <CSidebarHeader className="border-top">
-        <CSidebarToggler/>
+      <CSidebarHeader className="border-top bg-dawn-light">
+        <CSidebarToggler style={{color: "white"}}/>
       </CSidebarHeader>
     </CSidebar>
   );
