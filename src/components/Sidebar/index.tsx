@@ -17,6 +17,7 @@ import CIcon from "@coreui/icons-react";
 import { cilPencil } from "@coreui/icons";
 import { STUDENT } from "@/constants/role";
 import "@styles/custom-color.css";
+import "@styles/scrollbar.css"
 
 const Sidebar = () => {
   const { role } = useAuthStore();
@@ -31,7 +32,7 @@ const Sidebar = () => {
       if (item.items) {
         return (
           <React.Fragment key={index}>
-            <CNavTitle className="text-white">{item.name}</CNavTitle>
+            <CNavTitle className="text-white border-bottom-gray-light">{item.name}</CNavTitle>
             {item.items.map((subItem, subIndex) => (
               <Link
                 key={subIndex}
@@ -58,7 +59,7 @@ const Sidebar = () => {
   return (
     <CSidebar className="border-right-gray-light" style={{ height: "100vh" }}>
       <CSidebarHeader
-        className="bg-dawn-light"
+        className="bg-dawn-light border-bottom-gray-light"
         style={{
           height: "64px"
         }}
@@ -79,7 +80,7 @@ const Sidebar = () => {
         {renderNavItems(navigationConfig[sidebarRole])}
       </CSidebarNav>
       <CSidebarHeader className="border-top-gray-light bg-dawn-light">
-        <CSidebarToggler style={{color: "white"}}/>
+        <CSidebarToggler className="ms-auto text-white"/>
       </CSidebarHeader>
     </CSidebar>
   );
