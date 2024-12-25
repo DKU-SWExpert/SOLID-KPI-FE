@@ -12,7 +12,7 @@ const Title = ({ title }: TitleProps) => {
         className="w-100 d-flex align-items-center justify-content-center"
         style={{ maxWidth: "15rem", height: "4.5rem" }}
       >
-        <CCardHeader className="text-white text-center fw-semibold fs-5">
+        <CCardHeader className="text-white text-center fw-semibold fs-5 border-0">
           {title}
         </CCardHeader>
       </CCard>
