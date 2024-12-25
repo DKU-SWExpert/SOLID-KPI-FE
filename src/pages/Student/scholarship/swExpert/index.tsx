@@ -126,14 +126,14 @@ const SwExpert = () => {
             >
                 <CCardHeader className="text-white">기간</CCardHeader>
                 <CCardBody
-                    className="bg-dawn"
+                    className="bg-dawn-light"
                     style={{
                         borderBottomLeftRadius: "0.75rem",
                         borderBottomRightRadius: "0.75rem",
                     }}
                 >
                     <CFormSelect
-                        className="bg-dawn text-white border-gray col-md-4"
+                        className="bg-dawn-light text-white border-gray col-md-4"
                         style={{ maxWidth: "15rem" }}
                         value={formData.selectedPeriod}
                         onChange={(e) =>
@@ -159,15 +159,15 @@ const SwExpert = () => {
                 >
                     <CCardHeader className="text-white">{title}</CCardHeader>
                     <CCardBody
-                        className="bg-dawn"
+                        className="bg-dawn-light"
                         style={{
                             borderBottomLeftRadius: "0.75rem",
                             borderBottomRightRadius: "0.75rem",
                         }}
                     >
-                        <CInputGroup className="bg-dawn mb-3">
+                        <CInputGroup className="mb-3">
                             <CFormInput
-                                className="bg-dawn text-white border-gray gray-placeholder"
+                                className="bg-dawn-light text-white border-gray gray-placeholder"
                                 type="file"
                                 onChange={(e) =>
                                     handleFormChange(key, e.target.files ? e.target.files[0] : null)
@@ -175,7 +175,7 @@ const SwExpert = () => {
                                 id={`inputGroupFile_${key}`}
                             />
                             <CInputGroupText
-                                className="bg-dawn text-white border-gray gray-placeholder"
+                                className="bg-dawn-light text-white border-gray gray-placeholder"
                                 as="label"
                                 htmlFor={`inputGroupFile_${key}`}
                             >
@@ -193,7 +193,7 @@ const SwExpert = () => {
             >
                 <CCardHeader className="text-white">신청서 (기본정보)</CCardHeader>
                 <CCardBody
-                    className="bg-dawn"
+                    className="bg-dawn-light"
                     style={{
                         borderBottomLeftRadius: "0.75rem",
                         borderBottomRightRadius: "0.75rem",
@@ -205,7 +205,7 @@ const SwExpert = () => {
                                 <CFormLabel>학번</CFormLabel>
                                 <CFormInput
                                     type="text"
-                                    className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                                    className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
                                     placeholder="20123456"
                                     name="studentId"
                                     value={formData.studentId}
@@ -220,7 +220,7 @@ const SwExpert = () => {
                                 <CFormLabel>이름</CFormLabel>
                                 <CFormInput
                                     type="text"
-                                    className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                                    className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
                                     placeholder="홍길동"
                                     name="name"
                                     value={formData.name}
@@ -235,7 +235,7 @@ const SwExpert = () => {
                                 <CFormLabel>학과</CFormLabel>
                                 <CFormInput
                                     type="text"
-                                    className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+                                    className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
                                     placeholder="소프트웨어"
                                     name="department"
                                     value={formData.department}
@@ -256,7 +256,7 @@ const SwExpert = () => {
             >
                 <CCardHeader className="text-white">담당 교수</CCardHeader>
                 <CCardBody
-                    className="bg-dawn"
+                    className="bg-dawn-light"
                     style={{
                         borderBottomLeftRadius: "0.75rem",
                         borderBottomRightRadius: "0.75rem",
@@ -264,7 +264,7 @@ const SwExpert = () => {
                 >
                     <CFormInput
                         type="text"
-                        className="mb-2 bg-dawn text-white border-gray gray-placeholder"
+                        className="mb-2 bg-dawn-light text-white border-gray gray-placeholder"
                         style={{ maxWidth: "15rem" }}
                         placeholder="검색어를 입력하세요"
                         value={formData.professor}
