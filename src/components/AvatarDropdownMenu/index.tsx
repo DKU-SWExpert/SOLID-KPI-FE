@@ -18,7 +18,7 @@ const AvatarDropdownMenu = () => {
           <CDropdownItem
             key={index}
             href={item.href}
-            className={`${item.className} text-white`}
+            className={`${item.className} text-white selectable`}
           >
             {item.label}
           </CDropdownItem>
