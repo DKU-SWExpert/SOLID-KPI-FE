@@ -58,18 +58,22 @@ const EnterResult = () => {
   };
 
   return (
-    <>
+    <div className="container px-4">
       <Title title="인턴십 결과 입력" />
       {/* 이력서 */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4 ms-2"
-        style={{ maxWidth: "100rem" }}
+        className="mt-4 mb-4"
+        style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">수행평가서</CCardHeader>
-        <CCardBody className="bg-dawn">
-          <CInputGroup className="bg-dawn mb-3">
+        <CCardBody className="bg-dawn-light" style={{
+          borderBottomLeftRadius: "0.75rem",
+          borderBottomRightRadius: "0.75rem",
+        }}>
+          <CInputGroup className="mb-3">
             <CFormInput
+              className="bg-dawn-light text-white border-gray"
               type="file"
               id="formFile"
               color="info"
@@ -89,14 +93,17 @@ const EnterResult = () => {
       {/* 업체 또는 랩 */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4 ms-2"
-        style={{ maxWidth: "100rem" }}
+        className="mt-4 mb-4"
+        style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">구분</CCardHeader>
-        <CCardBody className="bg-dawn">
+        <CCardBody className="bg-dawn-light" style={{
+          borderBottomLeftRadius: "0.75rem",
+          borderBottomRightRadius: "0.75rem",
+        }}>
           <CFormSelect
             name="plan"
-            className="bg-dawn text-white border-gray"
+            className="bg-dawn-light text-white border-gray"
             style={{ maxWidth: "15rem" }}
             value={formData.plan}
             onChange={handleInputChange}
@@ -112,12 +119,12 @@ const EnterResult = () => {
       </CCard>
 
       {/* 저장 */}
-      <div className="mt-4 mb-4 ms-2">
+      <div className="mt-4 mb-4">
         <CButton color="primary" className="w-100" onClick={handleSubmit}>
           저 장
         </CButton>
       </div>
-    </>
+    </div>
   );
 };
 
