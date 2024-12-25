@@ -15,7 +15,7 @@ const TestCategory: React.FC<TestCategoryProps> = ({ value, onChange }) => {
     };
 
     return (
-        <CommonCard header="시험 구분" textBgColor="info" style={{ maxWidth: "100rem"}}>
+        <CommonCard header="시험 구분" textBgColor="info" style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}>
             <CFormSelect
                 className="bg-dawn-light text-white border-gray"
                 style={{ maxWidth: "15rem" }}

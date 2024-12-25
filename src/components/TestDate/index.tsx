@@ -9,7 +9,7 @@ interface TestDateProps {
 const TestDate: React.FC<TestDateProps> = ({ value, onChange }) => {
 
     return (
-        <CommonCard header="시험 일자" textBgColor="info" style={{ maxWidth: "100rem" }}>
+        <CommonCard header="시험 일자" textBgColor="info" style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}>
             <CFormInput
                 type="date"
                 className="bg-dawn-light text-white border-gray"

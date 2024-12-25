@@ -17,7 +17,7 @@ interface ApplicationFormProps {
 
 const ApplicationForm: React.FC<ApplicationFormProps> = ({ value, onChange }) => {
     return (
-        <CommonCard header="신청서 (기본정보)" textBgColor="info" style={{ maxWidth: "100rem" }}>
+        <CommonCard header="신청서 (기본정보)" textBgColor="info" style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}>
             <CRow className="text-white">
                 <CCol xs="12" md="6" lg="4">
                     <CFormLabel>학번</CFormLabel>
