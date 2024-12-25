@@ -13,7 +13,7 @@ interface AuthState {
 }
 
 const initialState = {
-  isLoggedIn: true, // TODO: 개발 편의를 위해 true로 설정, 나중에 false로 변경
+  isLoggedIn: false, // TODO: 개발 편의를 위해 true로 설정, 나중에 false로 변경
   name: "",
   role: STUDENT as Role, // TODO: 개발 편의를 위해 학생으로 설정, 나중에 NOT_A_MEMBER로 변경
 };
