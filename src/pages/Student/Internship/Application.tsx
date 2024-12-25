@@ -87,19 +87,21 @@ const Application = () => {
   };
 
   return (
-    <>
-      <Title title="인턴쉽 신청" />
+    <div className="container px-4">
+      <Title title="인턴쉽 신청"/>
       {/* 구분 */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4 ms-2"
-        style={{ maxWidth: "100rem" }}
+        style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">구분</CCardHeader>
-        <CCardBody className="bg-dawn">
+        <CCardBody className="bg-dawn-light" style={{
+          borderBottomLeftRadius: "0.75rem",
+          borderBottomRightRadius: "0.75rem",
+        }}>
           <CFormSelect
             name="internType"
-            className="bg-dawn text-white border-gray"
+            className="bg-dawn-light text-white border-gray"
             style={{ maxWidth: "15rem" }}
             value={formData.internType}
             onChange={handleInputChange}
@@ -116,14 +118,17 @@ const Application = () => {
       {/* 기간 */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4 ms-2"
-        style={{ maxWidth: "100rem" }}
+        className="mt-4 mb-4"
+        style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">기간</CCardHeader>
-        <CCardBody className="bg-dawn d-flex">
+        <CCardBody className="bg-dawn-light d-flex" style={{
+          borderBottomLeftRadius: "0.75rem",
+          borderBottomRightRadius: "0.75rem",
+        }}>
           <CInputGroup>
             <CInputGroupText
-              className="bg-dawn text-white border-gray"
+              className="text-white border-gray"
               style={{ maxWidth: "15rem", backgroundColor: "#2A303D" }}
             >
               시작 일자
@@ -131,7 +136,7 @@ const Application = () => {
             <CFormInput
               name="startDate"
               type="date"
-              className="bg-dawn text-white border-gray"
+              className="bg-dawn-light text-white border-gray"
               style={{ maxWidth: "15rem" }}
               value={formData.startDate}
               onChange={handleInputChange}
@@ -139,7 +144,7 @@ const Application = () => {
           </CInputGroup>
           <CInputGroup>
             <CInputGroupText
-              className="bg-dawn text-white border-gray"
+              className="text-white border-gray"
               style={{ maxWidth: "15rem", backgroundColor: "#2A303D" }}
             >
               종료 일자
@@ -147,7 +152,7 @@ const Application = () => {
             <CFormInput
               name="endDate"
               type="date"
-              className="bg-dawn text-white border-gray"
+              className="bg-dawn-light text-white border-gray"
               style={{ maxWidth: "15rem" }}
               value={formData.endDate}
               onChange={handleInputChange}
@@ -158,14 +163,17 @@ const Application = () => {
       {/* 업체 또는 랩 */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4 ms-2"
-        style={{ maxWidth: "100rem" }}
+        className="mt-4 mb-4"
+        style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">구분</CCardHeader>
-        <CCardBody className="bg-dawn">
+        <CCardBody className="bg-dawn-light d-flex" style={{
+          borderBottomLeftRadius: "0.75rem",
+          borderBottomRightRadius: "0.75rem",
+        }}>
           <CFormSelect
             name="company"
-            className="bg-dawn text-white border-gray"
+            className="bg-dawn-light text-white border-gray"
             style={{ maxWidth: "15rem" }}
             value={formData.company}
             onChange={handleInputChange}
@@ -182,11 +190,14 @@ const Application = () => {
       {/* 신청서 (기본정보) */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4 ms-2"
-        style={{ maxWidth: "100rem" }}
+        className="mt-4 mb-4"
+        style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">신청서 (기본정보)</CCardHeader>
-        <CCardBody className="bg-dawn">
+        <CCardBody className="bg-dawn-light" style={{
+          borderBottomLeftRadius: "0.75rem",
+          borderBottomRightRadius: "0.75rem",
+        }}>
           <div className="d-flex justify-content-between">
             <div className="me-4" style={{ flex: 1 }}>
               <div className="text-white">학번</div>
@@ -239,15 +250,18 @@ const Application = () => {
       {/* 담당 교수 */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4 ms-2"
-        style={{ maxWidth: "100rem" }}
+        className="mt-4 mb-4"
+        style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">담당 교수</CCardHeader>
-        <CCardBody className="bg-dawn">
+        <CCardBody className="bg-dawn-light d-flex" style={{
+          borderBottomLeftRadius: "0.75rem",
+          borderBottomRightRadius: "0.75rem",
+        }}>
           <CFormInput
             name="professor"
             type="text"
-            className="mb-4 bg-dawn text-white border-gray gray-placeholder"
+            className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
             placeholder="검색어를 입력하세요."
             style={{ maxWidth: "15rem" }}
             value={formData.professor}
@@ -258,13 +272,17 @@ const Application = () => {
       {/* 이력서 */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4 ms-2"
-        style={{ maxWidth: "100rem" }}
+        className="mt-4 mb-4"
+        style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">이력서</CCardHeader>
-        <CCardBody className="bg-dawn">
-          <CInputGroup className="bg-dawn mb-3">
+        <CCardBody className="bg-dawn-light d-flex" style={{
+          borderBottomLeftRadius: "0.75rem",
+          borderBottomRightRadius: "0.75rem",
+        }}>
+          <CInputGroup className="mb-3">
             <CFormInput
+              className="bg-dawn-light text-white border-gray"
               type="file"
               id="formFile"
               color="info"
@@ -272,7 +290,7 @@ const Application = () => {
               name="resume"
             />
             <CInputGroupText
-              className="bg-dawn text-white border-gray gray-placeholder"
+              className="bg-dawn-light text-white border-gray gray-placeholder"
               as="label"
               htmlFor="formFile"
             >
@@ -282,12 +300,12 @@ const Application = () => {
         </CCardBody>
       </CCard>
       {/* 저장 */}
-      <div className="mt-4 mb-4 ms-2">
+      <div className="mt-4 mb-4">
         <CButton color="primary" className="w-100" onClick={handleSubmit}>
           저 장
         </CButton>
       </div>
-    </>
+    </div>
   );
 };
 
