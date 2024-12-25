@@ -18,8 +18,20 @@
     border-color: #373b45;
 }
 
-.border-gray-light {
-    border-color: #333948FF;
+.border-left-gray-light {
+    border-left: 1px solid #333948FF;
+}
+
+.border-right-gray-light {
+    border-right: 1px solid #333948FF;
+}
+
+.border-top-gray-light {
+    border-top: 1px solid #333948FF;
+}
+
+.border-bottom-gray-light {
+    border-bottom: 1px solid #333948FF;
 }
 
 .selectable:hover {

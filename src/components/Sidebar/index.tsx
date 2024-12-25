@@ -56,9 +56,9 @@ const Sidebar = () => {
   const sidebarRole = role && navigationConfig[role] ? role : STUDENT;
 
   return (
-    <CSidebar className="border-end" style={{ height: "100vh" }}>
+    <CSidebar className="border-right-gray-light" style={{ height: "100vh" }}>
       <CSidebarHeader
-        className="border-bottom bg-dawn-light"
+        className="bg-dawn-light"
         style={{
           height: "64px"
         }}
@@ -78,7 +78,7 @@ const Sidebar = () => {
       <CSidebarNav className="bg-dawn-light text-white">
         {renderNavItems(navigationConfig[sidebarRole])}
       </CSidebarNav>
-      <CSidebarHeader className="border-top bg-dawn-light">
+      <CSidebarHeader className="border-top-gray-light bg-dawn-light">
         <CSidebarToggler style={{color: "white"}}/>
       </CSidebarHeader>
     </CSidebar>
