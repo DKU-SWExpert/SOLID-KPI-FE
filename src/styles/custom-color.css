@@ -18,6 +18,14 @@
     border-color: #373b45;
 }
 
+.border-gray-light {
+    border-color: #333948FF;
+}
+
+.selectable:hover {
+    background-color: #333948FF !important;
+}
+
 .gray-placeholder::placeholder {
     color: #a6a8ad;
 }

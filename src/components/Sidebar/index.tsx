@@ -20,7 +20,7 @@ import "@styles/custom-color.css";
 
 const Sidebar = () => {
   const { role } = useAuthStore();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const onClickSidebarBrand = () => {
     navigate("/");
@@ -36,7 +36,7 @@ const Sidebar = () => {
               <Link
                 key={subIndex}
                 to={subItem.path || "#"}
-                className="nav-link"
+                className="nav-link selectable"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <span className="nav-icon">
