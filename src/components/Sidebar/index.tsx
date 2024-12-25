@@ -63,8 +63,9 @@ const Sidebar = () => {
           height: "64px"
         }}
       >
-        <img src="/logo.png" width="40" height="40"/>
+        <img className="ms-5 me-0" src="/logo.png" width="40" height="40"/>
         <CSidebarBrand
+          className="ms-0 me-5"
           style={{
             color: "#fff",
             cursor: "pointer",
