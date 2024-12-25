@@ -275,7 +275,7 @@ const SwExpert = () => {
                 </CCardBody>
             </CCard>
 
-            <div className="mt-4 mb-5">
+            <div className="mt-4 mb-4">
                 <CButton color="primary" className="w-100" onClick={handleSave}>
                     저 장
                 </CButton>
