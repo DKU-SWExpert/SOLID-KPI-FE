@@ -10,6 +10,10 @@
     background-color: #1d222b;
 }
 
+.bg-dawn:focus {
+    background-color: #1d222b;
+}
+
 .border-gray {
     border-color: #373b45;
 }
