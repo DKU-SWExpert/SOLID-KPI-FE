@@ -1,9 +1,9 @@
 import {useState} from "react";
-import CommonCard from "@components/CommonCard";
 import TestCategory from "@components/TestCategory";
 import TestDate from "@components/TestDate";
 import ApplicationForm from "@components/ApplicationForm";
 import SaveButton from "@components/SaveButton";
+import Title from "@components/Card/Title.tsx";
 
 const SwTestApplication = () => {
     const [formData, setFormData] = useState({
@@ -73,8 +73,8 @@ const SwTestApplication = () => {
     };
 
     return (
-        <>
-            <CommonCard header="SW 역량 테스트 신청" textBgColor="primary" style={{maxWidth: "15rem"}}/>
+        <div className="container px-4">
+            <Title title="SW 역량 테스트 신청" />
 
             <TestCategory
                 value={formData.category}
@@ -89,7 +89,7 @@ const SwTestApplication = () => {
                 onChange={(field, value) => handleUpdate(field, value)}
             />
             <SaveButton onClick={handleSave}/>
-        </>
+        </div>
     );
 };
 
