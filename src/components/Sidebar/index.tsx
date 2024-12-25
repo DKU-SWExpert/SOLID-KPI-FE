@@ -63,6 +63,7 @@ const Sidebar = () => {
           height: "64px"
         }}
       >
+        <img src="/logo.png" width="40" height="40"/>
         <CSidebarBrand
           style={{
             color: "#fff",
