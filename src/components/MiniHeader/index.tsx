@@ -5,7 +5,7 @@ const MiniHeader = () => {
   // const [_, item, list] = extractPath;
   return (
     <CHeader
-      className="border-bottom bg-dawn-light text-white"
+      className="bg-dawn-light border-bottom-gray-light text-white"
       style={{ height: "48px" }}
     >
       Home
