@@ -9,7 +9,7 @@ interface TestScoreProps {
 
 const TestScore: React.FC<TestScoreProps> = ({value, onChange}) => {
     return (
-        <CommonCard header="성적 점수" textBgColor="info" style={{maxWidth: "100rem"}}>
+        <CommonCard header="성적 점수" textBgColor="info" style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}>
             <CFormInput
                 type="text"
                 className="mb-4 bg-dawn-light text-white border-gray"

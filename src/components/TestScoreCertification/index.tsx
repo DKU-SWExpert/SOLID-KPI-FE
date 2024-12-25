@@ -14,7 +14,7 @@ const TestScore: React.FC<TestScoreProps> = ({onChange}) => {
     };
 
     return (
-        <CommonCard header="성적 증명서" textBgColor="info" style={{maxWidth: "100rem"}}>
+        <CommonCard header="성적 증명서" textBgColor="info" style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}>
             <CFormInput
                 type="file"
                 className="mb-4 bg-dawn-light text-white border-gray"

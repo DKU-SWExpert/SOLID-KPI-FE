@@ -1,11 +1,11 @@
 import {useState} from "react";
-import CommonCard from "@components/CommonCard";
 import TestCategory from "@components/TestCategory";
 import TestDate from "@components/TestDate";
 import SaveButton from "@components/SaveButton";
 import TestLevel from "@components/TestLevel";
 import TestScore from "@components/TestScore";
 import TestScoreCertification from "@components/TestScoreCertification";
+import Title from "@components/Card/Title.tsx";
 
 const SwTestEnterResult = () => {
     const [formData, setFormData] = useState({
@@ -48,8 +48,8 @@ const SwTestEnterResult = () => {
     };
 
     return (
-        <>
-            <CommonCard header="SW 역량 테스트 결과 입력" textBgColor="primary" style={{maxWidth: "15rem"}}/>
+        <div className="container px-4">
+            <Title title="SW 역량 테스트 결과 입력" />
 
             <TestCategory
                 value={formData.category}
@@ -72,7 +72,7 @@ const SwTestEnterResult = () => {
                 onChange={(value) => handleUpdate("file", value)}
             />
             <SaveButton onClick={handleSave}/>
-        </>
+        </div>
     );
 };
 
