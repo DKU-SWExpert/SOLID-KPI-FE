@@ -5,6 +5,7 @@ import SwTestEnterResult from "@/pages/Student/SwTest/SwTestEnterResult";
 import SwTestApplication from "@/pages/Student/SwTest/SwTestApplication";
 import SwExpert from "@/pages/Student/scholarship/swExpert";
 import SwSupport from "@/pages/Student/scholarship/SwSupport";
+import CompetitionContest from "@pages/Student/SwTalent/ CompetitionContest";
 
 
 const StudentRoutes = () => {
@@ -14,6 +15,7 @@ const StudentRoutes = () => {
             <Route path="internship/enter-result" element={<EnterResult/>}/>
             <Route path="scholarship/sw-expert" element={<SwExpert/>}/>
             <Route path="scholarship/supporters" element={<SwSupport/>}/>
+            <Route path="scholarship/sw-talent/competition-contest" element={<CompetitionContest/>}/>
             <Route path="sw-test/application" element={<SwTestApplication/>}/>
             <Route path="sw-test/enter-result" element={<SwTestEnterResult/>}/>
         </Routes>
