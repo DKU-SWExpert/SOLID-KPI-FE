@@ -16,7 +16,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
       items: [
         { name: "SW Expert", path: "/student/scholarship/sw-expert" },
         { name: "SW 서포터즈", path: "/student/scholarship/supporters" },
-        { name: "DKU StarTrack", path: "#" },
+        { name: "DKU StarTrack", path: "/student/scholarship/dku-startrack" },
         { name: "SW 인재 > 경진대회/공모전", path: "/student/scholarship/sw-talent/competition-contest" },
         { name: "SW 인재 > 논문", path: "/student/scholarship/sw-talent/thesis" },
         { name: "SW 유망주", path: "#" },
