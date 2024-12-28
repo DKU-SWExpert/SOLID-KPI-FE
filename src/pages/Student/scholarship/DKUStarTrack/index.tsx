@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useUserStore } from "@/store/user";
 import {
     CButton,
     CCard,
@@ -14,6 +15,8 @@ import {
 } from "@coreui/react";
 
 const DKUStarTrack = () => {
+    const { name, studentNumber, major } = useUserStore();
+
     const [formData, setFormData] = useState({
         studentId: "",
         name: "",
@@ -27,6 +30,15 @@ const DKUStarTrack = () => {
             topcitScore: null,
         },
     });
+
+    useEffect(() => {
+        setFormData((prev) => ({
+            ...prev,
+            studentId: studentNumber,
+            name: name,
+            department: major,
+        }));
+    }, [name, studentNumber, major]);  
 
     const periods = [
         "2025년 1학기",
@@ -153,11 +165,8 @@ const DKUStarTrack = () => {
                             <CFormInput
                                 type="text"
                                 className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
-                                placeholder="20123456"
                                 value={formData.studentId}
-                                onChange={(e) =>
-                                    handleFormChange("studentId", e.target.value)
-                                }
+                                readOnly
                             />
                         </CCol>
                         <CCol xs="12" md="6" lg="4">
@@ -165,11 +174,8 @@ const DKUStarTrack = () => {
                             <CFormInput
                                 type="text"
                                 className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
-                                placeholder="홍길동"
                                 value={formData.name}
-                                onChange={(e) =>
-                                    handleFormChange("name", e.target.value)
-                                }
+                                readOnly
                             />
                         </CCol>
                         <CCol xs="12" md="6" lg="4">
@@ -177,11 +183,8 @@ const DKUStarTrack = () => {
                             <CFormInput
                                 type="text"
                                 className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
-                                placeholder="소프트웨어"
                                 value={formData.department}
-                                onChange={(e) =>
-                                    handleFormChange("department", e.target.value)
-                                }
+                                readOnly
                             />
                         </CCol>
                     </CRow>
