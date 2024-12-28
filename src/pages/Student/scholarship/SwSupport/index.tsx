@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import {
     CButton,
     CCard,
@@ -40,10 +40,12 @@ const SwSupport = () => {
         "2029년 1학기",
         "2029년 2학기",
     ];
-
+    const firstFileFields = [
+        {key: "performanceFile", title: "수행평가서"}
+    ]
     const fileFields = [
-        {key: "performanceFile", title: "수행평가서"},
         {key: "applicationFile", title: "신청서"},
+        {key: "recommendationFile", title: "지도교수 추천서"},
         {key: "enrollmentProof", title: "재학증명서"},
         {key: "topcitScore", title: "TOPCIT 성적 증명서"},
     ];
@@ -74,6 +76,10 @@ const SwSupport = () => {
             alert("수행평가서를 업로드해주세요.");
             return;
         }
+        if (!formData.studentId || !formData.name || !formData.department) {
+            alert("모든 기본정보를 입력해주세요.");
+            return;
+        }
         if (!formData.uploadedFiles.applicationFile) {
             alert("신청서를 업로드해주세요.");
             return;
@@ -84,10 +90,6 @@ const SwSupport = () => {
         }
         if (!formData.uploadedFiles.topcitScore) {
             alert("TOPCIT 성적 증명서를 업로드해주세요.");
-            return;
-        }
-        if (!formData.studentId || !formData.name || !formData.department) {
-            alert("모든 기본정보를 입력해주세요.");
             return;
         }
         if (!formData.professor) {
@@ -144,7 +146,7 @@ const SwSupport = () => {
                 </CCardBody>
             </CCard>
 
-            {fileFields.map(({key, title}) => (
+            {firstFileFields.map(({key, title}) => (
                 <CCard
                     key={key}
                     textBgColor="info"
@@ -242,6 +244,42 @@ const SwSupport = () => {
                     </CRow>
                 </CCardBody>
             </CCard>
+
+            {fileFields.map(({key, title}) => (
+                <CCard
+                    key={key}
+                    textBgColor="info"
+                    className="d-flex mt-4 mb-4"
+                    style={{borderRadius: "0.75rem"}}
+                >
+                    <CCardHeader className="text-white">{title}</CCardHeader>
+                    <CCardBody
+                        className="bg-dawn-light"
+                        style={{
+                            borderBottomLeftRadius: "0.75rem",
+                            borderBottomRightRadius: "0.75rem",
+                        }}
+                    >
+                        <CInputGroup className="mb-3">
+                            <CFormInput
+                                className="bg-dawn-light text-white border-gray gray-placeholder"
+                                type="file"
+                                onChange={(e) =>
+                                    handleFormChange(key, e.target.files ? e.target.files[0] : null)
+                                }
+                                id={`inputGroupFile_${key}`}
+                            />
+                            <CInputGroupText
+                                className="bg-dawn-light text-white border-gray gray-placeholder"
+                                as="label"
+                                htmlFor={`inputGroupFile_${key}`}
+                            >
+                                Upload
+                            </CInputGroupText>
+                        </CInputGroup>
+                    </CCardBody>
+                </CCard>
+            ))}
 
             <CCard
                 textBgColor="info"
