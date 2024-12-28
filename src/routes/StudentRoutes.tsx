@@ -8,6 +8,7 @@ import SwSupport from "@/pages/Student/scholarship/SwSupport";
 import CompetitionContest from "@pages/Student/SwTalent/ CompetitionContest";
 import Thesis from "@pages/Student/SwTalent/ Thesis";
 import DKUStarTrack from "@/pages/Student/scholarship/DKUStarTrack";
+import SwConvergence from "@/pages/Student/sw-convergence/Index";
 
 const StudentRoutes = () => {
     return (
@@ -21,6 +22,7 @@ const StudentRoutes = () => {
             <Route path="sw-test/application" element={<SwTestApplication/>}/>
             <Route path="sw-test/enter-result" element={<SwTestEnterResult/>}/>
             <Route path="scholarship/dku-startrack" element={<DKUStarTrack/>}/>
+            <Route path="sw-convergence" element={<SwConvergence />}/>
         </Routes>
     );
 };
