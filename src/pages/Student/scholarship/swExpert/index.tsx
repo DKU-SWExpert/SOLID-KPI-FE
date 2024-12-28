@@ -135,7 +135,7 @@ const SwExpert = () => {
                 >
                     <CFormSelect
                         className="bg-dawn-light text-white border-gray col-md-4"
-                        style={{maxWidth: "15rem"}}
+                        style={{maxWidth: "25rem"}}
                         value={formData.selectedPeriod}
                         onChange={(e) =>
                             handleFormChange("selectedPeriod", e.target.value)
