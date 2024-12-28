@@ -20,7 +20,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
         { name: "SW 인재 > 경진대회/공모전", path: "/student/scholarship/sw-talent/competition-contest" },
         { name: "SW 인재 > 논문", path: "/student/scholarship/sw-talent/thesis" },
         { name: "SW 유망주", path: "#" },
-        { name: "SW 융합", path: "#" },
+        { name: "SW 융합", path: "/student/sw-convergence" },
       ],
     },
     {

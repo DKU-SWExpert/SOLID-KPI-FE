@@ -7,7 +7,7 @@ import SwExpert from "@/pages/Student/scholarship/swExpert";
 import SwSupport from "@/pages/Student/scholarship/SwSupport";
 import CompetitionContest from "@pages/Student/SwTalent/ CompetitionContest";
 import Thesis from "@pages/Student/SwTalent/ Thesis";
-
+import SwConvergence from "@/pages/Student/sw-convergence/Index";
 
 const StudentRoutes = () => {
     return (
@@ -20,6 +20,7 @@ const StudentRoutes = () => {
             <Route path="scholarship/sw-talent/thesis" element={<Thesis/>}/>
             <Route path="sw-test/application" element={<SwTestApplication/>}/>
             <Route path="sw-test/enter-result" element={<SwTestEnterResult/>}/>
+            <Route path="sw-convergence" element={<SwConvergence />}/>
         </Routes>
     );
 };
