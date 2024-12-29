@@ -12,12 +12,12 @@ import {
     CInputGroupText,
     CRow,
 } from "@coreui/react";
+import {useUserStore} from "@store/user.ts";
 
 const SwSupport = () => {
+    const { name, studentNumber, major } = useUserStore()
+
     const [formData, setFormData] = useState({
-        studentId: "",
-        name: "",
-        department: "",
         professor: "",
         selectedPeriod: "",
         uploadedFiles: {
@@ -74,10 +74,6 @@ const SwSupport = () => {
         }
         if (!formData.uploadedFiles.performanceFile) {
             alert("수행평가서를 업로드해주세요.");
-            return;
-        }
-        if (!formData.studentId || !formData.name || !formData.department) {
-            alert("모든 기본정보를 입력해주세요.");
             return;
         }
         if (!formData.uploadedFiles.applicationFile) {
@@ -200,14 +196,9 @@ const SwSupport = () => {
                             <div className="text-white">
                                 <CFormLabel>학번</CFormLabel>
                                 <CFormInput
-                                    type="text"
                                     className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
-                                    placeholder="20123456"
-                                    name="studentId"
-                                    value={formData.studentId}
-                                    onChange={(e) =>
-                                        handleFormChange("studentId", e.target.value)
-                                    }
+                                    value={studentNumber}
+                                    readOnly
                                 />
                             </div>
                         </CCol>
@@ -215,14 +206,9 @@ const SwSupport = () => {
                             <div className="text-white">
                                 <CFormLabel>이름</CFormLabel>
                                 <CFormInput
-                                    type="text"
                                     className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
-                                    placeholder="홍길동"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={(e) =>
-                                        handleFormChange("name", e.target.value)
-                                    }
+                                    value={name}
+                                    readOnly
                                 />
                             </div>
                         </CCol>
@@ -232,12 +218,8 @@ const SwSupport = () => {
                                 <CFormInput
                                     type="text"
                                     className="mb-4 bg-dawn-light text-white border-gray gray-placeholder"
-                                    placeholder="소프트웨어"
-                                    name="department"
-                                    value={formData.department}
-                                    onChange={(e) =>
-                                        handleFormChange("department", e.target.value)
-                                    }
+                                    value={major}
+                                    readOnly
                                 />
                             </div>
                         </CCol>
