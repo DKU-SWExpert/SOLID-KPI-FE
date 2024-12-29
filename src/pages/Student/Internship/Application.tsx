@@ -87,18 +87,21 @@ const Application = () => {
   };
 
   return (
-    <div className="container px-4">
-      <Title title="인턴쉽 신청"/>
+    <>
+      <Title title="인턴쉽 신청" />
       {/* 구분 */}
       <CCard
         textBgColor="info"
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">구분</CCardHeader>
-        <CCardBody className="bg-dawn-light" style={{
-          borderBottomLeftRadius: "0.75rem",
-          borderBottomRightRadius: "0.75rem",
-        }}>
+        <CCardBody
+          className="bg-dawn-light"
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
+        >
           <CFormSelect
             name="internType"
             className="bg-dawn-light text-white border-gray"
@@ -122,10 +125,13 @@ const Application = () => {
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">기간</CCardHeader>
-        <CCardBody className="bg-dawn-light d-flex" style={{
-          borderBottomLeftRadius: "0.75rem",
-          borderBottomRightRadius: "0.75rem",
-        }}>
+        <CCardBody
+          className="bg-dawn-light d-flex"
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
+        >
           <CInputGroup>
             <CInputGroupText
               className="text-white border-gray"
@@ -167,10 +173,13 @@ const Application = () => {
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">구분</CCardHeader>
-        <CCardBody className="bg-dawn-light d-flex" style={{
-          borderBottomLeftRadius: "0.75rem",
-          borderBottomRightRadius: "0.75rem",
-        }}>
+        <CCardBody
+          className="bg-dawn-light d-flex"
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
+        >
           <CFormSelect
             name="company"
             className="bg-dawn-light text-white border-gray"
@@ -194,10 +203,13 @@ const Application = () => {
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">신청서 (기본정보)</CCardHeader>
-        <CCardBody className="bg-dawn-light" style={{
-          borderBottomLeftRadius: "0.75rem",
-          borderBottomRightRadius: "0.75rem",
-        }}>
+        <CCardBody
+          className="bg-dawn-light"
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
+        >
           <div className="d-flex justify-content-between">
             <div className="me-4" style={{ flex: 1 }}>
               <div className="text-white">학번</div>
@@ -254,10 +266,13 @@ const Application = () => {
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">담당 교수</CCardHeader>
-        <CCardBody className="bg-dawn-light d-flex" style={{
-          borderBottomLeftRadius: "0.75rem",
-          borderBottomRightRadius: "0.75rem",
-        }}>
+        <CCardBody
+          className="bg-dawn-light d-flex"
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
+        >
           <CFormInput
             name="professor"
             type="text"
@@ -276,10 +291,13 @@ const Application = () => {
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">이력서</CCardHeader>
-        <CCardBody className="bg-dawn-light d-flex" style={{
-          borderBottomLeftRadius: "0.75rem",
-          borderBottomRightRadius: "0.75rem",
-        }}>
+        <CCardBody
+          className="bg-dawn-light d-flex"
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
+        >
           <CInputGroup className="mb-3">
             <CFormInput
               className="bg-dawn-light text-white border-gray"
@@ -305,7 +323,7 @@ const Application = () => {
           저 장
         </CButton>
       </div>
-    </div>
+    </>
   );
 };
 
