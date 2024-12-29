@@ -7,8 +7,6 @@ import {
   CFormInput,
   CFormLabel,
   CFormSelect,
-  CInputGroup,
-  CInputGroupText,
   CRow,
   CCol,
 } from "@coreui/react";
@@ -165,13 +163,13 @@ const SwRisingStar = () => {
             borderBottomRightRadius: "0.75rem",
           }}
         >
-          <CRow>
+          <CRow className="mb-4">
             <CCol xs="12" md="6" lg="4">
               <div className="text-white">
                 <CFormLabel>학번</CFormLabel>
                 <CFormInput
                   type="text"
-                  className="mb-4 bg-dawn-light text-white border"
+                  className="bg-dawn-light text-white border-gray gray-placeholder"
                   placeholder="20123456"
                   name="studentId"
                   value={formData.studentId}
@@ -184,7 +182,7 @@ const SwRisingStar = () => {
                 <CFormLabel>이름</CFormLabel>
                 <CFormInput
                   type="text"
-                  className="mb-4 bg-dawn-light text-white border"
+                  className="bg-dawn-light text-white border-gray gray-placeholder"
                   placeholder="홍길동"
                   name="name"
                   value={formData.name}
@@ -197,7 +195,7 @@ const SwRisingStar = () => {
                 <CFormLabel>학과</CFormLabel>
                 <CFormInput
                   type="text"
-                  className="mb-4 bg-dawn-light text-white border"
+                  className="bg-dawn-light text-white border-gray gray-placeholder"
                   placeholder="소프트웨어"
                   name="department"
                   value={formData.department}
@@ -206,13 +204,13 @@ const SwRisingStar = () => {
               </div>
             </CCol>
           </CRow>
-          <CRow>
+          <CRow className="mb-4">
           <CCol xs="12" md="6" lg="4">
               <div className="text-white">
                 <CFormLabel>학년</CFormLabel>
                 <CFormInput
                   type="text"
-                  className="mb-4 bg-dawn-light text-white border"
+                  className="bg-dawn-light text-white border-gray gray-placeholder"
                   name="grade"
                   value={formData.grade}
                   onChange={handleFormChange}
@@ -224,7 +222,7 @@ const SwRisingStar = () => {
                 <CFormLabel>핸드폰</CFormLabel>
                 <CFormInput
                   type="text"
-                  className="mb-4 bg-dawn-light text-white border"
+                  className="bg-dawn-light text-white border-gray gray-placeholder"
                   name="phoneNumber"
                   value={formData.phoneNumber}
                   onChange={(e) => handleFormChange(e, addHyphen)}
@@ -236,7 +234,7 @@ const SwRisingStar = () => {
                 <CFormLabel>생년월일</CFormLabel>
                 <CFormInput
                   type="date"
-                  className="mb-4 bg-dawn-light text-white border"
+                  className="bg-dawn-light text-white border-gray gray-placeholder"
                   name="birth"
                   value={formData.birth}
                   onChange={handleFormChange}
@@ -250,7 +248,7 @@ const SwRisingStar = () => {
                   <CFormLabel>E-mail</CFormLabel>
                   <CFormInput
                     type="text"
-                    className="mb-4 bg-dawn-light text-white border"
+                    className="bg-dawn-light text-white border-gray gray-placeholder"
                     style={{ width: "450px" }}
                     placeholder="E-mail을 입력하세요."
                     name="email"
@@ -279,7 +277,7 @@ const SwRisingStar = () => {
           >
             <CFormInput
                     type="text"
-                    className="bg-dawn-light text-white border-gray col-md-4"
+                    className="bg-dawn-light text-white border-gray gray-placeholder"
                     style={{ maxWidth: "15rem" }}
                     placeholder="검색어를 입력하세요."
                     name="professor"
