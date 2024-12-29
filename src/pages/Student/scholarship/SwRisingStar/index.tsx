@@ -28,14 +28,10 @@ const SwRisingStar = () => {
 
   const periods = ["2025년", "2026년", "2027년", "2028년", "2029년"];
 
-  const handleFormChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>, formatter?: (value: string) => string) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    const formattedValue = formatter ? formatter(value) : value;
+    setFormData({ ...formData, [name]: formattedValue });
   };
 
   function addHyphen(obj: HTMLInputElement): void {
@@ -125,7 +121,7 @@ const SwRisingStar = () => {
           </CCardHeader>
         </CCard>
       </div>
-
+      
       <CCard
         textBgColor="info"
         className="d-flex mt-4 mb-4"
@@ -210,9 +206,95 @@ const SwRisingStar = () => {
               </div>
             </CCol>
           </CRow>
-        </CCardBody>
-      </CCard>
-    </div>
+          <CRow>
+          <CCol xs="12" md="6" lg="4">
+              <div className="text-white">
+                <CFormLabel>학년</CFormLabel>
+                <CFormInput
+                  type="text"
+                  className="mb-4 bg-dawn-light text-white border"
+                  name="grade"
+                  value={formData.grade}
+                  onChange={handleFormChange}
+                />
+              </div>
+            </CCol>
+            <CCol xs="12" md="6" lg="4">
+              <div className="text-white">
+                <CFormLabel>핸드폰</CFormLabel>
+                <CFormInput
+                  type="text"
+                  className="mb-4 bg-dawn-light text-white border"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={(e) => handleFormChange(e, addHyphen)}
+                />
+              </div>
+            </CCol>
+            <CCol xs="12" md="6" lg="4">
+              <div className="text-white">
+                <CFormLabel>생년월일</CFormLabel>
+                <CFormInput
+                  type="date"
+                  className="mb-4 bg-dawn-light text-white border"
+                  name="birth"
+                  value={formData.birth}
+                  onChange={handleFormChange}
+                />
+              </div>
+            </CCol>
+          </CRow>
+          <CRow>
+            <CCol xs="12" md="6" lg="4">
+                <div className="text-white">
+                  <CFormLabel>E-mail</CFormLabel>
+                  <CFormInput
+                    type="text"
+                    className="mb-4 bg-dawn-light text-white border"
+                    style={{ width: "450px" }}
+                    placeholder="E-mail을 입력하세요."
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                  />
+                </div>
+              </CCol>
+            </CRow>
+          </CCardBody>
+        </CCard>
+
+        <CCard
+          textBgColor="info"
+          className="d-flex mt-4 mb-4"
+          style={{ borderRadius: "0.75rem" }}
+        >
+          <CCardHeader className="text-white">담당 교수</CCardHeader>
+
+          <CCardBody
+            className="bg-dawn-light"
+            style={{
+              borderBottomLeftRadius: "0.75rem",
+              borderBottomRightRadius: "0.75rem",
+            }}
+          >
+            <CFormInput
+                    type="text"
+                    className="bg-dawn-light text-white border-gray col-md-4"
+                    style={{ maxWidth: "15rem" }}
+                    placeholder="검색어를 입력하세요."
+                    name="professor"
+                    value={formData.professor}
+                    onChange={handleFormChange}
+                  />
+          </CCardBody>
+        </CCard>
+
+        <div className="mt-4 mb-4">
+                <CButton color="primary" className="w-100" onClick={handleSave}>
+                    저 장
+                </CButton>
+            </div>
+      </div>
   );
 };
 
