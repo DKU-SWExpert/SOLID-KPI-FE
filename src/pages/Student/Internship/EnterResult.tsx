@@ -58,7 +58,7 @@ const EnterResult = () => {
   };
 
   return (
-    <div className="container px-4">
+    <>
       <Title title="인턴십 결과 입력" />
       {/* 이력서 */}
       <CCard
@@ -67,10 +67,13 @@ const EnterResult = () => {
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">수행평가서</CCardHeader>
-        <CCardBody className="bg-dawn-light" style={{
-          borderBottomLeftRadius: "0.75rem",
-          borderBottomRightRadius: "0.75rem",
-        }}>
+        <CCardBody
+          className="bg-dawn-light"
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
+        >
           <CInputGroup className="mb-3">
             <CFormInput
               className="bg-dawn-light text-white border-gray"
@@ -97,10 +100,13 @@ const EnterResult = () => {
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">구분</CCardHeader>
-        <CCardBody className="bg-dawn-light" style={{
-          borderBottomLeftRadius: "0.75rem",
-          borderBottomRightRadius: "0.75rem",
-        }}>
+        <CCardBody
+          className="bg-dawn-light"
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
+        >
           <CFormSelect
             name="plan"
             className="bg-dawn-light text-white border-gray"
@@ -124,7 +130,7 @@ const EnterResult = () => {
           저 장
         </CButton>
       </div>
-    </div>
+    </>
   );
 };
 
