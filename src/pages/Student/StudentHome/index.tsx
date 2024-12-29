@@ -11,6 +11,7 @@ import {
   CForm,
 } from "@coreui/react";
 import Title from "@/components/Card/Title";
+import colors from "@/styles/color";
 
 const StudentHome = () => {
   // 이건 유저 정보가 db에 저장되어 있는지에 따라 다른 화면 보여주도록 설계해야하
@@ -138,7 +139,7 @@ const StudentHome = () => {
                 className="bg-dawn-light mb-4 text-start w-100 text-white"
                 style={{
                   opacity: 1,
-                  borderColor: "#323A49",
+                  borderColor: colors.border_base,
                 }}
                 value={formData.major}
                 onChange={handleInputChange}
@@ -196,7 +197,7 @@ const StudentHome = () => {
                   color="white"
                   style={{
                     maxWidth: "30rem",
-                    borderColor: "#323A49",
+                    borderColor: colors.border_base,
                     backgroundColor: "transparent",
                     color: "white",
                   }}
@@ -214,7 +215,7 @@ const StudentHome = () => {
                 color="white"
                 style={{
                   maxWidth: "30rem",
-                  borderColor: "#323A49",
+                  borderColor: colors.border_base,
                   backgroundColor: "transparent",
                   color: "white",
                 }}
@@ -233,7 +234,7 @@ const StudentHome = () => {
                 color="white"
                 style={{
                   maxWidth: "30rem",
-                  borderColor: "#323A49",
+                  borderColor: colors.border_base,
                   backgroundColor: "transparent",
                   color: "white",
                 }}
