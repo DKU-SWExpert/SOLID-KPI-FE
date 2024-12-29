@@ -26,59 +26,24 @@ const SwRisingStar = () => {
 
   const periods = ["2025년", "2026년", "2027년", "2028년", "2029년"];
 
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>, formatter?: (value: string) => string) => {
-    const { name, value } = e.target;
-    const formattedValue = formatter ? formatter(value) : value;
-    setFormData({ ...formData, [name]: formattedValue });
+  const handleFormChange = (field: string, value: string | null) => {
+    setFormData((prev) => ({
+        ...prev,
+        [field]: value,
+    }));
   };
+/*
+  function addHyphen(phoneNumberInput: HTMLInputElement): void {
+    const phoneNumber: string = phoneNumberInput.value;
+    const length: number = phoneNumber.length;
 
-  function addHyphen(obj: HTMLInputElement): void {
-    const phone = obj;
-    const num = phone.value.replace(/-/g, "");
-    const len = num.length;
-
-    if (len < 4) {
-      phone.value = num;
-    } else {
-      if (num.substring(0, 2) === "02") {
-        if (len < 7) {
-          phone.value = num.substring(0, 2) + "-" + num.substring(2);
-        } else if (len < 10) {
-          phone.value =
-            num.substring(0, 2) +
-            "-" +
-            num.substring(2, 3) +
-            "-" +
-            num.substring(5);
-        } else {
-          phone.value =
-            num.substring(0, 2) +
-            "-" +
-            num.substring(2, 4) +
-            "-" +
-            num.substring(6);
-        }
-      } else {
-        if (len < 7) {
-          phone.value = num.substring(0, 3) + "-" + num.substring(3);
-        } else if (len < 12) {
-          phone.value =
-            num.substring(0, 3) +
-            "-" +
-            num.substring(3, 4) +
-            "-" +
-            num.substring(7);
-        } else {
-          phone.value =
-            num.substring(0, 4) +
-            "-" +
-            num.substring(4, 4) +
-            "-" +
-            num.substring(8);
-        }
-      }
+    if (length >= 9) {
+        const numbers: string = phoneNumber.replace(/[^0-9]/g, "")
+            .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+        phoneNumberInput.value = numbers;
     }
-  }
+}
+*/
 
   const handleSave = () => {
     if (!formData.selectedPeriod) {
@@ -138,7 +103,9 @@ const SwRisingStar = () => {
             className="bg-dawn-light text-white border-gray col-md-4"
             style={{ maxWidth: "25rem" }}
             value={formData.selectedPeriod}
-            onChange={handleFormChange}
+            onChange={(e) =>
+              handleFormChange("selectedPeriod", e.target.value)
+          }
           >
             <option>수혜년도를 선택해주세요...</option>
             {periods.map((period, index) => (
@@ -173,7 +140,9 @@ const SwRisingStar = () => {
                   placeholder="20123456"
                   name="studentId"
                   value={formData.studentId}
-                  onChange={handleFormChange}
+                  onChange={(e) =>
+                    handleFormChange("studentId", e.target.value)
+                }
                 />
               </div>
             </CCol>
@@ -186,7 +155,9 @@ const SwRisingStar = () => {
                   placeholder="홍길동"
                   name="name"
                   value={formData.name}
-                  onChange={handleFormChange}
+                  onChange={(e) =>
+                    handleFormChange("name", e.target.value)
+                }
                 />
               </div>
             </CCol>
@@ -199,7 +170,9 @@ const SwRisingStar = () => {
                   placeholder="소프트웨어"
                   name="department"
                   value={formData.department}
-                  onChange={handleFormChange}
+                  onChange={(e) =>
+                    handleFormChange("department", e.target.value)
+                }
                 />
               </div>
             </CCol>
@@ -213,7 +186,9 @@ const SwRisingStar = () => {
                   className="bg-dawn-light text-white border-gray gray-placeholder"
                   name="grade"
                   value={formData.grade}
-                  onChange={handleFormChange}
+                  onChange={(e) =>
+                    handleFormChange("grade", e.target.value)
+                }
                 />
               </div>
             </CCol>
@@ -225,7 +200,9 @@ const SwRisingStar = () => {
                   className="bg-dawn-light text-white border-gray gray-placeholder"
                   name="phoneNumber"
                   value={formData.phoneNumber}
-                  onChange={(e) => handleFormChange(e, addHyphen)}
+                  onChange={(e) =>
+                    handleFormChange("phoneNumber", e.target.value)
+                    }
                 />
               </div>
             </CCol>
@@ -237,7 +214,9 @@ const SwRisingStar = () => {
                   className="bg-dawn-light text-white border-gray gray-placeholder"
                   name="birth"
                   value={formData.birth}
-                  onChange={handleFormChange}
+                  onChange={(e) =>
+                    handleFormChange("birth", e.target.value)
+                }
                 />
               </div>
             </CCol>
@@ -253,7 +232,9 @@ const SwRisingStar = () => {
                     placeholder="E-mail을 입력하세요."
                     name="email"
                     value={formData.email}
-                    onChange={handleFormChange}
+                    onChange={(e) =>
+                      handleFormChange("email", e.target.value)
+                  }
                   />
                 </div>
               </CCol>
@@ -282,7 +263,9 @@ const SwRisingStar = () => {
                     placeholder="검색어를 입력하세요."
                     name="professor"
                     value={formData.professor}
-                    onChange={handleFormChange}
+                    onChange={(e) =>
+                      handleFormChange("professor", e.target.value)
+                  }
                   />
           </CCardBody>
         </CCard>
