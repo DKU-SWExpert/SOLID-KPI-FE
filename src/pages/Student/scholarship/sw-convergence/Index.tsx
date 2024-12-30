@@ -59,6 +59,22 @@ const SWConvergence = () => {
       alert("담당 교수를 입력해주세요.")
       return
     }
+    if (!formData.birth) {
+      alert("생년월일을 입력해주세요.")
+      return
+    }
+    if (!formData.grade) {
+      alert("학년을 입력해주세요.")
+      return
+    }
+    if (!formData.phone) {
+      alert("핸드폰 번호를 입력해주세요.")
+      return
+    }
+    if (!formData.email) {
+      alert("이메일 주소를 입력해주세요.")
+      return
+    }
 
     console.log("Saved Data:", { ...formData, name, studentNumber, major })
     alert("SW 융합 신청이 완료되었습니다.")
