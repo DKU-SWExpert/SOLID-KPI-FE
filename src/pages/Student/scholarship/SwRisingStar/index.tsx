@@ -47,6 +47,7 @@ const SwRisingStar = () => {
       !formData.email
     ) {
       alert("모든 기본정보를 입력해주세요.");
+      return;
     }
 
     if (!formData.professor) {
