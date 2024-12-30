@@ -10,12 +10,10 @@ import {
   CRow,
   CCol,
 } from "@coreui/react";
+import { useUserStore } from "@store/user";
 
 const SwRisingStar = () => {
   const [formData, setFormData] = useState({
-    studentId: "",
-    name: "",
-    department: "",
     grade: "",
     phoneNumber: "",
     birth: "",
@@ -23,6 +21,9 @@ const SwRisingStar = () => {
     professor: "",
     selectedPeriod: "",
   });
+
+  //internship과 변수 통일
+  const { name, studentNumber, major} = useUserStore((state) => state); 
 
   const periods = ["2025년", "2026년", "2027년", "2028년", "2029년"];
 
@@ -32,29 +33,14 @@ const SwRisingStar = () => {
         [field]: value,
     }));
   };
-/*
-  function addHyphen(phoneNumberInput: HTMLInputElement): void {
-    const phoneNumber: string = phoneNumberInput.value;
-    const length: number = phoneNumber.length;
 
-    if (length >= 9) {
-        const numbers: string = phoneNumber.replace(/[^0-9]/g, "")
-            .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
-        phoneNumberInput.value = numbers;
-    }
-}
-*/
-
-  const handleSave = () => {
+  const validateFormData = () => {
     if (!formData.selectedPeriod) {
       alert("신청년도를 선택해주세요.");
       return;
     }
-
+    //학번, 이름, 학과는 유효성 검사에서 제외
     if (
-      !formData.studentId ||
-      !formData.name ||
-      !formData.department ||
       !formData.grade ||
       !formData.phoneNumber ||
       !formData.birth ||
@@ -64,10 +50,14 @@ const SwRisingStar = () => {
     }
 
     if (!formData.professor) {
+      
       alert("담당 교수를 입력해주세요.");
       return;
     }
+  }
 
+  const handleSave = () => {
+    validateFormData();
     console.log("Saved Data:", formData);
   };
 
@@ -134,45 +124,21 @@ const SwRisingStar = () => {
             <CCol xs="12" md="6" lg="4">
               <div className="text-white">
                 <CFormLabel>학번</CFormLabel>
-                <CFormInput
-                  type="text"
-                  className="bg-dawn-light text-white border-gray gray-placeholder"
-                  placeholder="20123456"
-                  name="studentId"
-                  value={formData.studentId}
-                  onChange={(e) =>
-                    handleFormChange("studentId", e.target.value)
-                }
+                <CFormInput className="bg-dawn-light text-white border-gray gray-placeholder" value={studentNumber}
                 />
               </div>
             </CCol>
             <CCol xs="12" md="6" lg="4">
               <div className="text-white">
                 <CFormLabel>이름</CFormLabel>
-                <CFormInput
-                  type="text"
-                  className="bg-dawn-light text-white border-gray gray-placeholder"
-                  placeholder="홍길동"
-                  name="name"
-                  value={formData.name}
-                  onChange={(e) =>
-                    handleFormChange("name", e.target.value)
-                }
+                <CFormInput className="bg-dawn-light text-white border-gray gray-placeholder" value={name}
                 />
               </div>
             </CCol>
             <CCol xs="12" md="6" lg="4">
-              <div className="text-white">
+            <div className="text-white">
                 <CFormLabel>학과</CFormLabel>
-                <CFormInput
-                  type="text"
-                  className="bg-dawn-light text-white border-gray gray-placeholder"
-                  placeholder="소프트웨어"
-                  name="department"
-                  value={formData.department}
-                  onChange={(e) =>
-                    handleFormChange("department", e.target.value)
-                }
+                <CFormInput className="bg-dawn-light text-white border-gray gray-placeholder" value={major}
                 />
               </div>
             </CCol>
