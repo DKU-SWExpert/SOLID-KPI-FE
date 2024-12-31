@@ -42,7 +42,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
       name: "분석",
       items: [
         { name: "Solid Cloud", path: "/professor/solid-cloud" },
-        { name: "인턴쉽", path: "#" },
+        { name: "인턴십", path: "/professor/internship" },
         { name: "경진대회", path: "#" },
         { name: "장학금", path: "#" },
         { name: "SW 역량 테스트", path: "/professor/sw-test" },
