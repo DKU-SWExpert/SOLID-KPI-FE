@@ -6,6 +6,7 @@ import Login from "@pages/Login";
 import Home from "@pages/Home";
 import StudentRoutes from "@routes/StudentRoutes";
 import ProtectedRoute from "@routes/ProtectedRoute";
+import ProfessorRoutes from "./routes/ProfessorRoutes";
 
 function App() {
   return (
@@ -25,6 +26,14 @@ function App() {
           element={
             <ProtectedRoute>
               <StudentRoutes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/professor/*"
+          element={
+            <ProtectedRoute>
+              <ProfessorRoutes />
             </ProtectedRoute>
           }
         />
