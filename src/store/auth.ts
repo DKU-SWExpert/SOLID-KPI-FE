@@ -1,7 +1,7 @@
 import { Role } from "@/types/role";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { PROFESSOR, STUDENT } from "@/constants/role";
+import { PROFESSOR } from "@/constants/role";
 
 interface AuthState {
   name: string;
