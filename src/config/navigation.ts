@@ -17,8 +17,14 @@ export const navigationConfig: Record<string, NavItem[]> = {
         { name: "SW Expert", path: "/student/scholarship/sw-expert" },
         { name: "SW 서포터즈", path: "/student/scholarship/supporters" },
         { name: "DKU StarTrack", path: "/student/scholarship/dku-startrack" },
-        { name: "SW 인재 > 경진대회/공모전", path: "/student/scholarship/sw-talent/competition-contest" },
-        { name: "SW 인재 > 논문", path: "/student/scholarship/sw-talent/thesis" },
+        {
+          name: "SW 인재 > 경진대회/공모전",
+          path: "/student/scholarship/sw-talent/competition-contest",
+        },
+        {
+          name: "SW 인재 > 논문",
+          path: "/student/scholarship/sw-talent/thesis",
+        },
         { name: "SW 유망주", path: "/student/scholarship/sw-rising-star" },
         { name: "SW 융합", path: "/student/scholarship/sw-convergence" },
       ],
@@ -35,7 +41,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
     {
       name: "분석",
       items: [
-        { name: "Solid Cloud", path: "#" },
+        { name: "Solid Cloud", path: "/professor/solid-cloud" },
         { name: "인턴쉽", path: "#" },
         { name: "경진대회", path: "#" },
         { name: "장학금", path: "#" },
