@@ -18,7 +18,7 @@ const ProfessorInternship = () => {
             },
             {
                 type: 'line' as const,
-                label: '이슈율 (%)',
+                label: '이수율 (%)',
                 data: issueRates,
                 borderColor: '#FFC107',
                 borderWidth: 2,
@@ -42,7 +42,7 @@ const ProfessorInternship = () => {
 
     return (
         <div style={{padding: '2rem', backgroundColor: '#1E1E2F', color: '#FFF', minHeight: '100vh'}}>
-            <h1 style={{textAlign: 'center'}}>인턴십 이슈율 지표</h1>
+            <h1 style={{textAlign: 'center'}}>인턴십 이수율 지표</h1>
 
             {/* Chart */}
             <CChartBar data={chartData} options={chartOptions} style={{marginBottom: '2rem'}}/>
