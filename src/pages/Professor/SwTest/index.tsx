@@ -196,6 +196,90 @@ const SwTest = () => {
         },
     };
 
+    const gradeChartData = {
+        labels: ["1학년", "2학년", "3학년", "4학년"],
+        datasets: [
+            {
+                label: "Level 1",
+                backgroundColor: "rgba(47, 137, 252, 0.6)",
+                borderColor: "#2f89fc",
+                borderWidth: 1,
+                data: [0, 0, 0, 0],
+            },
+            {
+                label: "Level 2",
+                backgroundColor: "rgba(252, 99, 132, 0.6)",
+                borderColor: "rgba(252, 99, 132, 1)",
+                borderWidth: 1,
+                data: [0, 0, 1, 0],
+            },
+            {
+                label: "Level 3",
+                backgroundColor: "rgba(34, 139, 34, 0.6)",
+                borderColor: "rgba(34, 139, 34, 1)",
+                borderWidth: 1,
+                data: [2, 3, 3, 3],
+            },
+            {
+                label: "Level 4",
+                backgroundColor: "rgba(255, 215, 0, 0.6)",
+                borderColor: "rgba(255, 215, 0, 1)",
+                borderWidth: 1,
+                data: [1, 0, 5, 2],
+            },
+            {
+                label: "Level 5",
+                backgroundColor: "rgba(0, 0, 255, 0.6)",
+                borderColor: "rgba(0, 0, 255, 1)",
+                borderWidth: 1,
+                data: [0, 0, 1, 1],
+            },
+        ],
+    };
+
+    const gradeChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: "#fff",
+                },
+            },
+            tooltip: {
+                callbacks: {
+                    label: (tooltipItem) => `${tooltipItem.raw}명`,
+                },
+            },
+            datalabels: {
+                display: true,
+                color: "#fff",
+                font: {
+                    size: 12,
+                },
+                anchor: "end",
+                align: "end",
+                formatter: (value) => `${value}명`,
+            },
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: "#fff",
+                },
+            },
+            y: {
+                ticks: {
+                    color: "#fff",
+                    stepSize: 1,
+                },
+                beginAtZero: true,
+                max: 6,
+            },
+        },
+    };
+
     return (
         <CContainer fluid className="body flex-grow-1 px-4">
             <CContainer className="my-5">
@@ -301,6 +385,42 @@ const SwTest = () => {
                         <CCardBody className="bg-dawn">
                             <div style={{height: "450px"}}>
                                 <Bar data={departmentChartData} options={departmentChartOptions}/>
+                            </div>
+                        </CCardBody>
+                    </CCard>
+                </CCol>
+                <CCol>
+                    {/* 학년별 TOPCIT 취득 Level 취득 인력 그래프 */}
+                    <CCard className="bg-dark text-white border-gray" style={{height: "550px"}}>
+                        <CCardHeader className="bg-dawn-light test-white">
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <div style={{display: "flex", alignItems: "center"}}>
+                                    <select
+                                        className="form-select bg-dark text-white"
+                                        style={{width: "100px", marginRight: "10px"}}
+                                    >
+                                        {years.map((year) => (
+                                            <option key={year} value={year}>
+                                                {year}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <span style={{fontSize: "1.2rem", color: "#fff"}}>
+                    학년별 TOPCIT 취득 Level 취득인력
+                  </span>
+                                </div>
+                                <CButton color="primary">다운로드</CButton>
+                            </div>
+                        </CCardHeader>
+                        <CCardBody className="bg-dawn">
+                            <div style={{height: "450px"}}>
+                                <Bar data={gradeChartData} options={gradeChartOptions}/>
                             </div>
                         </CCardBody>
                     </CCard>
