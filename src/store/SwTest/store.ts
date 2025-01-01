@@ -1,7 +1,25 @@
 import create from "zustand";
 
-export const useChartStore = create((set) => ({
-    years: ["2024", "2025", "2026", "2027", "2028", "2029"],
+interface Dataset {
+    label: string;
+    backgroundColor: string;
+    borderColor: string;
+    borderWidth: number;
+    data: number[];
+}
+
+interface ChartData {
+    labels: string[];
+    datasets: Dataset[];
+}
+
+interface ChartStore {
+    chartData: ChartData;
+    levelChartData: ChartData;
+    departmentChartData: ChartData;
+    gradeChartData: ChartData;
+}
+export const useChartStore = create<ChartStore>((set) => ({
     chartData: {
         labels: ["TOPCIT", "PCCP", "PCCE", "전체"],
         datasets: [
