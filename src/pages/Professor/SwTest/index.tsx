@@ -2,8 +2,6 @@ import React from "react";
 import {BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip,} from "chart.js";
 import {Bar} from "react-chartjs-2";
 import {CButton, CCard, CCardBody, CCardHeader, CCol, CContainer} from "@coreui/react";
-import CIcon from "@coreui/icons-react";
-import { cilCloudDownload } from "@coreui/icons";
 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -66,6 +64,59 @@ const SwTest = () => {
         },
     };
 
+    const levelChartData = {
+        labels: ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],
+        datasets: [
+            {
+                label: "2023",
+                backgroundColor: "rgba(47, 137, 252, 0.6)", // 파란색
+                borderColor: "#2f89fc",
+                borderWidth: 1,
+                data: [1, 2, 5, 4, 0],
+            },
+            {
+                label: "2024",
+                backgroundColor: "rgba(252, 99, 132, 0.6)", // 빨간색
+                borderColor: "rgba(252, 99, 132, 1)",
+                borderWidth: 1,
+                data: [1, 1, 11, 8, 2],
+            },
+        ],
+    };
+
+    const levelChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                labels: {
+                    color: "#fff",
+                },
+            },
+            tooltip: {
+                callbacks: {
+                    label: (tooltipItem) => `${tooltipItem.raw}명`,
+                },
+            },
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: "#fff",
+                },
+            },
+            y: {
+                ticks: {
+                    color: "#fff",
+                    stepSize: 5,
+                },
+                beginAtZero: true,
+                max: 15,
+            },
+        },
+    };
+
     return (
         <CContainer fluid className="body flex-grow-1 px-4">
             <CContainer className="my-5">
@@ -98,6 +149,39 @@ const SwTest = () => {
                         <CCardBody className="bg-dawn">
                             <div style={{height: "450px"}}>
                                 <Bar data={chartData} options={chartOptions}/>
+                            </div>
+                        </CCardBody>
+                    </CCard>
+                </CCol>
+                <CCol className="mt-4">
+                    <CCard className="bg-dark text-white border-gray" style={{height: "550px"}}>
+                        <CCardHeader className="bg-dawn-light test-white">
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <div style={{display: "flex", alignItems: "center"}}>
+                                    <select
+                                        className="form-select bg-dark text-white"
+                                        style={{width: "100px", marginRight: "10px"}}
+                                    >
+                                        {years.map((year) => (
+                                            <option key={year} value={year}>
+                                                {year}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <span style={{fontSize: "1.2rem", color: "#fff"}}>TOPCIT 취득 Level</span>
+                                </div>
+                                <CButton color="primary">다운로드</CButton>
+                            </div>
+                        </CCardHeader>
+                        <CCardBody className="bg-dawn">
+                            <div style={{height: "450px"}}>
+                                <Bar data={levelChartData} options={levelChartOptions}/>
                             </div>
                         </CCardBody>
                     </CCard>
