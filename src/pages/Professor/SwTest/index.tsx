@@ -1,8 +1,11 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip,} from "chart.js";
 import {Bar} from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import {CButton, CCard, CCardBody, CCardHeader, CCol, CContainer} from "@coreui/react";
+import {cilArrowThickToBottom} from "@coreui/icons";
+import html2canvas from "html2canvas";
+import CIcon from "@coreui/icons-react";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
@@ -79,7 +82,7 @@ type ChartData = {
         borderWidth: number;
         data: number[];
     }[];
-}|null;
+} | null;
 
 const generateChartData = (title: string, year: number): ChartData => {
     const randomData = (length: number, max: number) =>
@@ -157,10 +160,21 @@ const generateChartData = (title: string, year: number): ChartData => {
 const ChartCard = ({years, title, initialData, chartOptions}: ChartCardProps) => {
     const [chartData, setChartData] = useState<ChartData>(initialData);
     const [selectedYear, setSelectedYear] = useState(years[0]);
+    const chartRef = useRef<HTMLDivElement>(null);
 
     const updateChartData = (year: number) => {
         setChartData(generateChartData(title, year));
         setSelectedYear(year);
+    };
+
+    const downloadChart = async () => {
+        if (chartRef.current) {
+            const canvas = await html2canvas(chartRef.current);
+            const link = document.createElement("a");
+            link.download = `${title}-${selectedYear}.jpg`;
+            link.href = canvas.toDataURL("image/jpeg");
+            link.click();
+        }
     };
 
     return (
@@ -183,15 +197,21 @@ const ChartCard = ({years, title, initialData, chartOptions}: ChartCardProps) =>
                             </select>
                             <span style={{fontSize: "1.2rem", color: "#fff"}}>{title}</span>
                         </div>
-                        <CButton color="primary">다운로드</CButton>
+                        <CButton style={{
+                            backgroundColor: "transparent",
+                            border: "none",
+                            color: "white",
+                        }} onClick={downloadChart}>
+                            <CIcon icon={cilArrowThickToBottom} size="lg"/>
+                        </CButton>
                     </div>
                 </CCardHeader>
                 <CCardBody className="bg-dawn">
-                    <div style={{height: "450px"}}>
+                    <div style={{height: "450px"}} ref={chartRef}>
                         {chartData ? (
-                            <Bar key={Math.random()} data={chartData} options={chartOptions} />
+                            <Bar key={Math.random()} data={chartData} options={chartOptions}/>
                         ) : (
-                            <p style={{ color: "#fff" }}>데이터를 불러올 수 없습니다.</p>
+                            <p style={{color: "#fff"}}>데이터를 불러올 수 없습니다.</p>
                         )}
                     </div>
                 </CCardBody>
