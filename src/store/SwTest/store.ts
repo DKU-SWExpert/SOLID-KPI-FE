@@ -1,4 +1,5 @@
-import create from "zustand";
+import {create} from "zustand";
+import {persist} from "zustand/middleware";
 
 interface Dataset {
     label: string;
@@ -18,8 +19,10 @@ interface ChartStore {
     levelChartData: ChartData;
     departmentChartData: ChartData;
     gradeChartData: ChartData;
+    updateDataByYear: (year: string) => void;
 }
-export const useChartStore = create<ChartStore>((set) => ({
+
+const initialChartData: ChartStore = {
     chartData: {
         labels: ["TOPCIT", "PCCP", "PCCE", "전체"],
         datasets: [
@@ -117,4 +120,20 @@ export const useChartStore = create<ChartStore>((set) => ({
             },
         ],
     },
-}));
+    updateDataByYear: () => {
+    },
+};
+
+export const useChartStore = create<ChartStore>()(
+    persist(
+        (_) => ({
+            ...initialChartData,
+            updateDataByYear: (year: string) => {
+                console.log(`Updating data for year: ${year}`);
+            },
+        }),
+        {
+            name: "chart-storage",
+        }
+    )
+);

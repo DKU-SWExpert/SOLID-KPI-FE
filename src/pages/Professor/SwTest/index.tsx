@@ -1,4 +1,3 @@
-import React from "react";
 import { Bar } from "react-chartjs-2";
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CContainer } from "@coreui/react";
 import { useChartStore } from "@/store/SwTest/store.ts";
