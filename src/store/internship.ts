@@ -4,8 +4,8 @@ import {ChartData} from "chart.js";
 
 interface ChartState {
     internshipCompletion: ChartData<'bar' | 'line'>;
-    departmentInternshipStatus: ChartData<'bar'>;
-    internshipStatusByType: ChartData<'pie'>;
+    departmentInternshipStatus: Record<string, ChartData<'bar'>>;
+    internshipStatusByType: Record<string, ChartData<'pie'>>;
     reset: () => void;
 }
 
@@ -14,8 +14,8 @@ const internshipCompletion: ChartData<'bar' | 'line'> = {
     datasets: [
         {
             label: '실적',
-            backgroundColor: 'rgba(135, 206, 235, 0.6)',
-            borderColor: 'rgba(135, 206, 235, 0.6)',
+            backgroundColor: 'rgba(135,170,235,0.6)',
+            borderColor: 'rgb(135,182,235)',
             data: [4.3],
             type: 'bar',
         },
@@ -28,36 +28,163 @@ const internshipCompletion: ChartData<'bar' | 'line'> = {
     ],
 };
 
-const departmentInternshipStatus: ChartData<'bar'> = {
-    labels: ['SW융합학부', '데이터사이언스', '모바일', '사이버보안', '소프트웨어', '컴퓨터공학'],
-    datasets: [
-        {label: '대학', data: [0, 0, 1, 1, 1, 0], backgroundColor: '#36A2EB', stack: 'Stack 0'},
-        {label: '입체 1', data: [0, 0, 0, 0, 1, 2], backgroundColor: '#FF6384', stack: 'Stack 0'},
-        {label: '입체 2', data: [1, 1, 2, 0, 2, 2], backgroundColor: '#4BC0C0', stack: 'Stack 0'},
-        {label: '입체 3', data: [2, 2, 1, 2, 0, 2], backgroundColor: '#FFB74D', stack: 'Stack 0'},
-    ],
+const departmentInternshipStatus: Record<string, ChartData<'bar'>> = {
+    '2024': {
+        labels: ['SW융합학부', '데이터사이언스', '모바일', '사이버보안', '소프트웨어', '컴퓨터공학'],
+        datasets: [
+            {label: '대학', data: [0, 0, 1, 1, 1, 0], backgroundColor: 'rgba(54, 162, 235, 0.6)', stack: 'Stack 0'},
+            {label: '업체 1', data: [0, 0, 0, 0, 1, 2], backgroundColor: 'rgba(255, 99, 132, 0.6)', stack: 'Stack 0'},
+            {label: '업체 2', data: [1, 1, 2, 0, 2, 2], backgroundColor: 'rgba(75, 192, 192, 0.6)', stack: 'Stack 0'},
+            {label: '업체 3', data: [2, 2, 1, 2, 0, 2], backgroundColor: 'rgba(255, 159, 64, 0.6)', stack: 'Stack 0'},
+        ],
+    },
+    '2025': {
+        labels: ['SW융합학부', '데이터사이언스', '모바일', '사이버보안', '소프트웨어', '컴퓨터공학'],
+        datasets: [
+            {label: '대학', data: [], backgroundColor: 'rgba(54, 162, 235, 0.6)', stack: 'Stack 0'},
+            {label: '업체 1', data: [], backgroundColor: 'rgba(255, 99, 132, 0.6)', stack: 'Stack 0'},
+            {label: '업체 2', data: [], backgroundColor: 'rgba(75, 192, 192, 0.6)', stack: 'Stack 0'},
+            {label: '업체 3', data: [], backgroundColor: 'rgba(255, 159, 64, 0.6)', stack: 'Stack 0'},
+        ],
+    },
+    '2026': {
+        labels: ['SW융합학부', '데이터사이언스', '모바일', '사이버보안', '소프트웨어', '컴퓨터공학'],
+        datasets: [
+            {label: '대학', data: [], backgroundColor: 'rgba(54, 162, 235, 0.6)', stack: 'Stack 0'},
+            {label: '업체 1', data: [], backgroundColor: 'rgba(255, 99, 132, 0.6)', stack: 'Stack 0'},
+            {label: '업체 2', data: [], backgroundColor: 'rgba(75, 192, 192, 0.6)', stack: 'Stack 0'},
+            {label: '업체 3', data: [], backgroundColor: 'rgba(255, 159, 64, 0.6)', stack: 'Stack 0'},
+        ],
+    },
+    '2027': {
+        labels: ['SW융합학부', '데이터사이언스', '모바일', '사이버보안', '소프트웨어', '컴퓨터공학'],
+        datasets: [
+            {label: '대학', data: [], backgroundColor: 'rgba(54, 162, 235, 0.6)', stack: 'Stack 0'},
+            {label: '업체 1', data: [], backgroundColor: 'rgba(255, 99, 132, 0.6)', stack: 'Stack 0'},
+            {label: '업체 2', data: [], backgroundColor: 'rgba(75, 192, 192, 0.6)', stack: 'Stack 0'},
+            {label: '업체 3', data: [], backgroundColor: 'rgba(255, 159, 64, 0.6)', stack: 'Stack 0'},
+        ],
+    },
+    '2028': {
+        labels: ['SW융합학부', '데이터사이언스', '모바일', '사이버보안', '소프트웨어', '컴퓨터공학'],
+        datasets: [
+            {label: '대학', data: [], backgroundColor: 'rgba(54, 162, 235, 0.6)', stack: 'Stack 0'},
+            {label: '업체 1', data: [], backgroundColor: 'rgba(255, 99, 132, 0.6)', stack: 'Stack 0'},
+            {label: '업체 2', data: [], backgroundColor: 'rgba(75, 192, 192, 0.6)', stack: 'Stack 0'},
+            {label: '업체 3', data: [], backgroundColor: 'rgba(255, 159, 64, 0.6)', stack: 'Stack 0'},
+        ],
+    },
+    '2029': {
+        labels: ['SW융합학부', '데이터사이언스', '모바일', '사이버보안', '소프트웨어', '컴퓨터공학'],
+        datasets: [
+            {label: '대학', data: [], backgroundColor: 'rgba(54, 162, 235, 0.6)', stack: 'Stack 0'},
+            {label: '업체 1', data: [], backgroundColor: 'rgba(255, 99, 132, 0.6)', stack: 'Stack 0'},
+            {label: '업체 2', data: [], backgroundColor: 'rgba(75, 192, 192, 0.6)', stack: 'Stack 0'},
+            {label: '업체 3', data: [], backgroundColor: 'rgba(255, 159, 64, 0.6)', stack: 'Stack 0'},
+        ],
+    },
 };
 
-const internshipStatusByType: ChartData<'pie'> = {
-    labels: ['인턴십 장기', '인턴십 단기', '랩 인턴', '글로벌 인턴'],
-    datasets: [{data: [30, 48, 13, 9], backgroundColor: ['#36A2EB', '#FF6384', '#4BC0C0', '#FFB74D']}],
+const internshipStatusByType: Record<string, ChartData<'pie'>> = {
+    '2024': {
+        labels: ['인턴십 장기', '인턴십 단기', '랩 인턴', '글로벌 인턴'],
+        datasets: [{
+            data: [30, 48, 13, 9],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: 'rgba(135, 206, 235, 0.6)',
+            borderWidth: 2,
+        }],
+    },
+    '2025': {
+        labels: ['인턴십 장기', '인턴십 단기', '랩 인턴', '글로벌 인턴'],
+        datasets: [{
+            data: [],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: 'rgba(135, 206, 235, 0.6)',
+            borderWidth: 2,
+        }],
+    },
+    '2026': {
+        labels: ['인턴십 장기', '인턴십 단기', '랩 인턴', '글로벌 인턴'],
+        datasets: [{
+            data: [],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: 'rgba(135, 206, 235, 0.6)',
+            borderWidth: 2,
+        }],
+    },
+    '2027': {
+        labels: ['인턴십 장기', '인턴십 단기', '랩 인턴', '글로벌 인턴'],
+        datasets: [{
+            data: [],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: 'rgba(135, 206, 235, 0.6)',
+            borderWidth: 2,
+        }],
+    },
+    '2028': {
+        labels: ['인턴십 장기', '인턴십 단기', '랩 인턴', '글로벌 인턴'],
+        datasets: [{
+            data: [],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: 'rgba(135, 206, 235, 0.6)',
+            borderWidth: 2,
+        }],
+    },
+    '2029': {
+        labels: ['인턴십 장기', '인턴십 단기', '랩 인턴', '글로벌 인턴'],
+        datasets: [{
+            data: [],
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
+            ],
+            borderColor: 'rgba(135, 206, 235, 0.6)',
+            borderWidth: 2,
+        }],
+    },
 };
 
 const useChartStore = create<ChartState>()(
     persist(
         (set) => ({
-            internshipCompletion: internshipCompletion,
-            departmentInternshipStatus: departmentInternshipStatus,
-            internshipStatusByType: internshipStatusByType,
+            internshipCompletion,
+            departmentInternshipStatus,
+            internshipStatusByType,
             reset: () => set({
-                internshipCompletion: internshipCompletion,
-                departmentInternshipStatus: departmentInternshipStatus,
-                internshipStatusByType: internshipStatusByType,
+                internshipCompletion,
+                departmentInternshipStatus,
+                internshipStatusByType,
             }),
         }),
-        {
-            name: "chart-storage",
-        }
+        {name: "chart-storage"}
     )
 );
 
