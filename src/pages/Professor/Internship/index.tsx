@@ -82,6 +82,17 @@ const ProfessorInternship = () => {
         },
     };
 
+    const downloadChart = () => {
+        const chartInstance = chartRef.current;
+        if (chartInstance) {
+            const imageUrl = chartInstance.toBase64Image();
+            const link = document.createElement("a");
+            link.href = imageUrl;
+            link.download = "chart.png";
+            link.click();
+        }
+    };
+
     return (
         <CContainer fluid className="flex-grow-1 px-4 body">
             <CContainer className="d-flex justify-content-center my-5">
@@ -93,7 +104,7 @@ const ProfessorInternship = () => {
                         className="d-flex justify-content-between align-items-center bg-dawn-light text-white px-4 py-3"
                     >
                         <span>인턴십 이수율 지표</span>
-                        <CButton color="primary" className="bg-transparent border-0">
+                        <CButton color="primary" className="bg-transparent border-0" onClick={downloadChart}>
                             <CIcon icon={cilArrowThickToBottom} size="lg"/>
                         </CButton>
                     </CCardHeader>
