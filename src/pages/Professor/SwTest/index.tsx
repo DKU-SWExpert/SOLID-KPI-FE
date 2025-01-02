@@ -18,7 +18,7 @@ interface ChartCardProps {
             borderWidth: number;
             data: number[];
         }[];
-    };
+    } | null;
     chartOptions: any;
     onYearChange?: (year: number) => void;
 }
@@ -79,7 +79,7 @@ type ChartData = {
         borderWidth: number;
         data: number[];
     }[];
-};
+}|null;
 
 const generateChartData = (title: string, year: number): ChartData => {
     const randomData = (length: number, max: number) =>
@@ -150,10 +150,7 @@ const generateChartData = (title: string, year: number): ChartData => {
                 })),
             };
         default:
-            return {
-                labels: [],
-                datasets: [],
-            }
+            return null;
     }
 };
 
@@ -191,7 +188,11 @@ const ChartCard = ({years, title, initialData, chartOptions}: ChartCardProps) =>
                 </CCardHeader>
                 <CCardBody className="bg-dawn">
                     <div style={{height: "450px"}}>
-                        <Bar key={Math.random()} data={chartData} options={chartOptions}/>
+                        {chartData ? (
+                            <Bar key={Math.random()} data={chartData} options={chartOptions} />
+                        ) : (
+                            <p style={{ color: "#fff" }}>데이터를 불러올 수 없습니다.</p>
+                        )}
                     </div>
                 </CCardBody>
             </CCard>
