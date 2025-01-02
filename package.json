@@ -15,6 +15,7 @@
     "@coreui/icons-react": "^2.3.0",
     "@coreui/react": "^5.4.1",
     "@coreui/react-chartjs": "^3.0.0",
+    "@coreui/utils": "^2.0.2",
     "axios": "^1.7.7",
     "chart.js": "^4.4.7",
     "chartjs-plugin-datalabels": "^2.2.0",

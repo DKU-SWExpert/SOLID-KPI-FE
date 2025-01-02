@@ -1,78 +1,109 @@
-import {CChartBar} from '@coreui/react-chartjs';
-import {CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow} from '@coreui/react';
+import {useEffect, useRef} from "react";
+import {CChart} from "@coreui/react-chartjs";
+import {CButton, CCard, CCardBody, CCardHeader, CContainer} from "@coreui/react";
+import type {ChartOptions, ScaleOptions} from "chart.js";
+import {Chart} from "chart.js";
+import {useChartStore} from "@store/internship";
+import CIcon from "@coreui/icons-react";
+import {cilArrowThickToBottom} from "@coreui/icons";
 
 const ProfessorInternship = () => {
-    const years = ['2024', '2025', '2026', '2027', '2028', '2029'];
-    const userCounts = [60, 200, 400, 800, 1100, 1100];
-    const targets = [0, 250, 500, 750, 1000, 1000];
-    const issueRates = [4.1, 5.6, 7.1, 8.6, 10.1, 11.6];
+    const chartRef = useRef<Chart<'bar' | 'line'> | null>(null);
+    const {data} = useChartStore();
 
-    const chartData = {
-        labels: years,
-        datasets: [
-            {
-                type: 'bar' as const,
-                label: '총 User 수',
-                data: userCounts,
-                backgroundColor: 'rgba(54, 162, 235, 0.6)',
-            },
-            {
-                type: 'line' as const,
-                label: '이수율 (%)',
-                data: issueRates,
-                borderColor: '#FFC107',
-                borderWidth: 2,
-                tension: 0.4,
-            },
-        ],
-    };
+    useEffect(() => {
+        const updateChartColors = () => {
+            const chartInstance = chartRef.current;
+            if (!chartInstance) return;
 
-    const chartOptions = {
+            const {options} = chartInstance;
+
+            const applyColorScheme = (scale: ScaleOptions) => {
+                if (scale.grid) scale.grid.color = "#B0B0B0";
+                if (scale.ticks) scale.ticks.color = "#FFFFFF";
+            };
+
+            if (options.scales?.x) applyColorScheme(options.scales.x);
+            if (options.scales?.y) applyColorScheme(options.scales.y);
+
+            if (options.plugins?.legend?.labels) {
+                options.plugins.legend.labels.color = "#FFFFFF";
+            }
+
+            chartInstance.update();
+        };
+
+        document.documentElement.addEventListener("ColorSchemeChange", updateChartColors);
+        return () => {
+            document.documentElement.removeEventListener("ColorSchemeChange", updateChartColors);
+        };
+    }, []);
+
+    const options: ChartOptions<'bar' | 'line'> = {
         responsive: true,
+        maintainAspectRatio: true,
         plugins: {
             legend: {
-                position: 'top' as const,
+                labels: {
+                    color: "#FFFFFF",
+                },
             },
-            title: {
-                display: true,
-                text: '인턴십 이슈율 지표',
+            tooltip: {
+                mode: "index",
+                intersect: false,
+                position: 'nearest',
+            },
+        },
+        hover: {
+            mode: "nearest",
+            intersect: true,
+        },
+        scales: {
+            x: {
+                type: "category",
+                grid: {
+                    color: "#B0B0B0",
+                },
+                ticks: {
+                    color: "#FFFFFF",
+                },
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    color: "#B0B0B0",
+                },
+                ticks: {
+                    color: "#FFFFFF",
+                    stepSize: 5,
+                    maxTicksLimit: 5,
+                },
             },
         },
     };
 
     return (
-        <div style={{padding: '2rem', backgroundColor: '#1E1E2F', color: '#FFF', minHeight: '100vh'}}>
-            <h1 style={{textAlign: 'center'}}>인턴십 이수율 지표</h1>
-
-            {/* Chart */}
-            <CChartBar data={chartData} options={chartOptions} style={{marginBottom: '2rem'}}/>
-
-            {/* Table */}
-            <CTable bordered borderColor="dark" color="dark">
-                <CTableHead>
-                    <CTableRow>
-                        <CTableHeaderCell scope="col">연도</CTableHeaderCell>
-                        {years.map((year) => (
-                            <CTableHeaderCell key={year} scope="col">{year}</CTableHeaderCell>
-                        ))}
-                    </CTableRow>
-                </CTableHead>
-                <CTableBody>
-                    <CTableRow>
-                        <CTableDataCell>총 User 수</CTableDataCell>
-                        {userCounts.map((count, index) => (
-                            <CTableDataCell key={index}>{count}</CTableDataCell>
-                        ))}
-                    </CTableRow>
-                    <CTableRow>
-                        <CTableDataCell>목표</CTableDataCell>
-                        {targets.map((target, index) => (
-                            <CTableDataCell key={index}>{target}</CTableDataCell>
-                        ))}
-                    </CTableRow>
-                </CTableBody>
-            </CTable>
-        </div>
+        <CContainer fluid className="flex-grow-1 px-4 body">
+            <CContainer className="d-flex justify-content-center my-5">
+                <CCard
+                    className="bg-dawn-light text-white border-gray"
+                    style={{width: '100%', maxWidth: '1200px', height: 'auto'}}
+                >
+                    <CCardHeader
+                        className="d-flex justify-content-between align-items-center bg-dawn-light text-white px-4 py-3"
+                    >
+                        <span>인턴십 이수율 지표</span>
+                        <CButton color="primary" className="bg-transparent border-0">
+                            <CIcon icon={cilArrowThickToBottom} size="lg"/>
+                        </CButton>
+                    </CCardHeader>
+                    <CCardBody className="pt-0 d-flex justify-content-center align-items-center">
+                        <CChart type="bar" data={data} options={options} ref={chartRef}
+                                style={{height: '33rem', width: '100%'}}/>
+                    </CCardBody>
+                </CCard>
+            </CContainer>
+        </CContainer>
     );
 };
 
