@@ -34,8 +34,12 @@ const createBaseChartOptions = (stepSize: number, max: number) => ({
             },
         },
         tooltip: {
-            callbacks: { // TODO: 툴팁명 변경 필요
-                label: (tooltipItem: { raw: number }) => `${tooltipItem.raw}명`,
+            callbacks: {
+                label: (tooltipItem: any) => {
+                    const label = tooltipItem.dataset.label || '';
+                    const value = tooltipItem.raw;
+                    return `${label}: ${value}명`;
+                },
             },
         },
         datalabels: {
