@@ -1,10 +1,12 @@
-import { useEffect, useRef } from "react";
-import { CChart } from "@coreui/react-chartjs";
-import { CButton, CCard, CCardBody, CCardHeader, CContainer } from "@coreui/react";
-import { Chart, ChartOptions } from "chart.js";
-import { useChartStore } from "@store/internship";
+import {useEffect, useRef} from "react";
+import {CButton, CCard, CCardBody, CCardHeader, CContainer} from "@coreui/react";
+import {Chart, ChartOptions, registerables} from "chart.js";
+import {Bar, Pie} from "react-chartjs-2";
+import {useChartStore} from "@store/internship";
 import CIcon from "@coreui/icons-react";
-import { cilArrowThickToBottom } from "@coreui/icons";
+import {cilArrowThickToBottom} from "@coreui/icons";
+
+Chart.register(...registerables);
 
 const getChartOptions = (type: 'bar' | 'line' | 'pie'): ChartOptions => {
     const baseOptions: ChartOptions = {
@@ -12,7 +14,7 @@ const getChartOptions = (type: 'bar' | 'line' | 'pie'): ChartOptions => {
         maintainAspectRatio: true,
         plugins: {
             legend: {
-                labels: { color: "#FFFFFF" },
+                labels: {color: "#FFFFFF"},
             },
             tooltip: {
                 mode: type === 'pie' ? undefined : "index",
@@ -35,13 +37,13 @@ const getChartOptions = (type: 'bar' | 'line' | 'pie'): ChartOptions => {
             scales: {
                 x: {
                     type: "category",
-                    grid: { color: "#B0B0B0" },
-                    ticks: { color: "#FFFFFF" },
+                    grid: {color: "#B0B0B0"},
+                    ticks: {color: "#FFFFFF"},
                 },
                 y: {
                     beginAtZero: true,
-                    grid: { color: "#B0B0B0" },
-                    ticks: { color: "#FFFFFF", stepSize: 5, maxTicksLimit: 5 },
+                    grid: {color: "#B0B0B0"},
+                    ticks: {color: "#FFFFFF", stepSize: 5, maxTicksLimit: 5},
                 },
             },
         };
@@ -50,7 +52,7 @@ const getChartOptions = (type: 'bar' | 'line' | 'pie'): ChartOptions => {
     return baseOptions;
 };
 
-const downloadChart = (chartRef: React.RefObject<Chart>, filename: string) => {
+const downloadChart = (chartRef: React.RefObject<Chart<'bar' | 'line' | 'pie'>>, filename: string) => {
     if (chartRef.current) {
         const imageUrl = chartRef.current.toBase64Image();
         const link = document.createElement('a');
@@ -61,18 +63,17 @@ const downloadChart = (chartRef: React.RefObject<Chart>, filename: string) => {
 };
 
 const ProfessorInternship = () => {
-    const chartRef = useRef<Chart<'bar' | 'line'> | null>(null);
-    const barChartRef = useRef<Chart<'bar'> | null>(null);
+    const barChartRef = useRef<Chart<'bar' | 'line'> | null>(null);
     const pieChartRef = useRef<Chart<'pie'> | null>(null);
+    const {data, departmentData, typeData} = useChartStore();
 
-    const { data, departmentData, typeData } = useChartStore();
-
+    // Theme color update
     useEffect(() => {
         const updateChartColors = () => {
-            const chartInstance = chartRef.current;
+            const chartInstance = barChartRef.current;
             if (!chartInstance) return;
 
-            const { options } = chartInstance;
+            const {options} = chartInstance;
             const applyColorScheme = (scale: any) => {
                 if (scale.grid) scale.grid.color = "#B0B0B0";
                 if (scale.ticks) scale.ticks.color = "#FFFFFF";
@@ -104,50 +105,51 @@ const ProfessorInternship = () => {
 
     return (
         <CContainer fluid className="flex-grow-1 px-4 body">
-            {/* 인턴십 이수율 지표 차트 */}
             <CContainer className="d-flex justify-content-center my-5">
-                <CCard className="bg-dawn-light text-white border-gray" style={{ width: '100%', maxWidth: '1200px' }}>
-                    <CCardHeader className="d-flex justify-content-between align-items-center bg-dawn-light text-white px-4 py-3">
+                <CCard className="bg-dawn-light text-white border-gray" style={{width: '100%', maxWidth: '1200px'}}>
+                    <CCardHeader
+                        className="d-flex justify-content-between align-items-center bg-dawn-light text-white px-4 py-3">
                         <span>인턴십 이수율 지표</span>
                         <CButton color="primary" className="bg-transparent border-0"
-                                 onClick={() => downloadChart(chartRef, 'main-chart.png')}>
-                            <CIcon icon={cilArrowThickToBottom} size="lg" />
+                                 onClick={() => downloadChart(barChartRef, 'main-chart.png')}>
+                            <CIcon icon={cilArrowThickToBottom} size="lg"/>
                         </CButton>
                     </CCardHeader>
-                    <CCardBody className="pt-0" style={{ ...cardBodyStyle, height: '33rem' }}>
-                        <CChart type="bar" data={data} options={getChartOptions('bar')} ref={chartRef} style={chartStyle} />
+                    <CCardBody className="pt-0" style={{...cardBodyStyle, height: '33rem'}}>
+                        <Bar data={data} options={getChartOptions('bar')} ref={barChartRef} style={chartStyle}/>
                     </CCardBody>
                 </CCard>
             </CContainer>
 
-            {/* 학과별 인턴현황 차트 */}
             <CContainer className="d-flex justify-content-center my-5">
-                <CCard className="bg-dark text-white border-gray" style={{ width: '100%', maxWidth: '1200px' }}>
+                <CCard className="bg-dark text-white border-gray" style={{width: '100%', maxWidth: '1200px'}}>
                     <CCardHeader className="d-flex justify-content-between align-items-center px-4 py-3">
                         <span>학과별 인턴 현황</span>
                         <CButton color="primary" className="bg-transparent border-0"
                                  onClick={() => downloadChart(barChartRef, 'department-chart.png')}>
-                            <CIcon icon={cilArrowThickToBottom} size="lg" />
+                            <CIcon icon={cilArrowThickToBottom} size="lg"/>
                         </CButton>
                     </CCardHeader>
-                    <CCardBody style={{ ...cardBodyStyle, height: '500px', overflow: 'hidden' }}>
-                        <CChart type="bar" data={departmentData} options={getChartOptions('bar')} ref={barChartRef} style={chartStyle} />
+                    <CCardBody style={{...cardBodyStyle, height: '500px', overflow: 'hidden'}}>
+                        <Bar data={departmentData} options={getChartOptions('bar')} ref={barChartRef}
+                             style={chartStyle}/>
                     </CCardBody>
                 </CCard>
             </CContainer>
 
-            {/* 인턴 유형별 현황 차트 */}
             <CContainer className="d-flex justify-content-center my-5">
-                <CCard className="bg-dark text-white border-gray" style={{ width: '100%', maxWidth: '1200px' }}>
+                <CCard className="bg-dark text-white border-gray" style={{width: '100%', maxWidth: '1200px'}}>
                     <CCardHeader className="d-flex justify-content-between align-items-center px-4 py-3">
                         <span>인턴 유형별 현황</span>
                         <CButton color="primary" className="bg-transparent border-0"
                                  onClick={() => downloadChart(pieChartRef, 'type-chart.png')}>
-                            <CIcon icon={cilArrowThickToBottom} size="lg" />
+                            <CIcon icon={cilArrowThickToBottom} size="lg"/>
                         </CButton>
                     </CCardHeader>
-                    <CCardBody className="pt-0 d-flex justify-content-center align-items-center" style={{ height: '500px' }}>
-                        <CChart type="pie" data={typeData} options={getChartOptions('pie')} ref={pieChartRef} style={{ height: '400px', width: 'auto' }} />
+                    <CCardBody className="pt-0 d-flex justify-content-center align-items-center"
+                               style={{height: '500px'}}>
+                        <Pie data={typeData} options={getChartOptions('pie')} ref={pieChartRef}
+                             style={{height: '400px', width: 'auto'}}/>
                     </CCardBody>
                 </CCard>
             </CContainer>
