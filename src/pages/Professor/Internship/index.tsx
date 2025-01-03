@@ -35,6 +35,8 @@ const downloadChart = (chartRef: React.RefObject<ChartJS<'bar' | 'line' | 'pie'>
     }
 };
 
+const years = [2024, 2025, 2026, 2027, 2028, 2029];
+
 const ProfessorInternship = () => {
     const [departmentInternshipStatusYear, setDepartmentInternshipStatusYear] = useState('2024');
     const [internshipStatusByTypeYear, setInternshipStatusByTypeYear] = useState('2024');
@@ -97,12 +99,11 @@ const ProfessorInternship = () => {
                                 onChange={handleDepartmentInternshipStatusYearChange}
                                 style={{marginRight: '10px', width: '150px'}}
                             >
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                                <option value="2027">2027</option>
-                                <option value="2028">2028</option>
-                                <option value="2029">2029</option>
+                                {years.map((year) => (
+                                    <option key={year} value={year}>
+                                        {year}
+                                    </option>
+                                ))}
                             </CFormSelect>
                             <span>학과별 인턴 현황</span>
                         </CContainer>
@@ -142,12 +143,11 @@ const ProfessorInternship = () => {
                                 onChange={handleInternshipStatusByTypeYearChange}
                                 style={{marginRight: '10px', width: '150px'}}
                             >
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                                <option value="2027">2027</option>
-                                <option value="2028">2028</option>
-                                <option value="2029">2029</option>
+                                {years.map((year) => (
+                                    <option key={year} value={year}>
+                                        {year}
+                                    </option>
+                                ))}
                             </CFormSelect>
                             <span>인턴 유형별 현황</span>
                         </CContainer>
