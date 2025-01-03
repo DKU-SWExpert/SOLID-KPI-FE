@@ -18,10 +18,11 @@ import {Bar, Chart, Pie} from "react-chartjs-2";
 import {useChartStore} from "@store/internship";
 import CIcon from "@coreui/icons-react";
 import {cilArrowThickToBottom} from "@coreui/icons";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 ChartJS.register(
     LinearScale, CategoryScale, BarElement, PointElement, LineElement, Legend, Tooltip,
-    LineController, BarController, PieController, ArcElement
+    LineController, BarController, PieController, ArcElement, ChartDataLabels
 );
 
 const downloadChart = (chartRef: React.RefObject<ChartJS<'bar' | 'line' | 'pie'>>, filename: string) => {
@@ -68,7 +69,20 @@ const ProfessorInternship = () => {
                         </CButton>
                     </CCardHeader>
                     <CCardBody className="pt-0" style={{...cardBodyStyle, height: '33rem'}}>
-                        <Chart type="bar" data={internshipCompletion} ref={mixChartRef} style={chartStyle}/>
+                        <Chart type="bar" data={internshipCompletion} ref={mixChartRef} style={chartStyle} options={{
+                            plugins: {
+                                datalabels: {
+                                    display: (ctx) => ctx.datasetIndex === 1,
+                                    anchor: 'end',
+                                    align: 'top',
+                                    formatter: (value) => `${value}%`,
+                                    color: 'white',
+                                    font: {
+                                        size: 12,
+                                    },
+                                },
+                            },
+                        }}/>
                     </CCardBody>
                 </CCard>
             </CContainer>
@@ -99,7 +113,21 @@ const ProfessorInternship = () => {
                     </CCardHeader>
                     <CCardBody style={{...cardBodyStyle, height: '500px', overflow: 'hidden'}}>
                         <Bar data={departmentInternshipStatus[departmentInternshipStatusYear]} ref={barChartRef}
-                             style={chartStyle}/>
+                             style={chartStyle} options={{
+                            plugins: {
+                                datalabels: {
+                                    anchor: 'center',
+                                    align: 'center',
+                                    formatter: (value) => {
+                                        return value !== 0 ? `${value}명` : '';
+                                    },
+                                    color: 'white',
+                                    font: {
+                                        size: 12,
+                                    },
+                                },
+                            },
+                        }}/>
                     </CCardBody>
                 </CCard>
             </CContainer>
@@ -131,7 +159,21 @@ const ProfessorInternship = () => {
                     <CCardBody className="pt-0 d-flex justify-content-center align-items-center"
                                style={{height: '500px'}}>
                         <Pie data={internshipStatusByType[internshipStatusByTypeYear]} ref={pieChartRef}
-                             style={{height: '400px', width: 'auto'}}/>
+                             style={{height: '400px', width: 'auto'}} options={{
+                            plugins: {
+                                datalabels: {
+                                    anchor: 'center',
+                                    align: 'center',
+                                    formatter: (value) => {
+                                        return value !== 0 ? `${value} %` : '';
+                                    },
+                                    color: 'white',
+                                    font: {
+                                        size: 12,
+                                    },
+                                },
+                            },
+                        }}/>
                     </CCardBody>
                 </CCard>
             </CContainer>
