@@ -1,5 +1,7 @@
 import React, {useRef, useState} from "react";
 import {CContainer} from "@coreui/react";
+import {Bar, Pie} from "react-chartjs-2";
+import {useChartStore} from "@store/internship";
 import {
     ArcElement,
     BarController,
@@ -13,11 +15,9 @@ import {
     PieController,
     PointElement,
     Tooltip
-} from 'chart.js';
-import {Bar, Pie} from "react-chartjs-2";
-import {useChartStore} from "@store/internship";
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import ChartCard from '@components/ChartCard';
+} from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import ChartCard from "@components/ChartCard";
 
 ChartJS.register(
     LinearScale, CategoryScale, BarElement, PointElement, LineElement, Legend, Tooltip,
@@ -27,8 +27,8 @@ ChartJS.register(
 const years = [2024, 2025, 2026, 2027, 2028, 2029];
 
 const ProfessorInternship = () => {
-    const [departmentInternshipStatusYear, setDepartmentInternshipStatusYear] = useState('2024');
-    const [internshipStatusByTypeYear, setInternshipStatusByTypeYear] = useState('2024');
+    const [departmentInternshipStatusYear, setDepartmentInternshipStatusYear] = useState("2024");
+    const [internshipStatusByTypeYear, setInternshipStatusByTypeYear] = useState("2024");
 
     const mixChartRef = useRef<ChartJS<'bar' | 'line'> | null>(null);
     const barChartRef = useRef<ChartJS<'bar'> | null>(null);
@@ -45,12 +45,10 @@ const ProfessorInternship = () => {
     };
 
     return (
-        <CContainer fluid className="flex-grow-1 px-4 body">
+        <CContainer fluid className="flex-grow-1 px-4 body mt-5 mb-5">
             <ChartCard
+                className="mb-5"
                 title="인턴십 이수율 지표"
-                year={departmentInternshipStatusYear}
-                onYearChange={handleDepartmentInternshipStatusYearChange}
-                years={years}
                 chartRef={mixChartRef}
                 chartData={internshipCompletion}
                 chartType={Bar}
@@ -67,9 +65,11 @@ const ProfessorInternship = () => {
                         },
                     },
                 }}
+                showYearSelect={false}
             />
 
             <ChartCard
+                className="mb-5"
                 title="학과별 인턴 현황"
                 year={departmentInternshipStatusYear}
                 onYearChange={handleDepartmentInternshipStatusYearChange}
