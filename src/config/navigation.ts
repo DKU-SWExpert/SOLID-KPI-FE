@@ -43,13 +43,15 @@ export const navigationConfig: Record<string, NavItem[]> = {
       items: [
         { name: "Solid Cloud", path: "/professor/solid-cloud" },
         { name: "인턴십", path: "/professor/internship" },
-        { name: "경진대회", path: "#" },
+        { name: "경진대회", path: "/professor/competition-contest" },
         { name: "장학금", path: "/professor/award" },
         { name: "SW 역량 테스트", path: "/professor/sw-test" },
         { name: "SW 정원 비율", path: "#" },
-        { name: "산학협력 프로젝트 참여률", path: "/professor/industry-academia-project" },
         { name: "교원 1인당 학생수", path: "/professor/number-of-student" },
-        { name: "산학협력 프로젝트 참여률", path: "#" },
+        {
+          name: "산학협력 프로젝트 참여률",
+          path: "/professor/industry-academia-project",
+        },
         { name: "SW 전공생 취업률", path: "#" },
       ],
     },
