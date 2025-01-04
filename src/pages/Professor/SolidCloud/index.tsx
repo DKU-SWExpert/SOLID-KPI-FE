@@ -25,7 +25,7 @@ import CIcon from "@coreui/icons-react";
 import html2canvas from "html2canvas";
 import { ChartDataType, ChartCardProps, ChartData } from "./types";
 import { options } from "./chartOptions";
-import DataTable from "./DataTable";
+import DataTable from "./SolidCloudUsage";
 
 ChartJS.register(
   CategoryScale,
@@ -275,15 +275,9 @@ const SolidCloud = () => {
             style={{ height: "auto" }}
           >
             <CCardHeader className="bg-dawn-light text-white">
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
+              <span style={{ fontSize: "1.2rem", color: "#fff" }}>
                 Solid Cloud 활용 현황
-              </div>
+              </span>
             </CCardHeader>
             <CCardBody className="bg-dawn">
               <div
