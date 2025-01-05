@@ -3,12 +3,13 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 
 interface ChartState {
-  competitionContestParticipant: ChartData<'bar'>;
+  participant: ChartData<'bar'>;
+  
   reset: () => void;
 }
 
 
-const competitionContestParticipant : ChartData<'bar'> = {
+const participant : ChartData<'bar'> = {
   labels: ['2023','2024','총계'],
   datasets: [ 
     { label: '팀(인원)', 
@@ -27,9 +28,9 @@ const competitionContestParticipant : ChartData<'bar'> = {
 const useChartStore = create<ChartState>()(
   persist(
     (set) => ({
-      competitionContestParticipant,
+      participant,
       reset: () => set({
-        competitionContestParticipant,
+        participant,
       }),
     }),
     {name: "chartStorage"}
