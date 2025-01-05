@@ -6,6 +6,14 @@ import {useChartStore} from "@store/competitionContest";
 import ChartCard from "@/components/ChartCard";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import {
+  CTable,
+  CTableHead,
+  CTableHeaderCell,
+  CTableRow,
+  CTableBody,
+  CTableDataCell
+} from "@coreui/react";
+import {
   ArcElement,
   BarController,
   BarElement,
@@ -68,7 +76,6 @@ const CompetitionContest = () => {
         />
 
       <ChartCard
-        className="mb-5"
         title='학과별 경진대회 참여자'
         year={departmentParticipantYear}
         onYearChange= {handleDepartmentParticipantYearChange}
@@ -94,6 +101,49 @@ const CompetitionContest = () => {
           },
       }}
       />
+
+      <CTable className="mb-5 text-white border-gray text-center">
+        <CTableHead>
+          <CTableRow>
+            <CTableHeaderCell scope="col" ></CTableHeaderCell>
+            <CTableHeaderCell scope="col">SW융합학부</CTableHeaderCell>
+            <CTableHeaderCell scope="col">데이터사이언스</CTableHeaderCell>
+            <CTableHeaderCell scope="col">모바일</CTableHeaderCell>
+            <CTableHeaderCell scope="col">사이버보안</CTableHeaderCell>
+            <CTableHeaderCell scope="col">소프트웨어</CTableHeaderCell>
+            <CTableHeaderCell scope="col">컴퓨터공학</CTableHeaderCell>
+          </CTableRow>
+        </CTableHead>
+        <CTableBody>
+          <CTableRow>
+            <CTableHeaderCell scope="row">단체</CTableHeaderCell>
+            <CTableDataCell>9</CTableDataCell>
+            <CTableDataCell>3</CTableDataCell>
+            <CTableDataCell>9</CTableDataCell>
+            <CTableDataCell>0</CTableDataCell>
+            <CTableDataCell>8</CTableDataCell>
+            <CTableDataCell>8</CTableDataCell>
+          </CTableRow>
+          <CTableRow>
+            <CTableHeaderCell scope="row">개인</CTableHeaderCell>
+            <CTableDataCell>1</CTableDataCell>
+            <CTableDataCell>1</CTableDataCell>
+            <CTableDataCell>1</CTableDataCell>
+            <CTableDataCell>1</CTableDataCell>
+            <CTableDataCell>3</CTableDataCell>
+            <CTableDataCell>1</CTableDataCell>
+          </CTableRow>
+          <CTableRow>
+            <CTableHeaderCell scope="row">종합</CTableHeaderCell>
+            <CTableDataCell>10</CTableDataCell>
+            <CTableDataCell>4</CTableDataCell>
+            <CTableDataCell>10</CTableDataCell>
+            <CTableDataCell>1</CTableDataCell>
+            <CTableDataCell>11</CTableDataCell>
+            <CTableDataCell>9</CTableDataCell>
+          </CTableRow>
+        </CTableBody>
+      </CTable>
 
       <ChartCard
                 title="대회별 인력"
