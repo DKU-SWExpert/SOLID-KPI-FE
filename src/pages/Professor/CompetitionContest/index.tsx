@@ -30,7 +30,13 @@ const CompetitionContest = () => {
 
   const barChartRef = useRef<ChartJS<'bar'> | null>(null);
 
-  const {participant} = useChartStore();
+  const {participant, departmentParticipant} = useChartStore();
+
+  const [departmentParticipantYear, setDepartmentParticipantYear] = useState("2024");
+
+  const handleDepartmentParticipantYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setDepartmentParticipantYear(event.target.value);
+  }
 
   return (
     <CContainer fluid className="flex-grow-1 px-4 body mt-5 mb-5">
@@ -54,6 +60,28 @@ const CompetitionContest = () => {
         }}
         showYearSelect={false}
         />
+      <ChartCard
+        className="mb-5"
+        title='학과별 경진대회 참여자'
+        year={departmentParticipantYear}
+        onYearChange= {handleDepartmentParticipantYearChange}
+        years={years}
+        chartRef={barChartRef}
+        chartData={departmentParticipant[departmentParticipantYear]}
+        chartType={Bar}
+        fileName="department-competition-contest-participant.png"
+        chartOptions={{
+          plugins: {
+              datalabels: {
+                  anchor: 'end',
+                  align: 'top',
+                  formatter: (value) => `${value}명`,
+                  color: 'white',
+                  font: {size: 12},
+              },
+          },
+      }}
+      />
     </CContainer>
   );
 };
