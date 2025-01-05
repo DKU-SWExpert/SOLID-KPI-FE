@@ -77,6 +77,11 @@ const CompetitionContest = () => {
         chartType={Bar}
         fileName="department-competition-contest-participant.png"
         chartOptions={{
+          scales: {
+            y: {
+              max: 16, // y축 최대값을 16로 설정
+            },
+          },
           plugins: {
               datalabels: {
                   anchor: 'end',
