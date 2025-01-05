@@ -28,7 +28,8 @@ ChartJS.register(
 const CompetitionContest = () => {
   const years = [2024,2025,2026,2027,2028,2029];
 
-  const barChartRef = useRef<ChartJS<'bar'> | null>(null);
+  const participantBarChartRef = useRef<ChartJS<'bar'> | null>(null);
+  const deptParticipantBarChartRef = useRef<ChartJS<'bar'> | null>(null);
   const pieChartRef = useRef<ChartJS<'pie'> | null>(null);
 
   const {participant, departmentParticipant, manpowerByCompetition} = useChartStore();
@@ -48,7 +49,7 @@ const CompetitionContest = () => {
       <ChartCard
         className="mb-5"
         title="경진대회 참여자"
-        chartRef={barChartRef}
+        chartRef={participantBarChartRef}
         chartData={participant}
         chartType={Bar}
         fileName="competition-contest-participant.png"
@@ -72,7 +73,7 @@ const CompetitionContest = () => {
         year={departmentParticipantYear}
         onYearChange= {handleDepartmentParticipantYearChange}
         years={years}
-        chartRef={barChartRef}
+        chartRef={deptParticipantBarChartRef}
         chartData={departmentParticipant[departmentParticipantYear]}
         chartType={Bar}
         fileName="department-competition-contest-participant.png"
