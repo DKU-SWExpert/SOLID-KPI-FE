@@ -5,6 +5,7 @@ import {persist} from "zustand/middleware";
 interface ChartState {
   participant: ChartData<'bar'>;
   departmentParticipant: Record<string, ChartData<'bar'>>;
+  manpowerByCompetition: Record<string, ChartData<'pie'>>;
   reset: () => void;
 }
 
@@ -78,14 +79,98 @@ const departmentParticipant: Record<string, ChartData<'bar'>> = {
 
 }
 
+const manpowerByCompetition: Record<string, ChartData<'pie'>> = {
+  '2024':{
+    labels: ['인턴쉽', '캡스톤', '경진대회'],
+    datasets: [{
+      data: [15, 32, 15],
+      backgroundColor: [ 
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(75, 192, 192, 0.6)'
+      ],
+      borderColor: 'rgba(135, 206, 235, 0.6)',
+      borderWidth: 2,
+    }],
+  },
+  '2025':{
+    labels: ['인턴쉽', '캡스톤', '경진대회'],
+    datasets: [{
+      data: [10, 12, 9],
+      backgroundColor: [ 
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(75, 192, 192, 0.6)'
+      ],
+      borderColor: 'rgba(135, 206, 235, 0.6)',
+      borderWidth: 2,
+    }],
+  },
+  '2026':{
+    labels: ['인턴쉽', '캡스톤', '경진대회'],
+    datasets: [{
+      data: [15, 10, 15],
+      backgroundColor: [ 
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(75, 192, 192, 0.6)'
+      ],
+      borderColor: 'rgba(135, 206, 235, 0.6)',
+      borderWidth: 2,
+    }],
+  },
+  '2027':{
+    labels: ['인턴쉽', '캡스톤', '경진대회'],
+    datasets: [{
+      data: [12, 12, 10],
+      backgroundColor: [ 
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(75, 192, 192, 0.6)'
+      ],
+      borderColor: 'rgba(135, 206, 235, 0.6)',
+      borderWidth: 2,
+    }],
+  },
+  '2028':{
+    labels: ['인턴쉽', '캡스톤', '경진대회'],
+    datasets: [{
+      data: [15, 22, 10],
+      backgroundColor: [ 
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(75, 192, 192, 0.6)'
+      ],
+      borderColor: 'rgba(135, 206, 235, 0.6)',
+      borderWidth: 2,
+    }],
+  },
+  '2029':{
+    labels: ['인턴쉽', '캡스톤', '경진대회'],
+    datasets: [{
+      data: [9, 14, 12],
+      backgroundColor: [ 
+        'rgba(54, 162, 235, 0.6)',
+        'rgba(255, 99, 132, 0.6)',
+        'rgba(75, 192, 192, 0.6)'
+      ],
+      borderColor: 'rgba(135, 206, 235, 0.6)',
+      borderWidth: 2,
+    }],
+  },
+
+}
+
 const useChartStore = create<ChartState>()(
   persist(
     (set) => ({
       participant,
       departmentParticipant,
+      manpowerByCompetition,
       reset: () => set({
         participant,
         departmentParticipant,
+        manpowerByCompetition,
       }),
     }),
     {name: "chartStorage"}
