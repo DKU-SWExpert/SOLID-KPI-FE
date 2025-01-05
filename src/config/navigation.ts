@@ -48,7 +48,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
         { name: "SW 역량 테스트", path: "/professor/sw-test" },
         { name: "SW 정원 비율", path: "#" },
         { name: "교원 1인당 학생수", path: "#" },
-        { name: "산학협력 프로젝트 참여률", path: "#" },
+        { name: "산학협력 프로젝트 참여률", path: "/professor/industry-academia-project" },
         { name: "SW 전공생 취업률", path: "#" },
       ],
     },
