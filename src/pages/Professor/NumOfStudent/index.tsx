@@ -56,6 +56,19 @@ const NumOfStudent = () => {
     ],
   };
 
+  const yearPerStudentData = {
+    labels: ["SW융합학부", "데이터사이언스", "모바일", "사이버보안", "소프트웨어", "컴퓨터공학"],
+    datasets: [
+      {
+        label: "2024",
+        data: [7, 9, 10, 11, 12, 11],
+        backgroundColor: "rgba(93, 188, 226, 0.89)",
+        borderColor: "rgba(75, 192, 192, 1)",
+        borderWidth: 1,
+      },
+    ],
+  };
+
   return (
     <CContainer fluid className="flex-grow-1 px-4 body mt-5 mb-5">
       <ChartCard
@@ -73,7 +86,7 @@ const NumOfStudent = () => {
               labels: {
                 boxWidth: 10,
                 padding: 10,
-                color: "#ffffff", // 글씨 색상 흰색으로 변경
+                color: "#ffffff",
               },
             },
             datalabels: {
@@ -83,14 +96,19 @@ const NumOfStudent = () => {
               font: {
                 size: 12,
               },
-              formatter: (value) => `${value}명`,
+              formatter: (value, context) => {
+                if (context.dataset.type === "bar") {
+                  return "";
+                }
+                return `${value}명`;
+              },
             },
           },
           scales: {
             y: {
               beginAtZero: true,
               ticks: {
-                color: "#ffffff", // Y축 글씨 흰색으로 변경
+                color: "#ffffff",
                 font: {
                   size: 10,
                 },
@@ -98,7 +116,7 @@ const NumOfStudent = () => {
             },
             x: {
               ticks: {
-                color: "#ffffff", // X축 글씨 흰색으로 변경
+                color: "#ffffff",
                 font: {
                   size: 10,
                 },
@@ -120,26 +138,78 @@ const NumOfStudent = () => {
           </CTableRow>
         </CTableHead>
         <CTableBody>
-        <CTableRow>
-  <CTableDataCell>학생 수</CTableDataCell>
-  {teacherPerStudentData.datasets[0].data.map((value, index) => (
-    <CTableDataCell key={index}>
-      {typeof value === 'number' ? `${value}명` : 'N/A'}
-    </CTableDataCell>
-  ))}
-</CTableRow>
+          <CTableRow>
+            <CTableDataCell>학생 수</CTableDataCell>
+            {teacherPerStudentData.datasets[0].data.map((value, index) => (
+              <CTableDataCell key={index}>
+                {typeof value === "number" ? `${value}명` : "N/A"}
+              </CTableDataCell>
+            ))}
+          </CTableRow>
 
-<CTableRow>
-  <CTableDataCell>목표</CTableDataCell>
-  {teacherPerStudentData.datasets[1].data.map((value, index) => (
-    <CTableDataCell key={index}>
-      {typeof value === 'number' ? `${value}명` : 'N/A'}
-    </CTableDataCell>
-  ))}
-</CTableRow>
-
+          <CTableRow>
+            <CTableDataCell>목표</CTableDataCell>
+            {teacherPerStudentData.datasets[1].data.map((value, index) => (
+              <CTableDataCell key={index}>
+                {typeof value === "number" ? `${value}명` : "N/A"}
+              </CTableDataCell>
+            ))}
+          </CTableRow>
         </CTableBody>
       </CTable>
+
+      <ChartCard
+        title="학과별/년도별 교원 1인당 학생수"
+        year="2024"
+        years={years}
+        chartRef={React.createRef()}
+        chartData={yearPerStudentData}
+        chartType={Bar}
+        fileName="year-per-student-data.png"
+        chartOptions={{
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+              labels: {
+                boxWidth: 10,
+                padding: 10,
+                color: "#ffffff",
+              },
+            },
+            datalabels: {
+              align: "end",
+              anchor: "end",
+              color: "#fff",
+              font: {
+                size: 12,
+              },
+              formatter: (value) => `${value}명`,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                color: "#ffffff",
+                font: {
+                  size: 10,
+                },
+              },
+            },
+            x: {
+              ticks: {
+                color: "#ffffff",
+                font: {
+                  size: 10,
+                },
+              },
+            },
+          },
+        }}
+      />
+
+
     </CContainer>
   );
 };
