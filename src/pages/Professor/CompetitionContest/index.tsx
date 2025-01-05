@@ -30,7 +30,7 @@ const CompetitionContest = () => {
 
   const barChartRef = useRef<ChartJS<'bar'> | null>(null);
 
-  const {competitionContestParticipant} = useChartStore();
+  const {participant} = useChartStore();
 
   return (
     <CContainer fluid className="flex-grow-1 px-4 body mt-5 mb-5">
@@ -38,7 +38,7 @@ const CompetitionContest = () => {
         className="mb-5"
         title="경진대회 참여자"
         chartRef={barChartRef}
-        chartData={competitionContestParticipant}
+        chartData={participant}
         chartType={Bar}
         fileName="competition-contest-participant.png"
         chartOptions={{
