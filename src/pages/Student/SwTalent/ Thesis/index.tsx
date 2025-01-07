@@ -184,7 +184,7 @@ const ThesisApplication = () => {
           className="bg-dark"
           style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
         >
-          {/* 논문제목, 학술지명 한 줄 */}
+          {/* 논문제목, 학술지명 */}
           <CRow className="mb-3">
             <CCol md="6">
               <CFormLabel className="text-white">논문제목</CFormLabel>
