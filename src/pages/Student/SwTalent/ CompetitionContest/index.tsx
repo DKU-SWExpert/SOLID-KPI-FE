@@ -10,27 +10,25 @@ import {
   CButton,
   CRow,
   CCol,
+  CFormLabel,
 } from "@coreui/react";
-
 import { useUserStore } from "@/store/user";
 
 const CompetitionContest = () => {
-  //  로그인 사용자 정보
   const { studentNumber, name, major } = useUserStore();
 
-  // 폼 데이터 상태
   const [formData, setFormData] = useState({
     // 기간
     startDate: "",
     endDate: "",
 
-    // 대회명 라디오
-    contestType: "캡스톤", // 기본 선택값
-    contestTypeEtc: "",    // '기타' 선택 시 입력 내용
+    // 대회명 (라디오 + 기타)
+    contestType: "캡스톤",
+    contestTypeEtc: "",
 
-    // 주관 라디오
-    hostOrg: "SW중심대학", // 기본 선택값
-    hostOrgEtc: "",        // '외부' 선택 시 입력 내용
+    // 주관 (라디오 + 외부)
+    hostOrg: "SW중심대학",
+    hostOrgEtc: "",
 
     // 개인/팀
     participantType: "개인",
@@ -51,85 +49,34 @@ const CompetitionContest = () => {
     professor: "",
   });
 
-
   // 입력 핸들러
-  
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   // 저장 버튼
   const handleSave = () => {
-    // 기간 필수값 (시작일자, 종료일자)
-    if (!formData.startDate) {
-      alert("시작일자를 입력해주세요.");
-      return;
-    }
-    if (!formData.endDate) {
-      alert("종료일자를 입력해주세요.");
-      return;
-    }
-
-    // 대회명 필수값
-    // '기타' 선택 시, contestTypeEtc가 비어있으면 경고
-    if (!formData.contestType) {
-      alert("대회명을 선택해주세요.");
-      return;
-    }
+    // (동일한 검증 로직)
+    if (!formData.startDate) return alert("시작일자를 입력해주세요.");
+    if (!formData.endDate) return alert("종료일자를 입력해주세요.");
     if (formData.contestType === "기타" && !formData.contestTypeEtc) {
-      alert("대회명이 '기타'일 경우, 기타 입력값을 작성해주세요.");
-      return;
-    }
-
-    // 주관 필수값
-    // '외부' 선택 시, hostOrgEtc가 비어있으면 경고
-    if (!formData.hostOrg) {
-      alert("주관을 선택해주세요.");
-      return;
+      return alert("대회명이 '기타'일 경우, 기타 입력을 작성해주세요.");
     }
     if (formData.hostOrg === "외부" && !formData.hostOrgEtc) {
-      alert("주관이 '외부'일 경우, 외부 입력값을 작성해주세요.");
-      return;
-    }
-
-    // 개인/팀 필수값
-    // 팀 선택 시, totalMembers 필수
-    if (!formData.participantType) {
-      alert("개인 또는 팀을 선택해주세요.");
-      return;
+      return alert("주관이 '외부'일 경우, 외부 입력을 작성해주세요.");
     }
     if (formData.participantType === "팀" && !formData.totalMembers) {
-      alert("팀을 선택하셨다면, 총 인원을 입력해주세요.");
-      return;
+      return alert("팀 인원을 입력해주세요.");
     }
+    if (!formData.birthDate) return alert("생년월일을 입력해주세요.");
+    if (!formData.grade) return alert("학년을 입력해주세요.");
+    if (!formData.phone) return alert("핸드폰 번호를 입력해주세요.");
+    if (!formData.email) return alert("이메일 주소를 입력해주세요.");
+    if (!formData.professor) return alert("담당 교수를 입력해주세요.");
 
-    // 기본정보(로그인 기입된 항목 제외)
-    if (!formData.grade) {
-      alert("학년을 입력해주세요.");
-      return;
-    }
-    if (!formData.phone) {
-      alert("핸드폰 번호를 입력해주세요.");
-      return;
-    }
-    if (!formData.email) {
-      alert("이메일 주소를 입력해주세요.");
-      return;
-    }
-
-    // 4.6 담당교수 (필수 여부에 따라 추가)
-    if (!formData.professor) {
-      alert("담당 교수를 입력해주세요.");
-      return;
-    }
-
-    // 모든 필수값 통과 후
     console.log("저장할 데이터:", formData);
     alert("신청이 완료되었습니다.");
   };
@@ -138,7 +85,7 @@ const CompetitionContest = () => {
     <div className="container px-4">
       <Title title="경진대회/공모전 신청" />
 
-      {/* 기간 섹션 */}
+      {/* ====== 기간 섹션 (SWConvergence처럼 bg-dark) ====== */}
       <CCard
         textBgColor="info"
         className="mt-4 mb-4"
@@ -146,16 +93,16 @@ const CompetitionContest = () => {
       >
         <CCardHeader className="text-white">기간</CCardHeader>
         <CCardBody
-          className="bg-dawn-light"
+          className="bg-dark" // SWConvergence: bg-dark
           style={{
             borderBottomLeftRadius: "0.75rem",
             borderBottomRightRadius: "0.75rem",
           }}
         >
-          <div className="d-flex gap-3 flex-wrap">
+          <div className="d-flex gap-3" style={{ flexWrap: "nowrap" }}>
             <CInputGroup>
               <CInputGroupText
-                className="text-white border-gray"
+                className="text-white border-secondary"
                 style={{ maxWidth: "10rem", backgroundColor: "#2A303D" }}
               >
                 시작일자
@@ -163,7 +110,7 @@ const CompetitionContest = () => {
               <CFormInput
                 name="startDate"
                 type="date"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 style={{ maxWidth: "15rem" }}
                 value={formData.startDate}
                 onChange={handleInputChange}
@@ -172,7 +119,7 @@ const CompetitionContest = () => {
 
             <CInputGroup>
               <CInputGroupText
-                className="text-white border-gray"
+                className="text-white border-secondary"
                 style={{ maxWidth: "10rem", backgroundColor: "#2A303D" }}
               >
                 종료일자
@@ -180,7 +127,7 @@ const CompetitionContest = () => {
               <CFormInput
                 name="endDate"
                 type="date"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 style={{ maxWidth: "15rem" }}
                 value={formData.endDate}
                 onChange={handleInputChange}
@@ -190,7 +137,7 @@ const CompetitionContest = () => {
         </CCardBody>
       </CCard>
 
-      {/* 대회명 섹션 (라디오 + 기타 입력) */}
+      {/* ====== 대회명 (라디오) ====== */}
       <CCard
         textBgColor="info"
         className="mt-4 mb-4"
@@ -198,51 +145,56 @@ const CompetitionContest = () => {
       >
         <CCardHeader className="text-white">대회명</CCardHeader>
         <CCardBody
-          className="bg-dawn-light"
+          className="bg-dark" // 배경 어둡게
           style={{
             borderBottomLeftRadius: "0.75rem",
             borderBottomRightRadius: "0.75rem",
           }}
         >
-          <div className="d-flex gap-4 align-items-center flex-wrap">
-            <label>
+          {/* 라디오 (SWConvergence 스타일) */}
+          <div className="d-flex gap-3 flex-wrap">
+            <label className="text-white d-flex align-items-center">
               <input
                 type="radio"
                 name="contestType"
                 value="캡스톤"
+                style={{ accentColor: "#229AFF" }}
                 checked={formData.contestType === "캡스톤"}
                 onChange={handleInputChange}
               />
-              <span className="text-white ms-2">캡스톤</span>
+              <span className="ms-2">캡스톤</span>
             </label>
-            <label>
+
+            <label className="text-white d-flex align-items-center">
               <input
                 type="radio"
                 name="contestType"
                 value="해커톤"
+                style={{ accentColor: "#229AFF" }}
                 checked={formData.contestType === "해커톤"}
                 onChange={handleInputChange}
               />
-              <span className="text-white ms-2">해커톤</span>
+              <span className="ms-2">해커톤</span>
             </label>
-            <label>
+
+            <label className="text-white d-flex align-items-center">
               <input
                 type="radio"
                 name="contestType"
                 value="기타"
+                style={{ accentColor: "#229AFF" }}
                 checked={formData.contestType === "기타"}
                 onChange={handleInputChange}
               />
-              <span className="text-white ms-2">기타</span>
+              <span className="ms-2">기타</span>
             </label>
 
-            {/* '기타' 선택 시 보이는 입력창 */}
             {formData.contestType === "기타" && (
               <CFormInput
                 type="text"
                 name="contestTypeEtc"
                 placeholder="기타 입력"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 style={{ maxWidth: "15rem" }}
                 value={formData.contestTypeEtc}
                 onChange={handleInputChange}
@@ -252,59 +204,61 @@ const CompetitionContest = () => {
         </CCardBody>
       </CCard>
 
-      {/* 주관 섹션 (라디오 + 외부 입력) */}
+      {/* ====== 주관 (라디오) ====== */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4"
+        className="mb-4"
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">주관</CCardHeader>
         <CCardBody
-          className="bg-dawn-light"
+          className="bg-dark" // SWConvergence
           style={{
             borderBottomLeftRadius: "0.75rem",
             borderBottomRightRadius: "0.75rem",
           }}
         >
-          <div className="d-flex gap-4 align-items-center flex-wrap">
-            <label>
+          <div className="d-flex gap-3 flex-wrap">
+            <label className="text-white d-flex align-items-center">
               <input
                 type="radio"
                 name="hostOrg"
                 value="SW중심대학"
+                style={{ accentColor: "#229AFF" }}
                 checked={formData.hostOrg === "SW중심대학"}
                 onChange={handleInputChange}
               />
-              <span className="text-white ms-2">SW중심대학</span>
+              <span className="ms-2">SW융합학부 1전공자</span>
             </label>
-            <label>
+            <label className="text-white d-flex align-items-center">
               <input
                 type="radio"
                 name="hostOrg"
                 value="기타 단과대"
+                style={{ accentColor: "#229AFF" }}
                 checked={formData.hostOrg === "기타 단과대"}
                 onChange={handleInputChange}
               />
-              <span className="text-white ms-2">기타 단과대</span>
+              <span className="ms-2">기타 단과대</span>
             </label>
-            <label>
+            <label className="text-white d-flex align-items-center">
               <input
                 type="radio"
                 name="hostOrg"
                 value="외부"
+                style={{ accentColor: "#229AFF" }}
                 checked={formData.hostOrg === "외부"}
                 onChange={handleInputChange}
               />
-              <span className="text-white ms-2">외부</span>
+              <span className="ms-2">외부</span>
             </label>
 
-            {/* '외부' 선택 시 보이는 입력창 */}
             {formData.hostOrg === "외부" && (
               <CFormInput
                 type="text"
                 name="hostOrgEtc"
                 placeholder="외부 입력"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 style={{ maxWidth: "15rem" }}
                 value={formData.hostOrgEtc}
                 onChange={handleInputChange}
@@ -314,49 +268,52 @@ const CompetitionContest = () => {
         </CCardBody>
       </CCard>
 
-      {/* 개인/팀 섹션 */}
+      {/* ====== 개인/팀 (라디오) ====== */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4"
+        className="mb-4"
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">개인/팀</CCardHeader>
         <CCardBody
-          className="bg-dawn-light"
+          className="bg-dark"
           style={{
             borderBottomLeftRadius: "0.75rem",
             borderBottomRightRadius: "0.75rem",
           }}
         >
-          <div className="d-flex gap-4 mb-3">
-            <label>
+          <div className="d-flex gap-3 mb-3 flex-wrap">
+            <label className="text-white d-flex align-items-center">
               <input
                 type="radio"
                 name="participantType"
                 value="개인"
+                style={{ accentColor: "#229AFF" }}
                 checked={formData.participantType === "개인"}
                 onChange={handleInputChange}
               />
-              <span className="text-white ms-2">개인</span>
+              <span className="ms-2">개인</span>
             </label>
-            <label>
+            <label className="text-white d-flex align-items-center">
               <input
                 type="radio"
                 name="participantType"
                 value="팀"
+                style={{ accentColor: "#229AFF" }}
                 checked={formData.participantType === "팀"}
                 onChange={handleInputChange}
               />
-              <span className="text-white ms-2">팀 (총 인원)</span>
+              <span className="ms-2">팀 (총 인원)</span>
             </label>
           </div>
+
           {formData.participantType === "팀" && (
             <div style={{ maxWidth: "15rem" }}>
               <CFormInput
                 type="number"
                 name="totalMembers"
                 placeholder="예) 5"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 value={formData.totalMembers}
                 onChange={handleInputChange}
               />
@@ -365,113 +322,110 @@ const CompetitionContest = () => {
         </CCardBody>
       </CCard>
 
-      {/* 신청서 (기본정보) */}
+      {/* ====== 신청서 (기본정보) ====== */}
       <CCard
         textBgColor="info"
-        className="mt-4 mb-4"
+        className="mb-4"
         style={{ maxWidth: "100rem", borderRadius: "0.75rem" }}
       >
         <CCardHeader className="text-white">신청서 (기본정보)</CCardHeader>
         <CCardBody
-          className="bg-dawn-light"
+          className="bg-dark"
           style={{
             borderBottomLeftRadius: "0.75rem",
             borderBottomRightRadius: "0.75rem",
           }}
         >
+          {/* 1행: 학번 / 이름 / 학과 */}
           <CRow className="mb-3">
             <CCol md="4">
-              <label className="text-white mb-1">학번</label>
+              <CFormLabel className="text-white mb-1">학번</CFormLabel>
               <CFormInput
-                name="studentNumber"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 value={formData.studentNumber}
-                onChange={handleInputChange}
                 readOnly
               />
             </CCol>
             <CCol md="4">
-              <label className="text-white mb-1">이름</label>
+              <CFormLabel className="text-white mb-1">이름</CFormLabel>
               <CFormInput
-                name="name"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 value={formData.name}
-                onChange={handleInputChange}
                 readOnly
               />
             </CCol>
             <CCol md="4">
-              <label className="text-white mb-1">학과</label>
+              <CFormLabel className="text-white mb-1">학과</CFormLabel>
               <CFormInput
-                name="major"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 value={formData.major}
-                onChange={handleInputChange}
                 readOnly
               />
             </CCol>
           </CRow>
+          {/* 2행: 생년월일 / 학년 / 핸드폰 */}
           <CRow className="mb-3">
             <CCol md="4">
-              <label className="text-white mb-1">생년월일</label>
+              <CFormLabel className="text-white mb-1">생년월일</CFormLabel>
               <CFormInput
-                name="birthDate"
-                className="bg-dawn-light text-white border-gray"
-                placeholder="예) 1999-01-01"
+                type="date"
+                className="text-white border-secondary bg-dark"
                 value={formData.birthDate}
+                name="birthDate"
                 onChange={handleInputChange}
               />
             </CCol>
             <CCol md="4">
-              <label className="text-white mb-1">학년</label>
+              <CFormLabel className="text-white mb-1">학년</CFormLabel>
               <CFormInput
-                name="grade"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 placeholder="예) 3"
                 value={formData.grade}
+                name="grade"
                 onChange={handleInputChange}
               />
             </CCol>
             <CCol md="4">
-              <label className="text-white mb-1">핸드폰</label>
+              <CFormLabel className="text-white mb-1">핸드폰</CFormLabel>
               <CFormInput
-                name="phone"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
                 placeholder="010-1234-5678"
                 value={formData.phone}
+                name="phone"
                 onChange={handleInputChange}
               />
             </CCol>
           </CRow>
+          {/* 3행: E-mail / 직전학기 취득성적 / 직전학기 취득학점 */}
           <CRow className="mb-3">
             <CCol md="4">
-              <label className="text-white mb-1">직전학기 취득성적</label>
-              <CFormInput
-                name="lastSemesterGpa"
-                placeholder="예) 3.5"
-                className="bg-dawn-light text-white border-gray"
-                value={formData.lastSemesterGpa}
-                onChange={handleInputChange}
-              />
-            </CCol>
-            <CCol md="4">
-              <label className="text-white mb-1">직전학기 취득학점</label>
-              <CFormInput
-                name="lastSemesterCredits"
-                placeholder="예) 15"
-                className="bg-dawn-light text-white border-gray"
-                value={formData.lastSemesterCredits}
-                onChange={handleInputChange}
-              />
-            </CCol>
-            <CCol md="4">
-              <label className="text-white mb-1">E-mail</label>
+              <CFormLabel className="text-white mb-1">E-mail</CFormLabel>
               <CFormInput
                 type="email"
-                name="email"
-                placeholder="이메일 주소"
-                className="bg-dawn-light text-white border-gray"
+                className="text-white border-secondary bg-dark"
+                placeholder="E-mail을 입력하세요."
                 value={formData.email}
+                name="email"
+                onChange={handleInputChange}
+              />
+            </CCol>
+            <CCol md="4">
+              <CFormLabel className="text-white mb-1">직전학기 취득성적</CFormLabel>
+              <CFormInput
+                className="text-white border-secondary bg-dark"
+                placeholder="예) 3.5"
+                value={formData.lastSemesterGpa}
+                name="lastSemesterGpa"
+                onChange={handleInputChange}
+              />
+            </CCol>
+            <CCol md="4">
+              <CFormLabel className="text-white mb-1">직전학기 취득학점</CFormLabel>
+              <CFormInput
+                className="text-white border-secondary bg-dark"
+                placeholder="예) 15"
+                value={formData.lastSemesterCredits}
+                name="lastSemesterCredits"
                 onChange={handleInputChange}
               />
             </CCol>
@@ -479,7 +433,7 @@ const CompetitionContest = () => {
         </CCardBody>
       </CCard>
 
-      {/* 담당 교수 섹션 */}
+      {/* ====== 담당 교수 ====== */}
       <CCard
         textBgColor="info"
         className="mt-4 mb-4"
@@ -487,28 +441,26 @@ const CompetitionContest = () => {
       >
         <CCardHeader className="text-white">담당 교수</CCardHeader>
         <CCardBody
-          className="bg-dawn-light"
+          className="bg-dark"
           style={{
             borderBottomLeftRadius: "0.75rem",
             borderBottomRightRadius: "0.75rem",
           }}
         >
           <CFormInput
-            name="professor"
+            type="text"
+            className="text-white border-secondary bg-dark"
             placeholder="검색어를 입력하세요"
-            className="bg-dawn-light text-white border-gray"
             value={formData.professor}
+            name="professor"
             onChange={handleInputChange}
           />
         </CCardBody>
       </CCard>
 
-      {/* 저장 버튼 */}
+      {/* ====== 저장 버튼 ====== */}
       <div className="mt-4 mb-4 text-center">
-        <CButton
-          color="primary"
-          className="w-100"
-          style={{ fontSize: "1rem", fontWeight: 500 }}
+        <CButton color="primary" className="w-100" style={{ fontSize: "1rem", fontWeight: 500 }}
           onClick={handleSave}
         >
           저 장
