@@ -376,7 +376,7 @@ const ThesisApplication = () => {
         </CCardBody>
       </CCard>
 
-      {/* ====== 저장 버튼 ====== */}
+      {/* ==== 저장 버튼 ==== */}
       <div className="mt-4 mb-4 text-center">
         <CButton
           color="primary"
