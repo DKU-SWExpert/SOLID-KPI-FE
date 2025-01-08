@@ -1,6 +1,7 @@
 import React from 'react';
 import {CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow,} from '@coreui/react';
 import {useFileStore} from '@/store/fileStore';
+import "@styles/custom-color.css";
 
 interface FileTableProps {
     currentPage: number;
@@ -32,10 +33,10 @@ const FileTable: React.FC<FileTableProps> = ({currentPage, itemsPerPage}) => {
             <CTableBody>
                 {currentItems.map((item) => (
                     <CTableRow key={item.id}>
-                        <CTableDataCell>{item.id}</CTableDataCell>
-                        <CTableDataCell>{item.name}</CTableDataCell>
-                        <CTableDataCell>{item.fileName}</CTableDataCell>
-                        <CTableDataCell>{item.size}</CTableDataCell>
+                        <CTableDataCell className="bg-dawn-light text-white border-gray">{item.id}</CTableDataCell>
+                        <CTableDataCell className="bg-dawn-light text-white border-gray">{item.name}</CTableDataCell>
+                        <CTableDataCell className="bg-dawn-light text-white border-gray">{item.fileName}</CTableDataCell>
+                        <CTableDataCell className="bg-dawn-light text-white border-gray">{item.size}</CTableDataCell>
                     </CTableRow>
                 ))}
             </CTableBody>
