@@ -7,6 +7,7 @@ import Home from "@pages/Home";
 import StudentRoutes from "@routes/StudentRoutes";
 import ProtectedRoute from "@routes/ProtectedRoute";
 import ProfessorRoutes from "@routes/ProfessorRoutes";
+import SuperAdminRoutes from "@routes/SuperAdminRoutes.tsx";
 
 function App() {
   return (
@@ -36,6 +37,14 @@ function App() {
               <ProfessorRoutes />
             </ProtectedRoute>
           }
+        />
+         <Route
+           path="/super-admin/*"
+           element={
+             <ProtectedRoute>
+               <SuperAdminRoutes />
+             </ProtectedRoute>
+           }
         />
         <Route path="*" element={<NotFound />} />
       </Route>
