@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {CCol, CContainer, CRow} from '@coreui/react';
 import FileTable from '@/components/FileTable';
 import SearchBar from '@/components/SearchBar';
@@ -6,7 +6,7 @@ import AddButton from '@/components/AddButton';
 import Pagination from '@/components/Pagination';
 import {useFileStore} from '@/store/fileStore';
 
-const FileStore: React.FC = () => {
+const FileStore = () => {
     const {data, search} = useFileStore();
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 5;
@@ -24,10 +24,10 @@ const FileStore: React.FC = () => {
     return (
         <CContainer className="py-4">
             <CRow className="mb-3">
-                <CCol sm={8}>
+                <CCol sm={4}>
                     <SearchBar/>
                 </CCol>
-                <CCol sm={4} className="text-end">
+                <CCol sm={8} className="text-end">
                     <AddButton/>
                 </CCol>
             </CRow>
