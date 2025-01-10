@@ -98,22 +98,25 @@ const IndustryAcademiaProject = () => {
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell></CTableHeaderCell>
-              {participationRate.labels.map((value, index) => (
-                <CTableHeaderCell key={index}>{value}</CTableHeaderCell>
-              ))}
+              {participationRate.labels &&
+                participationRate.labels.map((value, index) => (
+                  <CTableHeaderCell key={index}>
+                    {String(value)}
+                  </CTableHeaderCell>
+                ))}
             </CTableRow>
           </CTableHead>
           <CTableBody>
             <CTableRow>
               <CTableHeaderCell>참여율</CTableHeaderCell>
               {participationRate.datasets[0].data.map((value, index) => (
-                <CTableDataCell key={index}>{value}</CTableDataCell>
+                <CTableDataCell key={index}>{String(value)}</CTableDataCell>
               ))}
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell>목표</CTableHeaderCell>
               {participationRate.datasets[1].data.map((value, index) => (
-                <CTableDataCell key={index}>{value}</CTableDataCell>
+                <CTableDataCell key={index}>{String(value)}</CTableDataCell>
               ))}
             </CTableRow>
           </CTableBody>
