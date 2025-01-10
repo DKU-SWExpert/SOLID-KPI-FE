@@ -98,32 +98,23 @@ const IndustryAcademiaProject = () => {
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell></CTableHeaderCell>
-              <CTableHeaderCell>2024</CTableHeaderCell>
-              <CTableHeaderCell>2025</CTableHeaderCell>
-              <CTableHeaderCell>2026</CTableHeaderCell>
-              <CTableHeaderCell>2027</CTableHeaderCell>
-              <CTableHeaderCell>2028</CTableHeaderCell>
-              <CTableHeaderCell>2029</CTableHeaderCell>
+              {participationRate.labels.map((value, index) => (
+                <CTableHeaderCell key={index}>{value}</CTableHeaderCell>
+              ))}
             </CTableRow>
           </CTableHead>
           <CTableBody>
             <CTableRow>
-              <CTableHeaderCell className="text-left">참여율</CTableHeaderCell>
-              <CTableDataCell>10</CTableDataCell>
-              <CTableDataCell>15</CTableDataCell>
-              <CTableDataCell>30</CTableDataCell>
-              <CTableDataCell>45</CTableDataCell>
-              <CTableDataCell>60</CTableDataCell>
-              <CTableDataCell>80</CTableDataCell>
+              <CTableHeaderCell>참여율</CTableHeaderCell>
+              {participationRate.datasets[0].data.map((value, index) => (
+                <CTableDataCell key={index}>{value}</CTableDataCell>
+              ))}
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell>목표</CTableHeaderCell>
-              <CTableDataCell>25</CTableDataCell>
-              <CTableDataCell>35</CTableDataCell>
-              <CTableDataCell>45</CTableDataCell>
-              <CTableDataCell>60</CTableDataCell>
-              <CTableDataCell>70</CTableDataCell>
-              <CTableDataCell>80</CTableDataCell>
+              {participationRate.datasets[1].data.map((value, index) => (
+                <CTableDataCell key={index}>{value}</CTableDataCell>
+              ))}
             </CTableRow>
           </CTableBody>
         </CTable>
