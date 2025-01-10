@@ -12,8 +12,6 @@ import {
   CFormLabel,
   CFormInput,
   CButton,
-  CInputGroup,
-  CInputGroupText,
   CFormTextarea,
 } from "@coreui/react";
 import { useUserStore } from "@/store/user";
@@ -37,7 +35,11 @@ interface IThesisFormData {
 }
 
 // 2) 파일 필드 키
-type FileField = "applicationFile" | "recommendationFile" | "certificateFile" | "topcitFile";
+type FileField =
+  | "applicationFile"
+  | "recommendationFile"
+  | "certificateFile"
+  | "topcitFile";
 
 const ThesisApplication = () => {
   // 3) 로그인 사용자 정보
@@ -78,14 +80,19 @@ const ThesisApplication = () => {
 
   // 6) 일반 입력 핸들러
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   // 7) 파일 선택 시
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, field: FileField) => {
+  const handleFileChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: FileField
+  ) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       setFormData((prev) => ({ ...prev, [field]: file }));
@@ -105,7 +112,10 @@ const ThesisApplication = () => {
 
   // 9) 저장 버튼
   const handleSave = () => {
-    if (!formData.selectedPeriod || formData.selectedPeriod === "선택해주세요...") {
+    if (
+      !formData.selectedPeriod ||
+      formData.selectedPeriod === "선택해주세요..."
+    ) {
       alert("기간을 선택해주세요.");
       return;
     }
@@ -123,11 +133,18 @@ const ThesisApplication = () => {
       <Title title="논문 신청" />
 
       {/* ====== 기간 섹션 ====== */}
-      <CCard textBgColor="info" className="mt-4 mb-4" style={{ borderRadius: "0.75rem" }}>
+      <CCard
+        textBgColor="info"
+        className="mt-4 mb-4"
+        style={{ borderRadius: "0.75rem" }}
+      >
         <CCardHeader className="text-white">기간</CCardHeader>
         <CCardBody
           className="bg-dark"
-          style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
         >
           <CFormSelect
             name="selectedPeriod"
@@ -146,11 +163,18 @@ const ThesisApplication = () => {
       </CCard>
 
       {/* ====== 개인/팀 ====== */}
-      <CCard textBgColor="info" className="mb-4" style={{ borderRadius: "0.75rem" }}>
+      <CCard
+        textBgColor="info"
+        className="mb-4"
+        style={{ borderRadius: "0.75rem" }}
+      >
         <CCardHeader className="text-white">개인/팀</CCardHeader>
         <CCardBody
           className="bg-dark"
-          style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
         >
           <div className="d-flex gap-4">
             <label className="text-white d-flex align-items-center">
@@ -192,11 +216,18 @@ const ThesisApplication = () => {
       </CCard>
 
       {/* ====== 논문개요 ====== */}
-      <CCard textBgColor="info" className="mb-4" style={{ borderRadius: "0.75rem" }}>
+      <CCard
+        textBgColor="info"
+        className="mb-4"
+        style={{ borderRadius: "0.75rem" }}
+      >
         <CCardHeader className="text-white">논문개요</CCardHeader>
         <CCardBody
           className="bg-dark"
-          style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
         >
           {/* 논문제목, 학술지명 한 줄 */}
           <CRow className="mb-3">
@@ -240,11 +271,18 @@ const ThesisApplication = () => {
       </CCard>
 
       {/* ====== 신청서 (기본정보) ====== */}
-      <CCard textBgColor="info" className="mb-4" style={{ borderRadius: "0.75rem" }}>
+      <CCard
+        textBgColor="info"
+        className="mb-4"
+        style={{ borderRadius: "0.75rem" }}
+      >
         <CCardHeader className="text-white">신청서 (기본정보)</CCardHeader>
         <CCardBody
           className="bg-dark"
-          style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
         >
           <CRow className="mb-3">
             <CCol md="4">
@@ -276,11 +314,18 @@ const ThesisApplication = () => {
       </CCard>
 
       {/* ====== 신청서 파일 업로드 ====== */}
-      <CCard textBgColor="info" className="mb-4" style={{ borderRadius: "0.75rem" }}>
+      <CCard
+        textBgColor="info"
+        className="mb-4"
+        style={{ borderRadius: "0.75rem" }}
+      >
         <CCardHeader className="text-white">신청서</CCardHeader>
         <CCardBody
           className="bg-dark d-flex align-items-center justify-content-between"
-          style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
         >
           <div className="d-flex flex-column flex-sm-row gap-3 align-items-start align-items-sm-center">
             <CFormInput
@@ -290,18 +335,28 @@ const ThesisApplication = () => {
               className="text-white border-secondary bg-dark"
             />
           </div>
-          <CButton color="primary" onClick={() => handleFileUpload("applicationFile")}>
+          <CButton
+            color="primary"
+            onClick={() => handleFileUpload("applicationFile")}
+          >
             Upload
           </CButton>
         </CCardBody>
       </CCard>
 
       {/* ====== 지도교수 추천서 ====== */}
-      <CCard textBgColor="info" className="mb-4" style={{ borderRadius: "0.75rem" }}>
+      <CCard
+        textBgColor="info"
+        className="mb-4"
+        style={{ borderRadius: "0.75rem" }}
+      >
         <CCardHeader className="text-white">지도교수 추천서</CCardHeader>
         <CCardBody
           className="bg-dark d-flex align-items-center justify-content-between"
-          style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
         >
           <div className="d-flex flex-column flex-sm-row gap-3 align-items-start align-items-sm-center">
             <CFormInput
@@ -311,18 +366,28 @@ const ThesisApplication = () => {
               className="text-white border-secondary bg-dark"
             />
           </div>
-          <CButton color="primary" onClick={() => handleFileUpload("recommendationFile")}>
+          <CButton
+            color="primary"
+            onClick={() => handleFileUpload("recommendationFile")}
+          >
             Upload
           </CButton>
         </CCardBody>
       </CCard>
 
       {/* ====== 재학증명서 (원래 'certificateFile'로 관리) ====== */}
-      <CCard textBgColor="info" className="mb-4" style={{ borderRadius: "0.75rem" }}>
+      <CCard
+        textBgColor="info"
+        className="mb-4"
+        style={{ borderRadius: "0.75rem" }}
+      >
         <CCardHeader className="text-white">재학증명서</CCardHeader>
         <CCardBody
           className="bg-dark d-flex align-items-center justify-content-between"
-          style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
         >
           <div className="d-flex flex-column flex-sm-row gap-3 align-items-start align-items-sm-center">
             <CFormInput
@@ -332,18 +397,28 @@ const ThesisApplication = () => {
               className="text-white border-secondary bg-dark"
             />
           </div>
-          <CButton color="primary" onClick={() => handleFileUpload("certificateFile")}>
+          <CButton
+            color="primary"
+            onClick={() => handleFileUpload("certificateFile")}
+          >
             Upload
           </CButton>
         </CCardBody>
       </CCard>
 
       {/* ====== TOPCIT 성적증명서 ====== */}
-      <CCard textBgColor="info" className="mb-4" style={{ borderRadius: "0.75rem" }}>
+      <CCard
+        textBgColor="info"
+        className="mb-4"
+        style={{ borderRadius: "0.75rem" }}
+      >
         <CCardHeader className="text-white">TOPCIT 성적증명서</CCardHeader>
         <CCardBody
           className="bg-dark d-flex align-items-center justify-content-between"
-          style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
         >
           <div className="d-flex flex-column flex-sm-row gap-3 align-items-start align-items-sm-center">
             <CFormInput
@@ -353,18 +428,28 @@ const ThesisApplication = () => {
               className="text-white border-secondary bg-dark"
             />
           </div>
-          <CButton color="primary" onClick={() => handleFileUpload("topcitFile")}>
+          <CButton
+            color="primary"
+            onClick={() => handleFileUpload("topcitFile")}
+          >
             Upload
           </CButton>
         </CCardBody>
       </CCard>
 
       {/* ====== 담당 교수 ====== */}
-      <CCard textBgColor="info" className="mb-4" style={{ borderRadius: "0.75rem" }}>
+      <CCard
+        textBgColor="info"
+        className="mb-4"
+        style={{ borderRadius: "0.75rem" }}
+      >
         <CCardHeader className="text-white">담당 교수</CCardHeader>
         <CCardBody
           className="bg-dark"
-          style={{ borderBottomLeftRadius: "0.75rem", borderBottomRightRadius: "0.75rem" }}
+          style={{
+            borderBottomLeftRadius: "0.75rem",
+            borderBottomRightRadius: "0.75rem",
+          }}
         >
           <CFormInput
             name="professor"
