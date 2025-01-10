@@ -92,7 +92,7 @@ const IndustryAcademiaProject = () => {
       />
       <CCard
         className="bg-dark border-gray mb-5 px-4 py-2"
-        style={{ borderRadius: "0.75rem" }}
+        style={{ borderRadius: "0.25rem" }}
       >
         <CTable className="table-dark text-white text-center border-gray">
           <CTableHead>
