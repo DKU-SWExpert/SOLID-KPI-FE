@@ -62,6 +62,7 @@ export const options: ChartOptions<"bar" | "line"> = {
       display: false,
     },
     datalabels: {
+      display: (ctx) => ctx.datasetIndex === 0,
       color: "white",
       align: "end",
       formatter: function (value) {

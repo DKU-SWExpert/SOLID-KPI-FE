@@ -1,7 +1,7 @@
 export type ChartData = {
   labels: string[];
   datasets: {
-    label: string;
+    label?: string;
     backgroundColor: string | string[];
     borderColor: string | string[];
     borderWidth: number;
@@ -13,7 +13,7 @@ export interface ChartDataType {
   labels: string[];
   datasets: {
     type: "bar" | "line";
-    label: string;
+    label?: string;
     data: number[];
     backgroundColor?: string;
     borderColor?: string | string[];
@@ -33,7 +33,7 @@ export interface ChartCardProps {
   initialData: {
     labels: string[];
     datasets: {
-      label: string;
+      label?: string;
       backgroundColor: string | string[];
       borderColor: string | string[];
       borderWidth: number;

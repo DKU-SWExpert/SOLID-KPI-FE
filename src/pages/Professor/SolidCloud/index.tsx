@@ -25,7 +25,8 @@ import CIcon from "@coreui/icons-react";
 import html2canvas from "html2canvas";
 import { ChartDataType, ChartCardProps, ChartData } from "./types";
 import { options } from "./chartOptions";
-import DataTable from "./SolidCloudUsage";
+import SolidCloudUsage from "./SolidCloudUsage";
+import MultiBarChart from "./MultiBarTable";
 
 ChartJS.register(
   CategoryScale,
@@ -87,7 +88,6 @@ const generateChartData = (title: string, year: number): ChartData => {
         labels: ["1학년", "2학년", "3학년", "4학년"],
         datasets: [
           {
-            label: `${year}`,
             backgroundColor: [
               GRADE_COLORS.FIRST.background,
               GRADE_COLORS.SECOND.background,
@@ -131,7 +131,6 @@ const createBaseChartOptions = (stepSize: number, max: number) => ({
       },
     },
     datalabels: {
-      display: true,
       color: "#fff",
       font: {
         size: 12,
@@ -267,50 +266,77 @@ const SolidCloud = () => {
   const years = [2024, 2025, 2026, 2027, 2028, 2029];
 
   return (
-    <CContainer fluid className="body flex-grow-1 px-4">
-      <CContainer className="my-5">
-        <CCol className="mt-4">
-          <CCard
-            className="bg-dark text-white border-gray"
-            style={{ height: "auto" }}
+    <CContainer fluid className="flex-grow-1 px-4 body mt-5 mb-5">
+      <CCard
+        className="bg-dark text-white border-gray"
+        style={{ width: "100%", maxWidth: "1200px" }}
+      >
+        <CCardHeader className="bg-dawn-light text-white">
+          <span style={{ fontSize: "1.2rem", color: "#fff" }}>
+            Solid Cloud 활용 현황
+          </span>
+        </CCardHeader>
+        <CCardBody className="bg-dawn">
+          <div
+            style={{
+              position: "relative",
+              height: "50vh",
+              minHeight: "300px",
+            }}
           >
-            <CCardHeader className="bg-dawn-light text-white">
-              <span style={{ fontSize: "1.2rem", color: "#fff" }}>
-                Solid Cloud 활용 현황
-              </span>
-            </CCardHeader>
-            <CCardBody className="bg-dawn">
-              <div
-                style={{
-                  position: "relative",
-                  height: "50vh",
-                  minHeight: "300px",
-                }}
-              >
-                <Chart type="bar" data={data} options={options} />
-              </div>
-              <div className="table-responsive mt-4">
-                <DataTable data={data} />
-              </div>
-            </CCardBody>
-          </CCard>
-        </CCol>
-        {[
-          { title: "학과별 User 수", options: createBaseChartOptions(5, 15) },
-          {
-            title: "학년별 계정수",
-            options: createBaseChartOptions(5, 20),
+            <Chart type="bar" data={data} options={options} />
+          </div>
+          <div className="table-responsive mt-4">
+            <SolidCloudUsage data={data} />
+          </div>
+        </CCardBody>
+      </CCard>
+      <ChartCard
+        key="학과별 User 수"
+        years={years}
+        title="학과별 User 수"
+        initialData={generateChartData("학과별 User 수", years[0])}
+        chartOptions={createBaseChartOptions(5, 15)}
+      />
+
+      <MultiBarChart
+        title="학년별 계정수"
+        options={{
+          responsive: true,
+          plugins: {
+            datalabels: {
+              display: false,
+            },
+            legend: {
+              display: true,
+              labels: {
+                generateLabels: (chart: any) => {
+                  const datasets = chart.data.datasets[0];
+                  return chart.data.labels.map((label: string, i: number) => ({
+                    text: `${label} ${datasets.data[i]}명`,
+                    fillStyle: datasets.backgroundColor[i],
+                    hidden: false,
+                    index: i,
+                  }));
+                },
+              },
+            },
           },
-        ].map(({ title, options }) => (
-          <ChartCard
-            key={title}
-            years={years}
-            title={title}
-            initialData={generateChartData(title, years[0])}
-            chartOptions={options}
-          />
-        ))}
-      </CContainer>
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                color: "#fff",
+              },
+            },
+            x: {
+              ticks: {
+                color: "#fff",
+              },
+            },
+          },
+        }}
+      />
     </CContainer>
   );
 };
