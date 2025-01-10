@@ -1,8 +1,7 @@
 import React from "react";
-import {useRef, useState} from "react";
-import {CContainer} from "@coreui/react";
-import {Bar} from "react-chartjs-2";
-import {useChartStore} from "@store/industryAcademiaProject";
+import { useRef, useState } from "react";
+import { Bar } from "react-chartjs-2";
+import { useChartStore } from "@store/industryAcademiaProject";
 import ChartCard from "@/components/ChartCard";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import {
@@ -17,33 +16,56 @@ import {
   LineElement,
   PieController,
   PointElement,
-  Tooltip
+  Tooltip,
 } from "chart.js";
+import {
+  CCard,
+  CTable,
+  CTableHead,
+  CTableBody,
+  CTableRow,
+  CContainer,
+  CTableDataCell,
+  CTableHeaderCell,
+} from "@coreui/react";
 
 ChartJS.register(
-  LinearScale, CategoryScale, BarElement, PointElement, LineElement, Legend, Tooltip,
-  LineController, BarController, PieController, ArcElement, ChartDataLabels
+  LinearScale,
+  CategoryScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Legend,
+  Tooltip,
+  LineController,
+  BarController,
+  PieController,
+  ArcElement,
+  ChartDataLabels
 );
 
 const IndustryAcademiaProject = () => {
-
   const years = [2024, 2025, 2026, 2027, 2028, 2029];
 
-  const participation_barChartRef = useRef<ChartJS<'bar'> | null>(null);
-  const deptYear_participation_barChartRef = useRef<ChartJS<'bar'> | null>(null);
+  const participation_barChartRef = useRef<ChartJS<"bar"> | null>(null);
+  const deptYear_participation_barChartRef = useRef<ChartJS<"bar"> | null>(
+    null
+  );
 
-  const {participationRate, deptYear_participationRate} = useChartStore();
+  const { participationRate, deptYear_participationRate } = useChartStore();
 
-  const [deptYear_participationRateYear, setDeptYear_participationRateYear] = useState("2024");
+  const [deptYear_participationRateYear, setDeptYear_participationRateYear] =
+    useState("2024");
 
-  const handleDeptYear_participationRateYearChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleDeptYear_participationRateYearChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setDeptYear_participationRateYear(event.target.value);
-  }
+  };
 
   return (
     <CContainer fluid className="flex-grow-1 px-4 body mt-5 mb-5">
       <ChartCard
-        className="mb-5"
         title="참여율 현황"
         chartRef={participation_barChartRef}
         chartData={participationRate}
@@ -58,22 +80,59 @@ const IndustryAcademiaProject = () => {
           plugins: {
             datalabels: {
               display: (ctx) => ctx.datasetIndex === 1,
-              anchor: 'end',
-              align: 'top',
+              anchor: "end",
+              align: "top",
               formatter: (value) => `${value}%`,
-              color: 'white',
-              font: {size: 12},
+              color: "white",
+              font: { size: 12 },
             },
           },
         }}
         showYearSelect={false}
       />
-
+      <CCard
+        className="bg-dark border-gray mb-5 px-4 py-2"
+        style={{ borderRadius: "0.75rem" }}
+      >
+        <CTable className="table-dark text-white text-center border-gray">
+          <CTableHead>
+            <CTableRow>
+              <CTableHeaderCell></CTableHeaderCell>
+              <CTableHeaderCell>2024</CTableHeaderCell>
+              <CTableHeaderCell>2025</CTableHeaderCell>
+              <CTableHeaderCell>2026</CTableHeaderCell>
+              <CTableHeaderCell>2027</CTableHeaderCell>
+              <CTableHeaderCell>2028</CTableHeaderCell>
+              <CTableHeaderCell>2029</CTableHeaderCell>
+            </CTableRow>
+          </CTableHead>
+          <CTableBody>
+            <CTableRow>
+              <CTableHeaderCell className="text-left">참여율</CTableHeaderCell>
+              <CTableDataCell>10</CTableDataCell>
+              <CTableDataCell>15</CTableDataCell>
+              <CTableDataCell>30</CTableDataCell>
+              <CTableDataCell>45</CTableDataCell>
+              <CTableDataCell>60</CTableDataCell>
+              <CTableDataCell>80</CTableDataCell>
+            </CTableRow>
+            <CTableRow>
+              <CTableHeaderCell>목표</CTableHeaderCell>
+              <CTableDataCell>25</CTableDataCell>
+              <CTableDataCell>35</CTableDataCell>
+              <CTableDataCell>45</CTableDataCell>
+              <CTableDataCell>60</CTableDataCell>
+              <CTableDataCell>70</CTableDataCell>
+              <CTableDataCell>80</CTableDataCell>
+            </CTableRow>
+          </CTableBody>
+        </CTable>
+      </CCard>
       <ChartCard
         className="mb-5"
-        title='학과별/년도별 산학 프로젝트 참여율'
+        title="학과별/년도별 산학 프로젝트 참여율"
         year={deptYear_participationRateYear}
-        onYearChange= {handleDeptYear_participationRateYearChange}
+        onYearChange={handleDeptYear_participationRateYearChange}
         years={years}
         chartRef={deptYear_participation_barChartRef}
         chartData={deptYear_participationRate[deptYear_participationRateYear]}
@@ -86,13 +145,13 @@ const IndustryAcademiaProject = () => {
             },
           },
           plugins: {
-              datalabels: {
-                  anchor: 'end',
-                  align: 'top',
-                  formatter: (value) => `${value} %`,
-                  color: 'white',
-                  font: {size: 12},
-              },
+            datalabels: {
+              anchor: "end",
+              align: "top",
+              formatter: (value) => `${value} %`,
+              color: "white",
+              font: { size: 12 },
+            },
           },
         }}
       />
