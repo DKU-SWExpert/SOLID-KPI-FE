@@ -15,6 +15,9 @@ const ProfessorRoutes = () => {
             <Route path="industry-academia-project" element={<IndustryAcademiaProject />}/>
             <Route path="award" element={<Award/>}/>
             <Route path="number-of-student" element={<NumOfStudent/>}/>
+            <Route path="award" element={<Award/>}/>
+            <Route path="number-of-student" element={<NumOfStudent/>}/>
+            <Route path="internship" element={<ProfessorInternship />} />
         </Routes>
     );
 };
