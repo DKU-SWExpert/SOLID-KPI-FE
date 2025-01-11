@@ -1,10 +1,10 @@
 import SolidCloud from "@/pages/Dashboard/SolidCloud";
-import SwTest from "src/pages/Dashboard/SwTest";
-import Internship from "src/pages/Dashboard/Internship";
-import IndustryAcademiaProject from "src/pages/Dashboard/IndustryAcademiaProject";
-import NumOfStudent from "src/pages/Dashboard/NumOfStudent";
-import Award from "src/pages/Dashboard/Award";
-import CompetitionContest from "src/pages/Dashboard/CompetitionContest";
+import SwTest from "@/pages/Dashboard/SwTest";
+import Internship from "@/pages/Dashboard/Internship";
+import IndustryAcademiaProject from "@/pages/Dashboard/IndustryAcademiaProject";
+import NumOfStudent from "@/pages/Dashboard/NumOfStudent";
+import Award from "@/pages/Dashboard/Award";
+import CompetitionContest from "@/pages/Dashboard/CompetitionContest";
 import { Route, Routes } from "react-router-dom";
 
 const ProfessorRoutes = () => {
