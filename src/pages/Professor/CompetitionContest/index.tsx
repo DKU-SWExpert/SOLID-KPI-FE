@@ -63,9 +63,8 @@ const CompetitionContest = () => {
   const handleDepartmentParticipantYearChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const selectedYear = event.target.value;
     setDepartmentParticipantYear(event.target.value);
-    setTableYear(selectedYear);
+    setTableYear(event.target.value);
   };
   const handleManpowerByCompetitionYearChange = (
     event: React.ChangeEvent<HTMLSelectElement>
