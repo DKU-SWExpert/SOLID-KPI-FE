@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router-dom";
-import FileStore from "src/pages/Dashboard/FileStore";
+import FileStore from "src/pages/Management/FileStore";
 import SolidCloud from "@pages/Dashboard/SolidCloud";
 import SwTest from "src/pages/Dashboard/SwTest";
 import ProfessorInternship from "src/pages/Dashboard/Internship";
