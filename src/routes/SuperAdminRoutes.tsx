@@ -1,12 +1,12 @@
 import {Route, Routes} from "react-router-dom";
-import FileStore from "@pages/Professor/FileStore";
-import SolidCloud from "@pages/Professor/SolidCloud";
-import SwTest from "@pages/Professor/SwTest";
-import ProfessorInternship from "@pages/Professor/Internship";
-import IndustryAcademiaProject from "@pages/Professor/IndustryAcademiaProject";
-import Award from "@pages/Professor/Award";
-import NumOfStudent from "@pages/Professor/NumOfStudent";
-import CompetitionContest from "@pages/Professor/CompetitionContest";
+import FileStore from "src/pages/Dashboard/FileStore";
+import SolidCloud from "@pages/Dashboard/SolidCloud";
+import SwTest from "src/pages/Dashboard/SwTest";
+import ProfessorInternship from "src/pages/Dashboard/Internship";
+import IndustryAcademiaProject from "src/pages/Dashboard/IndustryAcademiaProject";
+import Award from "src/pages/Dashboard/Award";
+import NumOfStudent from "src/pages/Dashboard/NumOfStudent";
+import CompetitionContest from "src/pages/Dashboard/CompetitionContest";
 
 const SuperAdminRoutes = () => {
     return (

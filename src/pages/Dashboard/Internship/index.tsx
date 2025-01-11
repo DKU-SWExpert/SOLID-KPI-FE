@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {CContainer} from "@coreui/react";
 import {Bar, Pie} from "react-chartjs-2";
-import {useChartStore} from "@store/internship";
+import {useChartStore} from "@store/internship.ts";
 import {
     ArcElement,
     BarController,

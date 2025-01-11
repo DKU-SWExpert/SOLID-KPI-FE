@@ -1,6 +1,6 @@
 import React from "react";
 import { CContainer } from "@coreui/react";
-import ChartCard from "@/components/ChartCard";
+import ChartCard from "@components/ChartCard";
 import { Pie, Bar } from "react-chartjs-2";
 import {
   ArcElement,
