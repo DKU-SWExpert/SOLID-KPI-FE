@@ -47,8 +47,6 @@ ChartJS.register(
 const CompetitionContest = () => {
   const years = [2024, 2025, 2026, 2027, 2028, 2029];
 
-  const year = "2024";
-
   const participantBarChartRef = useRef<ChartJS<"bar"> | null>(null);
   const deptParticipantBarChartRef = useRef<ChartJS<"bar"> | null>(null);
   const pieChartRef = useRef<ChartJS<"pie"> | null>(null);
@@ -60,11 +58,14 @@ const CompetitionContest = () => {
     useState("2024");
   const [manpowerByCompetitionYear, setManpowerByCompetitionYear] =
     useState("2024");
+  const [tableYear, setTableYear] = useState("2024");
 
   const handleDepartmentParticipantYearChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
+    const selectedYear = event.target.value;
     setDepartmentParticipantYear(event.target.value);
+    setTableYear(selectedYear);
   };
   const handleManpowerByCompetitionYearChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -129,8 +130,8 @@ const CompetitionContest = () => {
           <CTableHead>
             <CTableRow>
               <CTableHeaderCell></CTableHeaderCell>
-              {departmentParticipant["2024"].labels &&
-                departmentParticipant["2024"].labels.map((value, index) => (
+              {departmentParticipant[tableYear].labels &&
+                departmentParticipant[tableYear].labels.map((value, index) => (
                   <CTableHeaderCell key={index}>
                     {String(value)}
                   </CTableHeaderCell>
@@ -140,7 +141,7 @@ const CompetitionContest = () => {
           <CTableBody>
             <CTableRow>
               <CTableHeaderCell>단체</CTableHeaderCell>
-              {departmentParticipant["2024"].datasets[0].data.map(
+              {departmentParticipant[tableYear].datasets[0].data.map(
                 (value, index) => (
                   <CTableDataCell key={index}>{value}</CTableDataCell>
                 )
@@ -148,7 +149,7 @@ const CompetitionContest = () => {
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell>개인</CTableHeaderCell>
-              {departmentParticipant["2024"].datasets[1].data.map(
+              {departmentParticipant[tableYear].datasets[1].data.map(
                 (value, index) => (
                   <CTableDataCell key={index}>{value}</CTableDataCell>
                 )
@@ -156,7 +157,7 @@ const CompetitionContest = () => {
             </CTableRow>
             <CTableRow>
               <CTableHeaderCell>종합</CTableHeaderCell>
-              {departmentParticipant["2024"].datasets[2].data.map(
+              {departmentParticipant[tableYear].datasets[2].data.map(
                 (value, index) => (
                   <CTableDataCell key={index}>{value}</CTableDataCell>
                 )
