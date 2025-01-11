@@ -1,5 +1,6 @@
 import {Route, Routes} from "react-router-dom";
 import FileStore from "src/pages/Management/FileStore";
+import ProfessorManagement from "@pages/Management/Professor"
 import SolidCloud from "@pages/Dashboard/SolidCloud";
 import SwTest from "src/pages/Dashboard/SwTest";
 import Internship from "src/pages/Dashboard/Internship";
@@ -19,6 +20,7 @@ const SuperAdminRoutes = () => {
             <Route path="number-of-student" element={<NumOfStudent/>}/>
             <Route path="competition-contest" element={<CompetitionContest />} />
             <Route path="file-store-management" element={<FileStore/>}/>
+            <Route path="professor-management" element={<ProfessorManagement/>} />
         </Routes>
     );
 };

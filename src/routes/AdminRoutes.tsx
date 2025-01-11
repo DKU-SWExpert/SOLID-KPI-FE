@@ -7,6 +7,7 @@ import IndustryAcademiaProject from "src/pages/Dashboard/IndustryAcademiaProject
 import Award from "src/pages/Dashboard/Award";
 import NumOfStudent from "src/pages/Dashboard/NumOfStudent";
 import CompetitionContest from "src/pages/Dashboard/CompetitionContest";
+import ProfessorManagement from "@pages/Management/Professor";
 
 const AdminRoutes = () => {
     return (
@@ -19,6 +20,7 @@ const AdminRoutes = () => {
             <Route path="number-of-student" element={<NumOfStudent/>}/>
             <Route path="competition-contest" element={<CompetitionContest />} />
             <Route path="file-store-management" element={<FileStore/>}/>
+            <Route path="professor-management" element={<ProfessorManagement/>} />
         </Routes>
     );
 };
