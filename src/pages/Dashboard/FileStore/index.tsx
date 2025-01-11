@@ -1,10 +1,10 @@
 import {useState} from 'react';
 import {CCol, CContainer, CRow} from '@coreui/react';
-import FileTable from '@/components/FileTable';
-import SearchBar from '@/components/SearchBar';
-import AddButton from '@/components/AddButton';
-import Pagination from '@/components/Pagination';
-import {useFileStore} from '@/store/fileStore';
+import FileTable from '@components/FileTable';
+import SearchBar from '@components/SearchBar';
+import AddButton from '@components/AddButton';
+import Pagination from '@components/Pagination';
+import {useFileStore} from '@store/fileStore.ts';
 
 const FileStore = () => {
     const {data, search} = useFileStore();

@@ -2,8 +2,8 @@ import React from "react";
 import { useRef, useState } from "react";
 import { CContainer } from "@coreui/react";
 import { Bar, Pie } from "react-chartjs-2";
-import { useChartStore } from "@store/competitionContest";
-import ChartCard from "@/components/ChartCard";
+import { useChartStore } from "@store/competitionContest.ts";
+import ChartCard from "@components/ChartCard";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import {
   CTable,

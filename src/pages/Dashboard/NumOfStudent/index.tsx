@@ -1,6 +1,6 @@
 import React from "react";
 import { CContainer, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from "@coreui/react";
-import ChartCard from "@/components/ChartCard";
+import ChartCard from "@components/ChartCard";
 import { Bar } from "react-chartjs-2";
 import {
   ChartData,

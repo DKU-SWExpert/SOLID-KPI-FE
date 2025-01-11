@@ -1,8 +1,8 @@
 import React from "react";
 import { useRef, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { useChartStore } from "@store/industryAcademiaProject";
-import ChartCard from "@/components/ChartCard";
+import { useChartStore } from "@store/industryAcademiaProject.ts";
+import ChartCard from "@components/ChartCard";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import {
   ArcElement,
