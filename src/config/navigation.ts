@@ -104,15 +104,18 @@ export const navigationConfig: Record<string, NavItem[]> = {
     {
       name: "분석",
       items: [
-        { name: "Solid Cloud 활용", path: "#" },
-        { name: "인턴쉽", path: "#" },
-        { name: "경진대회", path: "#" },
-        { name: "장학금", path: "#" },
-        { name: "SW 역량 테스트", path: "#" },
+        { name: "Solid Cloud", path: "/admin/solid-cloud" },
+        { name: "인턴십", path: "/admin/internship" },
+        { name: "경진대회", path: "/admin/competition-contest" },
+        { name: "장학금", path: "/admin/award" },
+        { name: "SW 역량 테스트", path: "/admin/sw-test" },
         { name: "SW 정원 비율", path: "#" },
-        { name: "교원 1인당 학생수", path: "#" },
-        { name: "산학협력 프로젝트 참여률", path: "#" },
-        { name: "SW 전공생 취엽률", path: "#" },
+        { name: "교원 1인당 학생수", path: "/admin/number-of-student" },
+        {
+          name: "산학협력 프로젝트 참여률",
+          path: "/admin/industry-academia-project",
+        },
+        { name: "SW 전공생 취업률", path: "#" },
       ],
     },
     {
@@ -122,7 +125,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
         { name: "학생 관리", path: "#" },
         { name: "교수 관리", path: "#" },
         { name: "아이템 관리", path: "#" },
-        { name: "양식함 관리", path: "#" },
+        { name: "양식함 관리", path: "/admin/file-store-management" },
       ],
     },
     {
