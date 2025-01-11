@@ -26,7 +26,7 @@ ChartJS.register(
 
 const years = [2024, 2025, 2026, 2027, 2028, 2029];
 
-const ProfessorInternship = () => {
+const Internship = () => {
     const [departmentInternshipStatusYear, setDepartmentInternshipStatusYear] = useState("2024");
     const [internshipStatusByTypeYear, setInternshipStatusByTypeYear] = useState("2024");
 
@@ -116,4 +116,4 @@ const ProfessorInternship = () => {
     );
 };
 
-export default ProfessorInternship;
+export default Internship;
