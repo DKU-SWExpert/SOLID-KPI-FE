@@ -9,6 +9,7 @@ import NumOfStudent from "@/pages/Dashboard/NumOfStudent";
 import CompetitionContest from "@/pages/Dashboard/CompetitionContest";
 import ProfessorManagement from "@pages/Management/Professor";
 import Compaines from "@/pages/SuperAdmin/Companies";
+import StudentList from "@/pages/Management/studuentlist";
 
 const SuperAdminRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const SuperAdminRoutes = () => {
       <Route path="file-store-management" element={<FileStore />} />
       <Route path="company-list" element={<Compaines />} />
       <Route path="professor-management" element={<ProfessorManagement />} />
+      <Route path="student-list" element={<StudentList />} />
     </Routes>
   );
 };
