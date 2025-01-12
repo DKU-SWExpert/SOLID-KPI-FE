@@ -79,6 +79,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
           name: "산학협력 프로젝트 참여률",
           path: "/super-admin/industry-academia-project",
         },
+        { name: "SW 전공생 취업률", path: "#" },
       ],
     },
     {
@@ -89,7 +90,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
         { name: "교수 관리", path: "/super-admin/professor-management" },
         { name: "관리자 관리", path: "#" },
         { name: "업체 관리", path: "/super-admin/company-list" },
-        { name: "아이템 관리", path: "#" },
+        { name: "아이템 관리", path: "/super-admin/item-management" },
         { name: "양식함 관리", path: "/super-admin/file-store-management" },
       ],
     },
@@ -125,7 +126,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
       items: [
         { name: "학생 관리", path: "#" },
         { name: "교수 관리", path: "/admin/professor-management" },
-        { name: "아이템 관리", path: "#" },
+        { name: "아이템 관리", path: "/admin/item-management" },
         { name: "양식함 관리", path: "/admin/file-store-management" },
       ],
     },
