@@ -8,16 +8,16 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from "@coreui/react";
-import { useFileStore } from "@/store/fileStore";
+import { useItemStore } from "@/store/item";
 import "@styles/custom-color.css";
 
-interface FileTableProps {
+interface ItemTableProps {
   currentPage: number;
   itemsPerPage: number;
 }
 
-const ItemTable: React.FC<FileTableProps> = ({ currentPage, itemsPerPage }) => {
-  const { data, search } = useFileStore();
+const ItemTable: React.FC<ItemTableProps> = ({ currentPage, itemsPerPage }) => {
+  const { data, search } = useItemStore();
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const filteredData = data.filter((item) =>
@@ -42,6 +42,7 @@ const ItemTable: React.FC<FileTableProps> = ({ currentPage, itemsPerPage }) => {
     backgroundColor: "#333a49",
     borderRadius: "8px",
     color: "#fff",
+    width: "30%",
   };
 
   return (
@@ -102,18 +103,6 @@ const ItemTable: React.FC<FileTableProps> = ({ currentPage, itemsPerPage }) => {
 
                     <CButton
                       color="primary"
-                      onClick={() => handleDelete(id)}
-                      style={{
-                        display: "block",
-                        marginTop: "16px",
-                        marginLeft: "0",
-                        marginRight: "auto",
-                      }}
-                    >
-                      삭제
-                    </CButton>
-                    <CButton
-                      color="primary"
                       onClick={() => handleSave(id)}
                       style={{
                         display: "block",
@@ -123,6 +112,18 @@ const ItemTable: React.FC<FileTableProps> = ({ currentPage, itemsPerPage }) => {
                       }}
                     >
                       저장
+                    </CButton>
+                    <CButton
+                      color="primary"
+                      onClick={() => handleDelete(id)}
+                      style={{
+                        display: "block",
+                        marginTop: "16px",
+                        marginLeft: "0",
+                        marginRight: "auto",
+                      }}
+                    >
+                      삭제
                     </CButton>
                   </div>
                 </CTableDataCell>
