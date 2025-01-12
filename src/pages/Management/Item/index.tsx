@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useItemStore } from "@store/item";
 import { CContainer, CCol, CRow } from "@coreui/react";
 import ItemTable from "@components/ItemTable";
-import SearchBar from "@components/SearchBar";
 import Pagination from "@components/Pagination";
 import AddButton from "@pages/Management/Item/AddButton";
+import SearchBar from "@pages/Management/Item/SearchBar";
 
 const ItemManagement = () => {
   const { data, search } = useItemStore();
