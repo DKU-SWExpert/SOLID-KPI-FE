@@ -85,7 +85,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
       name: "관리",
       icon: cilPencil,
       items: [
-        { name: "학생 관리", path: "#" },
+        { name: "학생 관리", path: "/super-admin/student-list" },
         { name: "교수 관리", path: "/super-admin/professor-management" },
         { name: "관리자 관리", path: "#" },
         { name: "업체 관리", path: "/super-admin/company-list" },
