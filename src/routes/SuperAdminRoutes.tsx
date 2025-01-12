@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import FileStore from "@/pages/Management/FileStore";
 import SolidCloud from "@pages/Dashboard/SolidCloud";
+<<<<<<< HEAD
 import SwTest from "@/pages/Dashboard/SwTest";
 import Internship from "@/pages/Dashboard/Internship";
 import IndustryAcademiaProject from "@/pages/Dashboard/IndustryAcademiaProject";
@@ -14,6 +15,8 @@ import FileStoreAdd from "@pages/Management/FileStoreAdd";
 import AddCompany from "@/pages/SuperAdmin/Companies/AddCompany";
 import ItemManagement from "@/pages/Management/Item";
 import AddItem from "@/pages/Management/Item/AddItem";
+import ManagerListPage from "@pages/SuperAdmin/Manager/ManagerListPage";
+import ManagerAddPage from "@pages/SuperAdmin/Manager/ManagerAddPage";
 
 const SuperAdminRoutes = () => {
   return (
@@ -21,15 +24,14 @@ const SuperAdminRoutes = () => {
       <Route path="solid-cloud" element={<SolidCloud />} />
       <Route path="sw-test" element={<SwTest />} />
       <Route path="internship" element={<Internship />} />
-      <Route
-        path="industry-academia-project"
-        element={<IndustryAcademiaProject />}
-      />
+      <Route path="industry-academia-project" element={<IndustryAcademiaProject />} />
       <Route path="award" element={<Award />} />
       <Route path="number-of-student" element={<NumOfStudent />} />
       <Route path="competition-contest" element={<CompetitionContest />} />
       <Route path="file-store-management" element={<FileStore />} />
       <Route path="file-store-management/add" element={<FileStoreAdd />} />
+      <Route path="manager" element={<ManagerListPage/>}/>
+      <Route path="manager/add" element={<ManagerAddPage />} />
       <Route path="company-list" element={<Compaines />} />
       <Route path="professor-management" element={<ProfessorManagement />} />
       <Route path="student-list" element={<StudentList />} />
