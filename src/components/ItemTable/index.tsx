@@ -100,31 +100,31 @@ const ItemTable: React.FC<ItemTableProps> = ({ currentPage, itemsPerPage }) => {
                       </label>
                       <div style={detailStyle}>{name}</div>
                     </div>
-
-                    <CButton
-                      color="primary"
-                      onClick={() => handleSave(id)}
+                    <div
                       style={{
-                        display: "block",
-                        marginTop: "16px",
-                        marginLeft: "0",
-                        marginRight: "auto",
+                        display: "flex",
+                        justifyContent: "space-between",
                       }}
                     >
-                      저장
-                    </CButton>
-                    <CButton
-                      color="primary"
-                      onClick={() => handleDelete(id)}
-                      style={{
-                        display: "block",
-                        marginTop: "16px",
-                        marginLeft: "0",
-                        marginRight: "auto",
-                      }}
-                    >
-                      삭제
-                    </CButton>
+                      <CButton
+                        color="primary"
+                        onClick={() => handleSave(id)}
+                        style={{
+                          marginTop: "16px",
+                        }}
+                      >
+                        저장
+                      </CButton>
+                      <CButton
+                        color="primary"
+                        onClick={() => handleDelete(id)}
+                        style={{
+                          marginTop: "16px",
+                        }}
+                      >
+                        삭제
+                      </CButton>
+                    </div>
                   </div>
                 </CTableDataCell>
               </CTableRow>
