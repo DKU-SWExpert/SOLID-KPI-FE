@@ -25,7 +25,7 @@ interface Company {
   address: string;
 }
 
-const Compaines = () => {
+const Companies = () => {
   const [selectedId, setSelectedId] = useState<number | null>();
   const [editValues, setEditValues] = useState<
     Record<number, Partial<Company>>
@@ -202,4 +202,4 @@ const Compaines = () => {
   );
 };
 
-export default Compaines;
+export default Companies;
