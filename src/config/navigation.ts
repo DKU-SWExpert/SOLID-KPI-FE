@@ -88,6 +88,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
         { name: "학생 관리", path: "#" },
         { name: "교수 관리", path: "/super-admin/professor-management" },
         { name: "관리자 관리", path: "#" },
+        { name: "업체 관리", path: "/super-admin/company-list" },
         { name: "아이템 관리", path: "#" },
         { name: "양식함 관리", path: "/super-admin/file-store-management" },
       ],
