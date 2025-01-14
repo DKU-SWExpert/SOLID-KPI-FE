@@ -10,6 +10,7 @@ import CompetitionContest from "@/pages/Dashboard/CompetitionContest";
 import ProfessorManagement from "@pages/Management/Professor";
 import Compaines from "@/pages/SuperAdmin/Companies";
 import StudentList from "@/pages/Management/studuentlist";
+import FileStoreAdd from "@pages/Management/FileStoreAdd";
 
 const SuperAdminRoutes = () => {
   return (
@@ -25,7 +26,7 @@ const SuperAdminRoutes = () => {
       <Route path="number-of-student" element={<NumOfStudent />} />
       <Route path="competition-contest" element={<CompetitionContest />} />
       <Route path="file-store-management" element={<FileStore />} />
-      <Route path="file-store-management/add" element={<FileStore />} />
+      <Route path="file-store-management/add" element={<FileStoreAdd />} />
       <Route path="company-list" element={<Compaines />} />
       <Route path="professor-management" element={<ProfessorManagement />} />
       <Route path="student-list" element={<StudentList />} />
