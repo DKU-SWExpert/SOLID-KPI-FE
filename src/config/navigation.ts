@@ -79,6 +79,7 @@ export const navigationConfig: Record<string, NavItem[]> = {
           name: "산학협력 프로젝트 참여률",
           path: "/super-admin/industry-academia-project",
         },
+        { name: "SW 전공생 취업률", path: "#" },
       ],
     },
     {
