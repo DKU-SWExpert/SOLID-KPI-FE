@@ -25,6 +25,7 @@ const SuperAdminRoutes = () => {
       <Route path="number-of-student" element={<NumOfStudent />} />
       <Route path="competition-contest" element={<CompetitionContest />} />
       <Route path="file-store-management" element={<FileStore />} />
+      <Route path="file-store-management/add" element={<FileStore />} />
       <Route path="company-list" element={<Compaines />} />
       <Route path="professor-management" element={<ProfessorManagement />} />
       <Route path="student-list" element={<StudentList />} />

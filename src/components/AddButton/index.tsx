@@ -1,10 +1,14 @@
 import {CButton} from '@coreui/react';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const AddButton = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
     const handleAdd = () => {
-        navigate("./add");
+        if (!location.pathname.includes("/add")) {
+            navigate(location.pathname + "/add");
+        }
     };
 
     return <CButton color="primary" onClick={handleAdd}>양식 추가</CButton>;
