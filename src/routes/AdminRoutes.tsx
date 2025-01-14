@@ -20,7 +20,6 @@ const AdminRoutes = () => {
             <Route path="number-of-student" element={<NumOfStudent/>}/>
             <Route path="competition-contest" element={<CompetitionContest />} />
             <Route path="file-store-management" element={<FileStore/>}/>
-            <Route path="file-store-management/add" element={<FileStore />} />
             <Route path="professor-management" element={<ProfessorManagement/>} />
         </Routes>
     );
