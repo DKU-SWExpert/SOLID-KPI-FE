@@ -17,6 +17,9 @@ import {
 import SearchBar from "@/components/SearchBar";
 import AddButton from "./AddButton";
 import "@styles/custom-color.css";
+import { useAuthStore } from "@/store/auth";
+import { SUPER_ADMIN } from "@/constants/role";
+import { Role } from "@/types/role";
 
 interface Company {
   id: number;
@@ -26,6 +29,7 @@ interface Company {
 }
 
 const Companies = () => {
+  const { role } = useAuthStore();
   const [selectedId, setSelectedId] = useState<number | null>();
   const [editValues, setEditValues] = useState<
     Record<number, Partial<Company>>
@@ -66,7 +70,7 @@ const Companies = () => {
           <SearchBar />
         </CCol>
         <CCol sm={8} className="text-end">
-          <AddButton />
+          {role === (SUPER_ADMIN as Role) && <AddButton />}
         </CCol>
       </CRow>
       <CTable striped hover>
