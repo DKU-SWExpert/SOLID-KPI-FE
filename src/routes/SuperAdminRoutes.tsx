@@ -13,6 +13,7 @@ import StudentList from "@/pages/Management/studuentlist";
 import FileStoreAdd from "@pages/Management/FileStoreAdd";
 import AddCompany from "@/pages/SuperAdmin/Companies/AddCompany";
 import ItemManagement from "@/pages/Management/Item";
+import AddItem from "@/pages/Management/Item/AddItem";
 
 const SuperAdminRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const SuperAdminRoutes = () => {
       <Route path="student-list" element={<StudentList />} />
       <Route path="company-list/add" element={<AddCompany />} />
       <Route path="item-management" element={<ItemManagement />} />
+      <Route path="item-management/add" element={<AddItem />} />
     </Routes>
   );
 };
