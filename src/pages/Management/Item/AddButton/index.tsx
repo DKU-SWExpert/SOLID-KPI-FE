@@ -1,9 +1,14 @@
-import React from "react";
 import { CButton } from "@coreui/react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const AddButton: React.FC = () => {
+const AddButton = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleAdd = () => {
-    alert("아이템 추가 버튼 클릭");
+    if (!location.pathname.includes("/add")) {
+      navigate(location.pathname + "/add");
+    }
   };
 
   return (
