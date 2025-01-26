@@ -9,6 +9,7 @@ import NumOfStudent from "@/pages/Dashboard/NumOfStudent";
 import CompetitionContest from "@/pages/Dashboard/CompetitionContest";
 import ProfessorManagement from "@pages/Management/Professor";
 import ItemManagement from "@/pages/Management/Item";
+import AddItem from "@/pages/Management/Item/AddItem";
 
 const AdminRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const AdminRoutes = () => {
       <Route path="file-store-management" element={<FileStore />} />
       <Route path="professor-management" element={<ProfessorManagement />} />
       <Route path="item-management" element={<ItemManagement />} />
+      <Route path="item-management/add" element={<AddItem />} />
     </Routes>
   );
 };
