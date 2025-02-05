@@ -20,7 +20,7 @@ const ExpandedRow: React.FC<ExpandedRowProps> = ({ manager, onSave, onDelete }) 
   const handleSave = () => {
     onSave({ phone, department });
   };
-
+//클릭시 작동하는 컴포넌트
   return (
     <tr>
       <td colSpan={5}>

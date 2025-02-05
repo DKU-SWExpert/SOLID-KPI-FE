@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import FileStore from "@/pages/Management/FileStore";
 import SolidCloud from "@pages/Dashboard/SolidCloud";
-<<<<<<< HEAD
 import SwTest from "@/pages/Dashboard/SwTest";
 import Internship from "@/pages/Dashboard/Internship";
 import IndustryAcademiaProject from "@/pages/Dashboard/IndustryAcademiaProject";
